@@ -1,0 +1,17 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Omni – Welcome</title>
+    <link>/v0.1/</link>
+    <description>Recent content in Welcome on Omni</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="/v0.1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+  </channel>
+</rss>

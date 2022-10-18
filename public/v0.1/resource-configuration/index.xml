@@ -1,0 +1,244 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Omni – Resource Configuration</title>
+    <link>/v0.1/resource-configuration/</link>
+    <description>Recent content in Resource Configuration on Omni</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="/v0.1/resource-configuration/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>V0.1: Environments</title>
+      <link>/v0.1/resource-configuration/environments/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v0.1/resource-configuration/environments/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Environments are a custom resource provided by the Metal Controller Manager.
+An environment is a codified description of what should be returned by the PXE server when a physical server attempts to PXE boot.&lt;/p&gt;
+&lt;p&gt;Especially important in the environment types are the kernel args.
+From here, one can tweak the IP to the metadata server as well as various other kernel options that &lt;a href=&#34;https://www.talos.dev/latest/reference/kernel/&#34;&gt;Talos&lt;/a&gt; and/or the Linux kernel supports.&lt;/p&gt;
+&lt;p&gt;Environments can be supplied to a given server either at the Server or the ServerClass level.
+The hierarchy from most to least respected is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;.spec.environmentRef&lt;/code&gt; provided at &lt;code&gt;Server&lt;/code&gt; level&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.spec.environmentRef&lt;/code&gt; provided at &lt;code&gt;ServerClass&lt;/code&gt; level&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;default&amp;quot;&lt;/code&gt; &lt;code&gt;Environment&lt;/code&gt; created by administrator&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A sample environment definition looks like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;apiVersion&lt;/span&gt;: metal.sidero.dev/v1alpha1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;kind&lt;/span&gt;: Environment
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;metadata&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#268bd2&#34;&gt;name&lt;/span&gt;: default
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;spec&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#268bd2&#34;&gt;kernel&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;url&lt;/span&gt;: &lt;span style=&#34;color:#2aa198&#34;&gt;&amp;#34;https://github.com/talos-systems/talos/releases/download/v0.8.1/vmlinuz-amd64&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;sha512&lt;/span&gt;: &lt;span style=&#34;color:#2aa198&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;args&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - init_on_alloc=1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - init_on_free=1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - slab_nomerge
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - pti=on
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - consoleblank=0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - random.trust_cpu=on
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - ima_template=ima-ng
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - ima_appraise=fix
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - ima_hash=sha512
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - console=tty0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - console=ttyS1,115200n8
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - earlyprintk=ttyS1,115200n8
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - panic=0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - printk.devkmsg=on
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - talos.platform=metal
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - talos.config=http://$PUBLIC_IP:9091/configdata?uuid=
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#268bd2&#34;&gt;initrd&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;url&lt;/span&gt;: &lt;span style=&#34;color:#2aa198&#34;&gt;&amp;#34;https://github.com/talos-systems/talos/releases/download/v0.8.1/initramfs-amd64.xz&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;sha512&lt;/span&gt;: &lt;span style=&#34;color:#2aa198&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Example of overriding &lt;code&gt;&amp;quot;default&amp;quot;&lt;/code&gt; &lt;code&gt;Environment&lt;/code&gt; at the &lt;code&gt;Server&lt;/code&gt; level:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;apiVersion&lt;/span&gt;: metal.sidero.dev/v1alpha1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;kind&lt;/span&gt;: Server
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;spec&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#268bd2&#34;&gt;environmentRef&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;namespace&lt;/span&gt;: default
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;name&lt;/span&gt;: boot
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Example of overriding &lt;code&gt;&amp;quot;default&amp;quot;&lt;/code&gt; &lt;code&gt;Environment&lt;/code&gt; at the &lt;code&gt;ServerClass&lt;/code&gt; level:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;apiVersion&lt;/span&gt;: metal.sidero.dev/v1alpha1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;kind&lt;/span&gt;: ServerClass
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;spec&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#268bd2&#34;&gt;environmentRef&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;namespace&lt;/span&gt;: default
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;name&lt;/span&gt;: boot
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>V0.1: Servers</title>
+      <link>/v0.1/resource-configuration/servers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v0.1/resource-configuration/servers/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Servers are the basic resource of bare metal in the Metal Controller Manager.
+These are created by PXE booting the servers and allowing them to send a registration request to the management plane.&lt;/p&gt;
+&lt;p&gt;An example server may look like the following:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;apiVersion&lt;/span&gt;: metal.sidero.dev/v1alpha1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;kind&lt;/span&gt;: Server
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;metadata&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#268bd2&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#2aa198&#34;&gt;00000000-0000-0000-0000&lt;/span&gt;-d05099d333e0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;spec&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#268bd2&#34;&gt;accepted&lt;/span&gt;: &lt;span style=&#34;color:#cb4b16&#34;&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#268bd2&#34;&gt;configPatches&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#268bd2&#34;&gt;op&lt;/span&gt;: replace
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#268bd2&#34;&gt;path&lt;/span&gt;: /cluster/network/cni
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#268bd2&#34;&gt;value&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#268bd2&#34;&gt;name&lt;/span&gt;: custom
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#268bd2&#34;&gt;urls&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          - http://192.168.1.199/assets/cilium.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#268bd2&#34;&gt;cpu&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;manufacturer&lt;/span&gt;: Intel(R) Corporation
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;version&lt;/span&gt;: Intel(R) Atom(TM) CPU C3558 @ 2.20GHz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#268bd2&#34;&gt;system&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;family&lt;/span&gt;: Unknown
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;manufacturer&lt;/span&gt;: Unknown
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;productName&lt;/span&gt;: Unknown
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;serialNumber&lt;/span&gt;: Unknown
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;skuNumber&lt;/span&gt;: Unknown
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;version&lt;/span&gt;: Unknown
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;installation-disk&#34;&gt;Installation Disk&lt;/h2&gt;
+&lt;p&gt;A an installation disk is required by Talos on bare metal.
+This can be specified in a &lt;code&gt;configPatch&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;apiVersion&lt;/span&gt;: metal.sidero.dev/v1alpha1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;kind&lt;/span&gt;: Server
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;spec&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#268bd2&#34;&gt;accepted&lt;/span&gt;: &lt;span style=&#34;color:#cb4b16&#34;&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#268bd2&#34;&gt;configPatches&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#268bd2&#34;&gt;op&lt;/span&gt;: replace
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#268bd2&#34;&gt;path&lt;/span&gt;: /machine/install/disk
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#268bd2&#34;&gt;value&lt;/span&gt;: /dev/sda
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The install disk patch can also be set on the &lt;code&gt;ServerClass&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;apiVersion&lt;/span&gt;: metal.sidero.dev/v1alpha1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;kind&lt;/span&gt;: ServerClass
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;spec&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#268bd2&#34;&gt;configPatches&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#268bd2&#34;&gt;op&lt;/span&gt;: replace
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#268bd2&#34;&gt;path&lt;/span&gt;: /machine/install/disk
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#268bd2&#34;&gt;value&lt;/span&gt;: /dev/sda
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;server-acceptance&#34;&gt;Server Acceptance&lt;/h2&gt;
+&lt;p&gt;In order for a server to be eligible for consideration, it &lt;em&gt;must&lt;/em&gt; be &lt;code&gt;accepted&lt;/code&gt;.
+This is an important separation point which all &lt;code&gt;Server&lt;/code&gt;s must pass.
+Before a &lt;code&gt;Server&lt;/code&gt; is accepted, no write action will be performed against it.
+Thus, it is safe for a computer to be added to a network on which Sidero is operating.
+Sidero will never write to or wipe any disk on a computer which is not marked as &lt;code&gt;accepted&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This can be tedious for systems in which all attached computers should be considered to be under the control of Sidero.
+Thus, you may also choose to automatically accept any machine into Sidero on its discovery.
+Please keep in mind that this means that any newly-connected computer &lt;strong&gt;WILL BE WIPED&lt;/strong&gt; automatically.
+You can enable auto-acceptance by pasing the &lt;code&gt;--auto-accept-servers=true&lt;/code&gt; flag to &lt;code&gt;sidero-controller-manager&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Once accepted, a server will be reset (all disks wiped) and then made available to Sidero.&lt;/p&gt;
+&lt;p&gt;You should never change an accepted &lt;code&gt;Server&lt;/code&gt; to be &lt;em&gt;not&lt;/em&gt; accepted while it is in use.
+Because servers which are not accepted will not be modified, if a server which
+&lt;em&gt;was&lt;/em&gt; accepted is changed to &lt;em&gt;not&lt;/em&gt; accepted, the disk will &lt;em&gt;not&lt;/em&gt; be wiped upon
+its exit.&lt;/p&gt;
+&lt;h2 id=&#34;ipmi&#34;&gt;IPMI&lt;/h2&gt;
+&lt;p&gt;Sidero can use IPMI information to control &lt;code&gt;Server&lt;/code&gt; power state, reboot servers and set boot order.&lt;/p&gt;
+&lt;p&gt;IPMI connection information can be set in the &lt;code&gt;Server&lt;/code&gt; spec after initial registration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;apiVersion&lt;/span&gt;: metal.sidero.dev/v1alpha1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;kind&lt;/span&gt;: Server
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;spec&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#268bd2&#34;&gt;bmc&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;endpoint&lt;/span&gt;: &lt;span style=&#34;color:#2aa198&#34;&gt;10.0.0.25&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;user&lt;/span&gt;: admin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;pass&lt;/span&gt;: password
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If IPMI information is set, server boot order might be set to boot from disk, then network, Sidero will switch servers
+to PXE boot once that is required.&lt;/p&gt;
+&lt;p&gt;Without IPMI info, Sidero can still register servers, wipe them and provision clusters, but Sidero won&amp;rsquo;t be able to reboot servers once they are removed from the cluster.
+If IPMI info is not set, servers should be configured to boot first from network, then from disk.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>V0.1: Server Classes</title>
+      <link>/v0.1/resource-configuration/serverclasses/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v0.1/resource-configuration/serverclasses/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Server classes are a way to group distinct server resources.
+The &amp;ldquo;qualifiers&amp;rdquo; key allows the administrator to specify criteria upon which to group these servers.
+There are currently three keys: &lt;code&gt;cpu&lt;/code&gt;, &lt;code&gt;systemInformation&lt;/code&gt;, and &lt;code&gt;labelSelectors&lt;/code&gt;.
+Each of these keys accepts a list of entries.
+The top level keys are a &amp;ldquo;logical AND&amp;rdquo;, while the lists under each key are a &amp;ldquo;logical OR&amp;rdquo;.
+Qualifiers that are not specified are not evaluated.&lt;/p&gt;
+&lt;p&gt;An example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;apiVersion&lt;/span&gt;: metal.sidero.dev/v1alpha1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;kind&lt;/span&gt;: ServerClass
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;metadata&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#268bd2&#34;&gt;name&lt;/span&gt;: default
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;spec&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#268bd2&#34;&gt;qualifiers&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;cpu&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#268bd2&#34;&gt;manufacturer&lt;/span&gt;: Intel(R) Corporation
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#268bd2&#34;&gt;version&lt;/span&gt;: Intel(R) Atom(TM) CPU C3558 @ 2.20GHz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#268bd2&#34;&gt;manufacturer&lt;/span&gt;: Advanced Micro Devices, Inc.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#268bd2&#34;&gt;version&lt;/span&gt;: AMD Ryzen 7 2700X Eight-Core Processor
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#268bd2&#34;&gt;labelSelectors&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#268bd2&#34;&gt;&amp;#34;my-server-label&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#2aa198&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Servers would only be added to the above class if they had &lt;em&gt;EITHER&lt;/em&gt; CPU info, &lt;em&gt;AND&lt;/em&gt; the label associated with the server resource.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>V0.1: Metadata</title>
+      <link>/v0.1/resource-configuration/metadata/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/v0.1/resource-configuration/metadata/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The Metadata server manages the Machine metadata.
+In terms of Talos (the OS on which the Kubernetes cluster is formed), this is the
+&amp;ldquo;&lt;a href=&#34;https://www.talos.dev/latest/reference/configuration/&#34;&gt;machine config&lt;/a&gt;&amp;rdquo;,
+which is used during the automated installation.&lt;/p&gt;
+&lt;h2 id=&#34;talos-machine-configuration&#34;&gt;Talos Machine Configuration&lt;/h2&gt;
+&lt;p&gt;The configuration of each machine is constructed from a number of sources:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The Talos bootstrap provider.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;Cluster&lt;/code&gt; of which the &lt;code&gt;Machine&lt;/code&gt; is a member.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;ServerClass&lt;/code&gt; which was used to select the &lt;code&gt;Server&lt;/code&gt; into the &lt;code&gt;Cluster&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Any &lt;code&gt;Server&lt;/code&gt;-specific patches.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The base template is constructed from the Talos bootstrap provider, using data from the associated &lt;code&gt;Cluster&lt;/code&gt; manifest.
+Then, any configuration patches are applied from the &lt;code&gt;ServerClass&lt;/code&gt; and &lt;code&gt;Server&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Only configuration patches are allowed in the &lt;code&gt;ServerClass&lt;/code&gt; and &lt;code&gt;Server&lt;/code&gt; resources.
+These patches take the form of an &lt;a href=&#34;https://tools.ietf.org/html/rfc6902&#34;&gt;RFC 6902&lt;/a&gt; JSON (or YAML) patch.
+An example of the use of this patch method can be found in &lt;a href=&#34;../../guides/patching/&#34;&gt;Patching Guide&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Also note that while a &lt;code&gt;Server&lt;/code&gt; can be a member of any number of &lt;code&gt;ServerClass&lt;/code&gt;es, only the &lt;code&gt;ServerClass&lt;/code&gt; which is used to select the &lt;code&gt;Server&lt;/code&gt; into the &lt;code&gt;Cluster&lt;/code&gt; will be used for the generation of the configuration of the &lt;code&gt;Machine&lt;/code&gt;.
+In this way, &lt;code&gt;Servers&lt;/code&gt; may have a number of different configuration patch sets based on which &lt;code&gt;Cluster&lt;/code&gt; they are in at any given time.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
