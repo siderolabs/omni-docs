@@ -1,0 +1,121 @@
+baseURL: /
+title: Omni
+enableRobotsTXT: true
+enableGitInfo: true
+taxonomies:
+  category: categories
+  tag: tags
+params:
+  taxonomy:
+    taxonomyCloud:
+      - tags
+      - categories
+    taxonomyCloudTitle:
+      - Tag Cloud
+      - Categories
+    taxonomyPageHeader:
+      - tags
+      - categories
+    pygmentsCodeFences: true
+    pygmentsUseClasses: false
+    pygmentsUseClassic: false
+    pygmentsStyle: solarized-dark
+  copyright: Sidero Labs, Inc.
+  version_menu: Releases
+  url_latest_version: /v0.1
+  algolia_docsearch: false
+  offlineSearch: false
+  prism_syntax_highlighting: false
+  versions:
+    - url: /v0.1
+      version: v0.1 (latest)
+  ui:
+    breadcrumb_disable: false
+    footer_about_disable: false
+    navbar_logo: true
+    navbar_translucent_over_cover_disable: false
+    sidebar_menu_compact: false
+    sidebar_search_disable: true
+    feedback:
+      enable: false
+      no: Sorry to hear that. Please <a
+        href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we
+        can improve</a>.
+      yes: Glad to hear it! Please <a
+        href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we
+        can improve</a>.
+    readingtime:
+      enable: false
+  links:
+    user:
+      - desc: Follow us on Twitter to get the latest news!
+        icon: fab fa-twitter
+        name: Twitter
+        url: https://twitter.com/SideroLabs
+      - name: Slack
+        url: 'https://slack.dev.talos-systems.io'
+        icon: fab fa-slack
+        desc: Chat with other project developers
+      - name: Office hours (16:30 UTC)
+        url: 'https://meet.google.com/day-pxhv-zky'
+        icon: fa fa-video
+        desc: Discussion and help from your fellow users
+      - name: Contact us
+        url: 'mailto:info@SideroLabs.com'
+        icon: fa fa-envelope
+        desc: Discussion and help from your fellow users
+    developer:
+      - desc: Development takes place here!
+        icon: fab fa-github
+        name: GitHub
+        url: https://github.com/siderolabs
+      - desc: Development takes place here!
+        icon: fa fa-commenting
+        name: Forum
+        url: https://groups.google.com/a/SideroLabs.com/forum/#!forum/community
+permalinks:
+  blog: /:section/:year/:month/:day/:slug/
+blackfriday:
+  angledQuotes: false
+  hrefTargetBlank: true
+  latexDashes: true
+  plainIDAnchors: true
+imaging:
+  anchor: smart
+  quality: 75
+  resampleFilter: CatmullRom
+services:
+  googleAnalytics:
+    id: G-RJ79Y7SGLN
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    style: solarized-dark
+outputs:
+  section:
+    - HTML
+    - print
+    - RSS
+# menu:
+#   main:
+#     - name: Sidero Labs
+#       url: https://www.siderolabs.com
+#       weight: 100
+#     - name: GitHub
+#       url: https://github.com/siderolabs
+#       weight: 99
+#     - name: Talos Linux
+#       url: https://talos.dev
+#       weight: 98
+module:
+  proxy: direct
+  hugoVersion:
+    extended: true
+    min: 0.73.0
+  imports:
+    - path: github.com/google/docsy
+      disable: false
+    - path: github.com/google/docsy/dependencies
+      disable: false
