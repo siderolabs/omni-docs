@@ -1,9 +1,10 @@
 ---
-title: Welcome
+title: Omni Documentation
 linkTitle: Documentation
-cascade:
-  type: docs
-no_list: true
+weight: 10
+menu:
+  main:
+    weight: 10
 ---
 
 Welcome to the Omni user guide! This guide shows you everything from getting started to more advanced deployments with Omni.
