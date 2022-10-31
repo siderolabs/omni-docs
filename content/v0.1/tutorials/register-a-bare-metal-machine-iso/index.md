@@ -66,11 +66,8 @@ In this example `sdb` is the USB drive.
 
 
 ```bash
-dd if=$ISO of=$DEV
+dd if=<path to ISO> of=/dev/disk2 conv=fdatasync
 ```
-
-{{% /tab %}}
-{{% tab header="Windows" %}}
 
 {{% /tab %}}
 {{< /tabpane >}}
