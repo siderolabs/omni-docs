@@ -8,7 +8,12 @@ weight: 20
 
 This guide shows you how to create and configure a cluster consisting of machines that are any combination of bare metal, cloud virtual machines, on-premise virtual machines, or SBCs.
 
-You can refer to the general guide on creating a cluster and when it is time to add a machine ensure each machine has the following patch:
+Refer to the general guide on creating a cluster to get started.
+To create a hybid cluster apply the following cluster patch by clicking on "Config Patches" and navigating the the "Cluster" tab:
+
+
+{{< imgproc how-to-create-a-hybrid-cluster-1.png Resize "900x" >}}
+{{< /imgproc >}}
 
 ```yaml
 machine:
