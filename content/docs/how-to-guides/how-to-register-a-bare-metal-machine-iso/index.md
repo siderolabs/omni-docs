@@ -76,7 +76,7 @@ Now that we have our bootable USB drive, plug it into the machine you are regist
 Once the machine is booting you will notice logs from Talos Linux on the console stating that it is reachable over an IP address.
 
 {{% alert title="Warning" color="warning" %}}
-You must ensure that your machine can egress to your account's WireGuard port and port 443.
+Machines must be able to egress to your account's WireGuard port and port 443.
 {{% /alert %}}
 
 ## Conclusion

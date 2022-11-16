@@ -3,7 +3,7 @@ title: How to Create a Hybrid Cluster
 description: "A guide on how to create a hybrid cluster."
 date: 2022-10-29T09:33:42-07:00
 draft: false
-weight: 60
+weight: 70
 ---
 
 This guide shows you how to create and configure a cluster consisting of machines that are any combination of bare metal, cloud virtual machines, on-premise virtual machines, or SBCs.

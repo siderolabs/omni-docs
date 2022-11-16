@@ -50,9 +50,7 @@ Place the following in `/var/lib/matchbox/profiles/default.json`:
 }
 ```
 
-{{% alert title="Note" color="info" %}}
-Be sure to update `siderolink.api`, `talos.events.sink`, and `talos.logging.kernel` with the kerenl parameters copied from the dashboard.
-{{% /alert %}}
+Update `siderolink.api`, `talos.events.sink`, and `talos.logging.kernel` with the kerenl parameters copied from the dashboard.
 
 
 Place the following in `/var/lib/matchbox/groupss/default.json`:
