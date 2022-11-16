@@ -1,18 +1,16 @@
 ---
-title: Register a Bare Metal Machine (ISO)
-description: "A tutorial on registering bare metal machines with Omni using an ISO."
+title: How to Register a Bare Metal Machine (ISO)
+description: "A guide on how to register bare metal machines with Omni using an ISO."
 date: 2022-10-29T09:38:16-07:00
 draft: false
 weight: 10
-resources:
-- src: "register-a-bare-metal-machine-iso-1.png"
 ---
 
-In this tutorial you will download an ISO for your machine's architecture from the Omni portal, create a bootable USB drive, and register a bare metal machine with Omni by booting from the USB drive.
+This guide shows you how to register a bare metal machine with Omni by booting from an ISO.
 
-## Home Page
+## Dashboard
 
-Upon logging in you will be presented with the home page of Omni.
+Upon logging in you will be presented with the Omni dashboard.
 
 {{< imgproc register-a-bare-metal-machine-iso-1.png Resize "900x" >}}
 {{< /imgproc >}}
@@ -31,7 +29,7 @@ Now that you have selected the ISO option for the appropriate architecture, clic
 ## Write the ISO to a USB Stick
 
 First, plug the USB drive into your local machine.
-Now, find which the device path for your USB drive and write the ISO to the USB drive.
+Now, find the device path for your USB drive and write the ISO to the USB drive.
 
 {{< tabpane text=true >}}
 {{% tab header="macOS" %}}

@@ -1,16 +1,14 @@
 ---
-title: "Register an AWS EC2 Instance"
-description: "A tutorial on registering an AWS EC2 instance with Omni."
+title: "How to Register an AWS EC2 Instance"
+description: "A guide on how to register an AWS EC2 instance with Omni."
 date: 2022-10-29T15:35:30-07:00
 draft: false
-weight: 20
+weight: 30
 ---
 
-In this tutorial you will download an AWS image from the Omni portal, import the image as an AMI in AWS, create a VPC, create a subnet, create a security group, and register an AWS EC2 instance with Omni.
+This guide shows you how to register an AWS EC2 instance with Omni.
 
 ## Set your AWS region
-
-In this tutorial, we will assume us-west-2, but you can set it to whatever AWS region you like:
 
 ```
 REGION="us-west-2"
@@ -90,7 +88,7 @@ Note the `SubnetID` (`subnet-04f4d6708a2c2fb0d`).
 ```bash
 $ aws ec2 create-security-group \
     --region $REGION \
-    --group-name omni-aws-tutorial-sg \
+    --group-name omni-aws-sg \
     --description "Security Group for Omni EC2 instances"
 {
     "GroupId": "sg-0b2073b72a3ca4b03"
@@ -104,10 +102,10 @@ Allow all internal traffic within the same security group, so that Kubernetes ap
 ```bash
 aws ec2 authorize-security-group-ingress \
     --region $REGION \
-    --group-name omni-aws-tutorial-sg \
+    --group-name omni-aws-sg \
     --protocol all \
     --port 0 \
-    --source-group omni-aws-tutorial-sg
+    --source-group omni-aws-sg
 ```
 
 ## Creating the bootable AMI
@@ -134,7 +132,7 @@ aws s3api create-bucket \
 ### Copy image file to the bucket
 
 ```
-aws s3 cp disk.raw s3://<bucket name>/omni-aws-tutorial.raw
+aws s3 cp disk.raw s3://<bucket name>/omni-aws.raw
 ```
 
 ### Import the image as a snapshot
@@ -142,13 +140,13 @@ aws s3 cp disk.raw s3://<bucket name>/omni-aws-tutorial.raw
 ```
 $ aws ec2 import-snapshot \
     --region $REGION \
-    --description "Omni AWS tutorial" \
-    --disk-container "Format=raw,UserBucket={S3Bucket=<bucket name>,S3Key=omni-aws-tutorial.raw}"
+    --description "Omni AWS" \
+    --disk-container "Format=raw,UserBucket={S3Bucket=<bucket name>,S3Key=omni-aws.raw}"
 {
-    "Description": "Omni AWS tutorial",
+    "Description": "Omni AWS",
     "ImportTaskId": "import-snap-1234567890abcdef0",
     "SnapshotTaskDetail": {
-        "Description": "Omni AWS tutorial",
+        "Description": "Omni AWS",
         "DiskImageSize": "0.0",
         "Format": "RAW",
         "Progress": "3",
@@ -156,7 +154,7 @@ $ aws ec2 import-snapshot \
         "StatusMessage": "pending"
         "UserBucket": {
             "S3Bucket": "<bucket name>",
-            "S3Key": "omni-aws-tutorial.raw"
+            "S3Key": "omni-aws.raw"
         }
     }
 }
@@ -171,10 +169,10 @@ $ aws ec2 describe-import-snapshot-tasks \
 {
     "ImportSnapshotTasks": [
         {
-            "Description": "Omni AWS tutorial",
+            "Description": "Omni AWS",
             "ImportTaskId": "import-snap-1234567890abcdef0",
             "SnapshotTaskDetail": {
-                "Description": "Omni AWS tutorial",
+                "Description": "Omni AWS",
                 "DiskImageSize": "705638400.0",
                 "Format": "RAW",
                 "Progress": "42",
@@ -182,7 +180,7 @@ $ aws ec2 describe-import-snapshot-tasks \
                 "StatusMessage": "downloading/converting",
                 "UserBucket": {
                     "S3Bucket": "<bucket name>",
-                    "S3Key": "omni-aws-tutorial.raw"
+                    "S3Key": "omni-aws.raw"
                 }
             }
         }
@@ -202,7 +200,7 @@ $ aws ec2 register-image \
     --virtualization-type hvm \
     --architecture x86_64 \
     --ena-support \
-    --name omni-aws-tutorial-ami
+    --name omni-aws-ami
 {
     "ImageId": "ami-07961b424e87e827f"
 }
@@ -223,6 +221,6 @@ Now, using the AMI we created, along with the security group created above, prov
     --subnet-id subnet-0a7f5f87f62c301ea \
     --security-group-ids $SECURITY_GROUP   \
     --associate-public-ip-address \
-    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=omni-aws-tutorial-ami}]" \
+    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=omni-aws-ami}]" \
     --instance-market-options '{"MarketType":"spot"}'
 ```
