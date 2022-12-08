@@ -11,9 +11,9 @@ On the account level, configure "Authentication - Social" to allow GitHub and Go
 Create an Auth0 application of the type "single page web application".
 Configure the Auth0 application with the following:
 
-  - Allowed callback URLs: https://localhost:8099/
-  - Allowed web origins: https://localhost:8099/
-  - Allowed logout URLs: https://localhost:8099/
+  - Allowed callback URLs: https://localhost:8080/
+  - Allowed web origins: https://localhost:8080/
+  - Allowed logout URLs: https://localhost:8080/
 
 Disable username/password auth on "Authentication - Database - Applications" tab.
 Enable GitHub and Google login on the "Authentication - Social" tab.
@@ -22,158 +22,32 @@ Take note of the following information from the Auth0 application:
   - Domain
   - Client ID
 
+Generate a GPG key:
+
+```bash
+gpg --quick-generate-key "Omni (Used for etcd data encryption) how-to-guide@siderolabs.com" rsa4096 cert never
+```
+
+Find the fingerprint of the generated key:
+
+```bash
+gpg --list-secret-keys
+```
+
+```bash
+gpg --quick-add-key $FPR rsa4096 encr never
+gpg --export-secret-key --armor how-to-guide@siderolabs.com > omni.asc
+```
+
 Generate a TLS certificate:
 
-```bash
-openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -subj '/CN=localhost' -nodes -out /etc/ssl/certs/localhost.pem -keyout /etc/ssl/certs/localhost-key.pem
-```
+A valid TLS certificate is required by Omni.
+This is an excercise left up to the user.
 
-Configure a Nginx:
-
-```nginx
-events {}
-
-http {
-    map $http_upgrade $connection_upgrade {
-        default upgrade;
-        '' close;
-    }
-
-    map $http_x_request_id $req_id {
-        default $http_x_request_id;
-        "" $request_id;
-    }
-
-    server {
-        # API and frontend.
-        listen 8099 ssl http2;
-        server_name localhost;
-
-        ssl_certificate /etc/ssl/certs/localhost.pem;
-        ssl_certificate_key /etc/ssl/certs/localhost-key.pem;
-
-        location / {
-            client_max_body_size 4m;
-
-            # Pass the extracted client certificate to the backend
-
-            # Allow websocket connections
-            grpc_set_header Upgrade $http_upgrade;
-
-            grpc_set_header Connection $connection_upgrade;
-
-            grpc_set_header X-Request-ID $req_id;
-            grpc_set_header X-Real-IP $remote_addr;
-
-            grpc_set_header X-Forwarded-For $remote_addr;
-
-            grpc_set_header X-Forwarded-Host $http_host;
-            grpc_set_header X-Forwarded-Port $server_port;
-            grpc_set_header X-Forwarded-Proto $scheme;
-            grpc_set_header X-Forwarded-Scheme $scheme;
-
-            grpc_set_header X-Scheme $scheme;
-
-            # Pass the original X-Forwarded-For
-            grpc_set_header X-Original-Forwarded-For $http_x_forwarded_for;
-
-            # mitigate HTTPoxy Vulnerability
-            # https://www.nginx.com/blog/mitigating-the-httpoxy-vulnerability-with-nginx/
-            grpc_set_header Proxy "";
-
-            grpc_read_timeout 3600s;
-
-            # Custom headers to proxied server
-
-            proxy_connect_timeout 1200s;
-            proxy_send_timeout 1200s;
-
-            proxy_buffering off;
-            proxy_buffer_size 4k;
-            proxy_buffers 4 4k;
-
-            proxy_max_temp_file_size 0;
-
-            proxy_request_buffering on;
-            proxy_http_version 1.1;
-
-            proxy_cookie_domain off;
-            proxy_cookie_path off;
-
-            proxy_pass http://localhost:8080;
-
-            proxy_redirect off;
-        }
-    }
-
-    server {
-        # Kubernetes API proxy.
-        listen 8098 ssl;
-        server_name localhost;
-
-        ssl_certificate /etc/ssl/certs/localhost.pem;
-        ssl_certificate_key /etc/ssl/certs/localhost-key.pem;
-
-        location / {
-            proxy_pass http://localhost:8095;
-            proxy_connect_timeout 1200s;
-            proxy_send_timeout 1200s;
-
-            proxy_buffering off;
-            proxy_buffer_size 4k;
-            proxy_buffers 4 4k;
-
-            proxy_max_temp_file_size 0;
-
-            proxy_request_buffering off;
-            proxy_http_version 1.1;
-
-            proxy_cookie_domain off;
-            proxy_cookie_path off;
-            proxy_redirect off;
-
-            proxy_set_header Connection $http_connection;
-            proxy_set_header Upgrade $http_upgrade;
-        }
-    }
-
-    server {
-        # SideroLink API.
-        listen 8090 ssl;
-        server_name localhost;
-
-        ssl_certificate /etc/ssl/certs/localhost.pem;
-        ssl_certificate_key /etc/ssl/certs/localhost-key.pem;
-
-        location / {
-            proxy_pass http://localhost:8090;
-            proxy_connect_timeout 1200s;
-            proxy_send_timeout 1200s;
-
-            proxy_buffering off;
-            proxy_buffer_size 4k;
-            proxy_buffers 4 4k;
-
-            proxy_max_temp_file_size 0;
-
-            proxy_request_buffering off;
-            proxy_http_version 1.1;
-
-            proxy_cookie_domain off;
-            proxy_cookie_path off;
-            proxy_redirect off;
-
-            proxy_set_header Connection $http_connection;
-            proxy_set_header Upgrade $http_upgrade;
-        }
-    }
-}
-```
-
-Generate a GPG key with the following:
+Generate a UUID:
 
 ```bash
-gpg --quick-generate-key "Omni (Used for etcd data encryption) <email address>" rsa4096 cert never
+export OMNI_ACCOUNT_UUID=$(uuidgen)
 ```
 
 Ensure that `docker` is installed on the same machine as `omni`.
@@ -181,24 +55,39 @@ Ensure that `docker` is installed on the same machine as `omni`.
 Finally, run `omni`:
 
 ```bash
-omni \
-  --account-id=<UUID>
-  --name=example
-  --bind-addr=127.0.0.1:8080
-  --advertised-api-url=https://<public ip address of the host running Omni>:8099/
-  --advertised-kubernetes-proxy-url=https://<public ip address of the host running Omni>:8098/
-  --siderolink-api-advertised-url=https://<public ip address of the host running Omni>:8090/
-  --siderolink-api-bind-addr=127.0.0.1:8090
-  --k8s-proxy-bind-addr=127.0.0.1:8095
-  --siderolink-wireguard-advertised-addr=<public ip address of the host running Omni>:50180
-  --private-key-source=file://<path to generated GPG key>
-  --public-key-files=/public-keys/break-glass.asc
-  --auth-auth0-enabled=true
-  --auth-auth0-domain=<Auth0 domain>
-  --auth-auth0-client-id=<Auth0 client ID>
-  --initial-users=<email addresses>
+docker run \
+  --net=host \
+  --cap-add=NET_ADMIN \
+  --sysctl net.ipv6.conf.all.disable_ipv6=0 \
+  -v $PWD/etcd:_out/etcd \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v <path to TLS certificate>:/tls.crt \
+  -v <path to TLS key>/tls.key:/tls.key \
+  -v $PWD/omni.asc:/omni.asc \
+  ghcr.io/siderolabs/omni:<tag> \
+    --account-id=${OMNI_ACCOUNT_UUID} \
+    --name=how-to-guide \
+    --cert=/tls.crt \
+    --key=/tls.key \
+    --siderolink-api-cert=/tls.crt \
+    --siderolink-api-key=/tls.key \
+    --private-key-source=file:///omni.asc \
+    --event-sink-port=8091 \
+    --bind-addr=0.0.0.0:8080 \
+    --siderolink-api-bind-addr=0.0.0.0:8090 \
+    --k8s-proxy-bind-addr=0.0.0.0:8100 \
+    --advertised-api-url=https://<ip address of the host running Omni>:8080/ \
+    --siderolink-api-advertised-url=https://<ip address of the host running Omni>:8090/ \
+    --siderolink-wireguard-advertised-addr=<ip address of the host running Omni>:50180 \
+    --advertised-kubernetes-proxy-url=https://<ip address of the host running Omni>:8100/ \
+    --auth-auth0-enabled=true \
+    --auth-auth0-domain=<Auth0 domain> \
+    --auth-auth0-client-id=<Auth0 client ID> \
+    --initial-users=<email address>
 ```
 
+Configuration options are available in the help menu (`--help`).
+
 {{% alert title="Note" color="info" %}}
-Configuration options are available in the help menu: `omni --help`.
+Note that you can omit the `--cert`, `--key`, `--siderolink-api-cert`, and `--siderolink-api-key` flags to run Omni insecurely.
 {{% /alert %}}
