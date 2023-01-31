@@ -48,15 +48,15 @@ params:
         name: Twitter
         url: https://twitter.com/SideroLabs
       - name: Slack
-        url: 'https://slack.dev.talos-systems.io'
+        url: "https://slack.dev.talos-systems.io"
         icon: fab fa-slack
         desc: Chat with other project developers
       - name: Office hours (16:30 UTC)
-        url: 'https://meet.google.com/day-pxhv-zky'
+        url: "https://meet.google.com/day-pxhv-zky"
         icon: fa fa-video
         desc: Discussion and help from your fellow users
       - name: Contact us
-        url: 'mailto:info@SideroLabs.com'
+        url: "mailto:info@SideroLabs.com"
         icon: fa fa-envelope
         desc: Discussion and help from your fellow users
     developer:
