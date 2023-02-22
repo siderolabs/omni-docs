@@ -6,7 +6,7 @@ draft: false
 weight: 70
 ---
 
-This guide shows you how to create and configure a cluster consisting of machines that are any combination of bare metal, cloud virtual machines, on-premise virtual machines, or SBCs.
+This guide shows you how to create and configure a cluster consisting of machines that are any combination of bare metal, cloud virtual machines, on-premise virtual machines, or SBCs, using KubeSpan, which enables Kubernetes to communicate securely with machines in the cluster on different networks.
 
 Refer to the general guide on creating a cluster to get started.
 To create a hybid cluster apply the following cluster patch by clicking on "Config Patches" and navigating the the "Cluster" tab:
