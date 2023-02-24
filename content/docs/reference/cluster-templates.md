@@ -86,13 +86,14 @@ patches:
 | Field | Type | Description |
 |-------|------|-------------|
 | `kind` | string | `Cluster` |
-| `name` | string | Cluster name: only letters, digits and `-` and `_` are allowed. The cluster name is used as a key by all other documents, so if the cluster name changes, a new cluster will be created. || `kubernetes.version` | string | Kubernetes version to use, `vA.B.C`. |
+| `name` | string | Cluster name: only letters, digits and `-` and `_` are allowed. The cluster name is used as a key by all other documents, so if the cluster name changes, a new cluster will be created. |
+| `kubernetes.version` | string | Kubernetes version to use, `vA.B.C`. |
 | `talos.version` | string | Talos version to use, `vA.B.C`. |
 | `patches` | array | List of [patches](#patches) to apply to the cluster. |
 
 
 {{% alert title="Note" color="info" %}}
-Changes to `kubernetes.version` and `talos.version` do not properly trigger a cluster upgrade at the moment.
+Changes to `talos.version` do not properly trigger a cluster upgrade at the moment.
 {{% /alert %}}
 
 

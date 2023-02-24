@@ -1,7 +1,8 @@
 ---
-title: "How Deploy Omni On-prem"
+title: "How to Deploy Omni On-prem"
 date: 2022-11-17T13:06:13-08:00
 draft: false
+weight: 200
 ---
 
 This guide shows you how to deploy Omni on-prem.

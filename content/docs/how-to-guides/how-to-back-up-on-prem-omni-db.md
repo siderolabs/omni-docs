@@ -2,6 +2,7 @@
 title: "How to Back Up On-prem Omni Database"
 date: 2022-12-28T10:00:00+01:00
 draft: false
+weight: 210
 ---
 
 This guide shows you how to back up the database of an on-prem Omni instance.
