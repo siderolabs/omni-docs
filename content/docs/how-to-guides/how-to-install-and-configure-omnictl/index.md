@@ -13,10 +13,16 @@ Download `omnictl` and `omniconfig` from the Omni dashboard.
 {{< imgproc 1.png Resize "900x" >}}
 {{< /imgproc >}}
 
+{{% alert title="Note" color="info" %}}
+The downloaded binary will be named according the the selected platform and architecture (e.g. `omnictl-linux-amd64`).
+It is left as an exercise to the user to move the downloaded binary into your `PATH` and make it executable.
+This guide assumes the downloaded binary is named `omnictl`.
+{{% /alert %}}
+
 Add the downloaded `omniconfig.yaml` to the default location to use it with `omnictl`:
 
 ```bash
-omnictl config add ./omniconfig.yaml
+omnictl config merge ./omniconfig.yaml
 ```
 
 List the contexts to verify that the `omniconfig` was added:
