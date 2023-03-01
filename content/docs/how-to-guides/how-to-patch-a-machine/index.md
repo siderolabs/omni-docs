@@ -1,11 +1,11 @@
 ---
-title: "How to Create a Patch For Cluster Control Planes"
-description: "A guide on how to create a config patch for the control plane machine set of a cluster."
+title: "How to Create a Patch For Cluster Machines"
+description: "A guide on how to create a config patch for a machine in a cluster."
 draft: false
 weight: 60
 ---
 
-This guide shows you how to create a patch for the control plane machine set of a cluster.
+This guide shows you how to create a patch for a machine in a cluster.
 
 Upon logging in, click the "Clusters" menu item on the left.
 Now, select "Config Patches" from the menu under the elipsis:
@@ -18,7 +18,7 @@ Next, click "Create Patch":
 {{< imgproc 2.png Resize "900x" >}}
 {{< /imgproc >}}
 
-Pick the "Control Planes" option from the "Patch Target" dropdown:
+Pick the specific machine from the "Patch Target" dropdown:
 
 {{< imgproc 3.png Resize "900x" >}}
 {{< /imgproc >}}
