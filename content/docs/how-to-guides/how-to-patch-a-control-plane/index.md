@@ -1,6 +1,6 @@
 ---
 title: "How to Create a Patch For Cluster Control Planes"
-description: "A guide on how to create a config patch for the control plane machine set of a cluster."
+description: "A guide on how to create a config patch for the control plane of a cluster."
 draft: false
 weight: 60
 ---
