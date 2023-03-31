@@ -91,12 +91,6 @@ patches:
 | `talos.version` | string | Talos version to use, `vA.B.C`. |
 | `patches` | array | List of [patches](#patches) to apply to the cluster. |
 
-
-{{% alert title="Note" color="info" %}}
-Changes to `talos.version` do not properly trigger a cluster upgrade at the moment.
-{{% /alert %}}
-
-
 ### `ControlPlane`
 
 The `ControlPlane` document specifies the control plane configuration, defines the number of control plane nodes, and the list of machines to use.
@@ -104,7 +98,7 @@ The `ControlPlane` document specifies the control plane configuration, defines t
 As control plane machines run an `etcd` cluster, it is recommended to use a number of machines for the control plane that can achieve a stable quorum (i.e. 1, 3, 5, etc.).
 Changing the set of machines in the control plane will trigger a rolling scale-up/scale-down of the control plane.
 
-The control plane should have at least a single machine, but it is recommended to use at least 3 machines for the control plane for high-availibility.
+The control plane should have at least a single machine, but it is recommended to use at least 3 machines for the control plane for high-availability.
 
 ```yaml
 kind: ControlPlane
