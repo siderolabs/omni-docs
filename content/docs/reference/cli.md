@@ -849,6 +849,68 @@ omnictl delete <type> [<id>] [flags]
 
 * [omnictl](#omnictl)	 - A CLI for accessing Omni API.
 
+## omnictl download
+
+Download installer media
+
+### Synopsis
+
+This command downloads installer media from the server
+
+It accepts one argument, which is the name of the image to download. Name can be one of the following:
+     
+     * iso - downloads the latest ISO image
+     * AWS AMI (amd64), Vultr (arm64), Raspberry Pi 4 Model B - full image name
+     * oracle, aws, vmware - platform name
+     * rockpi_4, rock64 - board name
+
+To get the full list of available images, look at the output of the following command:
+    omnictl get installationmedia -o yaml
+
+The download command tries to match the passed string in this order:
+
+    * name
+    * platform
+    * board
+
+By default it will download amd64 image if there are multiple images available for the same name.
+
+For example, to download the latest ISO image for arm64, run:
+
+    omnictl download iso --arch amd64
+
+To download the latest Vultr image, run:
+
+    omnictl download "vultr"
+
+To download the latest Radxa ROCK PI 4 image, run:
+
+    omnictl download "rockpi_4"
+
+
+```
+omnictl download <image name> [flags]
+```
+
+### Options
+
+```
+      --arch string     Image architecture to download (amd64, arm64) (default "amd64")
+  -h, --help            help for download
+      --output string   Output file or directory, defaults to current working directory (default ".")
+```
+
+### Options inherited from parent commands
+
+```
+      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
+      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+```
+
+### SEE ALSO
+
+* [omnictl](#omnictl)	 - A CLI for accessing Omni API.
+
 ## omnictl get
 
 Get a specific resource or list of resources.
@@ -865,10 +927,12 @@ omnictl get <type> [<id>] [flags]
 ### Options
 
 ```
-  -h, --help               help for get
-  -n, --namespace string   The resource namespace. (default "default")
-  -o, --output string      Output format (json, table, yaml). (default "table")
-  -w, --watch              Watch the resource state.
+  -h, --help                     help for get
+      --id-match-regexp string   Match resource ID against a regular expression.
+  -n, --namespace string         The resource namespace. (default "default")
+  -o, --output string            Output format (json, table, yaml, jsonpath). (default "table")
+  -l, --selector string          Selector (label query) to filter on, supports '=' and '==' (e.g. -l key1=value1,key2=value2)
+  -w, --watch                    Watch the resource state.
 ```
 
 ### Options inherited from parent commands
@@ -902,8 +966,12 @@ omnictl kubeconfig [local-path] [flags]
   -c, --cluster string              cluster to use
   -f, --force                       force overwrite of kubeconfig if already present, force overwrite on kubeconfig merge
       --force-context-name string   force context name for kubeconfig merge
+      --groups strings              group to be used in the service account token (groups). only used when --service-account is set to true (default [system:masters])
   -h, --help                        help for kubeconfig
   -m, --merge                       merge with existing kubeconfig (default true)
+      --service-account             create a service account type kubeconfig instead of a OIDC-authenticated user type
+      --ttl duration                ttl for the service account token. only used when --service-account is set to true (default 8760h0m0s)
+      --user string                 user to be used in the service account token (sub). required when --service-account is set to true
 ```
 
 ### Options inherited from parent commands
@@ -1131,6 +1199,7 @@ A CLI for accessing Omni API.
 * [omnictl completion](#omnictl-completion)	 - Generate the autocompletion script for the specified shell
 * [omnictl config](#omnictl-config)	 - Manage the client configuration file (omniconfig)
 * [omnictl delete](#omnictl-delete)	 - Delete a specific resource by ID or all resources of the type.
+* [omnictl download](#omnictl-download)	 - Download installer media
 * [omnictl get](#omnictl-get)	 - Get a specific resource or list of resources.
 * [omnictl kubeconfig](#omnictl-kubeconfig)	 - Download the admin kubeconfig of a cluster
 * [omnictl machine-logs](#omnictl-machine-logs)	 - Get logs for a machine
