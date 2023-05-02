@@ -120,7 +120,7 @@ Now, click `Create` at the bottom to create your instance.
 
 ```bash
 az vm create \
-a    --name azure-worker \
+    --name azure-worker \
     --image omni \
     -g $GROUP \
     --admin-username talos \
