@@ -1,7 +1,7 @@
 ---
 title: "How to Register an Azure Instance"
 description: "A guide on how to register an Azure instance with Omni."
-date: 2023-05-23T15:35:30-07:00
+date: 2023-05-1T15:35:30-07:00
 draft: false
 weight: 30
 ---
