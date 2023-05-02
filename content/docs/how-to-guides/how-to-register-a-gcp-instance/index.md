@@ -75,4 +75,4 @@ You should now see a machine listed.
 {{< imgproc 3.png Resize "900x" >}}
 {{< /imgproc >}}
 
-You now have a bare metal machine registered with Omni and ready to provision.
+You now have a GCP machine registered with Omni and ready to provision.

@@ -1,6 +1,6 @@
 ---
-title: "How to install talosctl and kubectl"
-description: "A guide on how to install talosctl and kubectl."
+title: "How to install talosctl"
+description: "A guide on how to install talosctl."
 weight: 50
 ---
 
