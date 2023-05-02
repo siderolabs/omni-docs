@@ -81,13 +81,6 @@ Select a Resource Group, Name your image (e.g. omni-may), and set the OS type to
 Now `Browse` to the storage blob created above, navigating to the container with the uploaded `disk.vhd`.
 Select "Standard HDD" for account type, then click `Review and Create`, then `Create`.
 
-Now we need to modify the created Azure Resource Manager image template that was created.
-Click `Go To Resource` to go to the newly created image, then `Export Template`. then `Add to Library`.
-Name the image template and specify a version, then click `Edit Template`.
-In the template, edit the `diskSizeGB: 1` property to have a value of 10 instead of 1.
-Create and import the template, which will return you to the original template, which can now be deleted: click `Overview` then `Delete`.
-From the Home panel, search for `Template Specs`, and select the name of the template you just created, then `Deploy` the template. This creates an image you can use to provision VMs.
-
 {{% /tab %}}
 {{% tab header="CLI" %}}
 
@@ -107,17 +100,9 @@ az image create \
 ## Create an Azure Instance
 
 {{< tabpane text=true >}}
-{{% tab header="UI" %}}
 
-In Azure console select `Images` and the name of the image created above.
-Now select `+ Create VM`.
-Name your instance and select a machine size.
-Ensure your instance has at least 4GB of memory.
-Now, click `Create` at the bottom to create your instance.
-
-{{% /tab %}}
 {{% tab header="CLI" %}}
-
+Creating an instance requires setting the os-disk-size property, which is easiest to achieve via the CLI:
 ```bash
 az vm create \
     --name azure-worker \
