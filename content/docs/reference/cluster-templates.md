@@ -19,6 +19,8 @@ Some documents might also have a `name` field that specifies the name (ID) of th
 ```yaml
 kind: Cluster
 name: example
+labels:
+  my-label: my-value
 kubernetes:
   version: v1.26.0
 talos:
@@ -70,11 +72,13 @@ Every `Machine` document must be referenced by either a `ControlPlane` or `Worke
 
 ### `Cluster`
 
-The `Cluster` document specifies the cluster configuration, defines the cluster name and base component versions.
+The `Cluster` document specifies the cluster configuration, labels, defines the cluster name and base component versions.
 
 ```yaml
 kind: Cluster
 name: example
+labels:
+  my-label: my-value
 kubernetes:
   version: v1.26.1
 talos:
@@ -87,6 +91,7 @@ patches:
 |-------|------|-------------|
 | `kind` | string | `Cluster` |
 | `name` | string | Cluster name: only letters, digits and `-` and `_` are allowed. The cluster name is used as a key by all other documents, so if the cluster name changes, a new cluster will be created. |
+| `labels` | map[string]string | Labels to be applied to the cluster. |
 | `kubernetes.version` | string | Kubernetes version to use, `vA.B.C`. |
 | `talos.version` | string | Talos version to use, `vA.B.C`. |
 | `patches` | array | List of [patches](#patches) to apply to the cluster. |
