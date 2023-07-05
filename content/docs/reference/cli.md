@@ -1028,10 +1028,10 @@ omnictl serviceaccount create <name> [flags]
 ### Options
 
 ```
-  -h, --help              help for create
-  -s, --scopes strings    scopes of the service account. only used when --use-user-scopes=false
-  -t, --ttl duration      TTL for the service account key (default 8760h0m0s)
-  -u, --use-user-scopes   use the scopes of the creating user. if true, --scopes is ignored (default true)
+  -h, --help            help for create
+  -r, --role string     role of the service account. only used when --use-user-role=false
+  -t, --ttl duration    TTL for the service account key (default 8760h0m0s)
+  -u, --use-user-role   use the role of the creating user. if true, --role is ignored (default true)
 ```
 
 ### Options inherited from parent commands
