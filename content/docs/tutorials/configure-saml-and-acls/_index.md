@@ -1,3 +1,11 @@
+---
+title: "Using SAML and ACLs"
+description: "A tutorial on using SAML and ACLs in Omni."
+date: 2023-07-05T00:00:00-00:00
+draft: false
+weight: 20
+---
+
 # Using SAML and ACLs for fine-grained access control
 
 In this tutorial we will use SAML and ACLs to control fine-grained access to Kubernetes clusters.
