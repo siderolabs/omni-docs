@@ -48,9 +48,10 @@ omnictl cluster delete cluster-name [flags]
 ### Options
 
 ```
-  -d, --dry-run   dry run
-  -h, --help      help for delete
-  -v, --verbose   verbose output (show diff for each resource)
+      --destroy-disconnected-machines   removes all disconnected machines which are part of the cluster from Omni
+  -d, --dry-run                         dry run
+  -h, --help                            help for delete
+  -v, --verbose                         verbose output (show diff for each resource)
 ```
 
 ### Options inherited from parent commands
@@ -63,6 +64,180 @@ omnictl cluster delete cluster-name [flags]
 ### SEE ALSO
 
 * [omnictl cluster](#omnictl-cluster)	 - Cluster-related subcommands.
+
+## omnictl cluster kubernetes manifest-sync
+
+Sync Kubernetes bootstrap manifests from Talos controlplane nodes to Kubernetes API.
+
+### Synopsis
+
+Sync Kubernetes bootstrap manifests from Talos controlplane nodes to Kubernetes API.
+Bootstrap manifests might be updated with Talos version update, Kubernetes upgrade, and config patching.
+Talos never updates or deletes Kubernetes manifests, so this command fills the gap to keep manifests up-to-date.
+
+```
+omnictl cluster kubernetes manifest-sync cluster-name [flags]
+```
+
+### Options
+
+```
+      --dry-run   don't actually sync manifests, just print what would be done (default true)
+  -h, --help      help for manifest-sync
+```
+
+### Options inherited from parent commands
+
+```
+      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
+      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+```
+
+### SEE ALSO
+
+* [omnictl cluster kubernetes](#omnictl-cluster-kubernetes)	 - Cluster Kubernetes management subcommands.
+
+## omnictl cluster kubernetes upgrade-pre-checks
+
+Run Kubernetes upgrade pre-checks for the cluster.
+
+### Synopsis
+
+Verify that upgrading Kubernetes version is available for the cluster: version compatibility, deprecated APIs, etc.
+
+```
+omnictl cluster kubernetes upgrade-pre-checks cluster-name [flags]
+```
+
+### Options
+
+```
+  -h, --help        help for upgrade-pre-checks
+      --to string   target Kubernetes version for the planned upgrade
+```
+
+### Options inherited from parent commands
+
+```
+      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
+      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+```
+
+### SEE ALSO
+
+* [omnictl cluster kubernetes](#omnictl-cluster-kubernetes)	 - Cluster Kubernetes management subcommands.
+
+## omnictl cluster kubernetes
+
+Cluster Kubernetes management subcommands.
+
+### Synopsis
+
+Commands to render, validate, manage cluster templates.
+
+### Options
+
+```
+  -h, --help   help for kubernetes
+```
+
+### Options inherited from parent commands
+
+```
+      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
+      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+```
+
+### SEE ALSO
+
+* [omnictl cluster](#omnictl-cluster)	 - Cluster-related subcommands.
+* [omnictl cluster kubernetes manifest-sync](#omnictl-cluster-kubernetes-manifest-sync)	 - Sync Kubernetes bootstrap manifests from Talos controlplane nodes to Kubernetes API.
+* [omnictl cluster kubernetes upgrade-pre-checks](#omnictl-cluster-kubernetes-upgrade-pre-checks)	 - Run Kubernetes upgrade pre-checks for the cluster.
+
+## omnictl cluster machine lock
+
+Lock the machine
+
+### Synopsis
+
+When locked, no config updates, upgrades and downgrades will be performed on the machine.
+
+```
+omnictl cluster machine lock machine-id [flags]
+```
+
+### Options
+
+```
+  -h, --help   help for lock
+```
+
+### Options inherited from parent commands
+
+```
+      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
+      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+```
+
+### SEE ALSO
+
+* [omnictl cluster machine](#omnictl-cluster-machine)	 - Machine related commands.
+
+## omnictl cluster machine unlock
+
+Unlock the machine
+
+### Synopsis
+
+Removes locked annotation from the machine.
+
+```
+omnictl cluster machine unlock machine-id [flags]
+```
+
+### Options
+
+```
+  -h, --help   help for unlock
+```
+
+### Options inherited from parent commands
+
+```
+      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
+      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+```
+
+### SEE ALSO
+
+* [omnictl cluster machine](#omnictl-cluster-machine)	 - Machine related commands.
+
+## omnictl cluster machine
+
+Machine related commands.
+
+### Synopsis
+
+Commands to manage cluster machines.
+
+### Options
+
+```
+  -h, --help   help for machine
+```
+
+### Options inherited from parent commands
+
+```
+      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
+      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+```
+
+### SEE ALSO
+
+* [omnictl cluster](#omnictl-cluster)	 - Cluster-related subcommands.
+* [omnictl cluster machine lock](#omnictl-cluster-machine-lock)	 - Lock the machine
+* [omnictl cluster machine unlock](#omnictl-cluster-machine-unlock)	 - Unlock the machine
 
 ## omnictl cluster status
 
@@ -110,9 +285,10 @@ omnictl cluster template delete [flags]
 ### Options
 
 ```
-  -d, --dry-run   dry run
-  -h, --help      help for delete
-  -v, --verbose   verbose output (show diff for each resource)
+      --destroy-disconnected-machines   removes all disconnected machines which are part of the cluster from Omni
+  -d, --dry-run                         dry run
+  -h, --help                            help for delete
+  -v, --verbose                         verbose output (show diff for each resource)
 ```
 
 ### Options inherited from parent commands
@@ -338,6 +514,8 @@ Commands to destroy clusters and manage cluster templates.
 
 * [omnictl](#omnictl)	 - A CLI for accessing Omni API.
 * [omnictl cluster delete](#omnictl-cluster-delete)	 - Delete all cluster resources.
+* [omnictl cluster kubernetes](#omnictl-cluster-kubernetes)	 - Cluster Kubernetes management subcommands.
+* [omnictl cluster machine](#omnictl-cluster-machine)	 - Machine related commands.
 * [omnictl cluster status](#omnictl-cluster-status)	 - Show cluster status, wait for the cluster to be ready.
 * [omnictl cluster template](#omnictl-cluster-template)	 - Cluster template management subcommands.
 
@@ -485,7 +663,7 @@ to enable it.  You can execute the following once:
 
 To load completions in your current shell session:
 
-	source <(omnictl completion zsh); compdef _omnictl omnictl
+	source <(omnictl completion zsh)
 
 To load completions for every new session, execute once:
 
@@ -895,9 +1073,10 @@ omnictl download <image name> [flags]
 ### Options
 
 ```
-      --arch string     Image architecture to download (amd64, arm64) (default "amd64")
-  -h, --help            help for download
-      --output string   Output file or directory, defaults to current working directory (default ".")
+      --arch string                  Image architecture to download (amd64, arm64) (default "amd64")
+  -h, --help                         help for download
+      --initial-labels stringArray   Bake initial labels into the generated installation media
+      --output string                Output file or directory, defaults to current working directory (default ".")
 ```
 
 ### Options inherited from parent commands
