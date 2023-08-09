@@ -42,6 +42,7 @@ machines:
 kind: Workers
 machines:
   - b885f565-b64f-4c7a-a1ac-d2c8c2781373
+  - a54f21dc-6e48-4fc1-96aa-3d7be5e2612b
 ---
 kind: Machine
 name: 27c16241-96bf-4f17-9579-ea3a6c4a3ca8
@@ -58,6 +59,12 @@ install:
 ---
 kind: Machine
 name: b885f565-b64f-4c7a-a1ac-d2c8c2781373
+install:
+  disk: /dev/vda
+---
+kind: Machine
+name: a54f21dc-6e48-4fc1-96aa-3d7be5e2612b
+locked: true
 install:
   disk: /dev/vda
 ```
@@ -140,11 +147,12 @@ patches:
 ### `Machine`
 
 The `Machine` document specifies the install disk and machine-specific configuration patches.
-They are optional, but every `Machine` document must be be referenced by either a `ControlPlane` or `Workers` document.
+They are optional, but every `Machine` document must be referenced by either a `ControlPlane` or `Workers` document.
 
 ```yaml
 kind: Machine
 name: 27c16241-96bf-4f17-9579-ea3a6c4a3ca8
+locked: false
 install:
   disk: /dev/vda
 patches:
@@ -155,6 +163,7 @@ patches:
 |-------|------|-------------|
 | `kind` | string | `Machine` |
 | `name` | string | Machine ID. |
+| `locked` | string | Whether the machine should be marked as locked. Can be `true` only if the machine is used as a worker. |
 | `install.disk` | string | Disk to install Talos on. Matters only for Talos running from ISO or iPXE. |
 | `patches` | array | List of [patches](#patches) to apply to the machine. |
 
