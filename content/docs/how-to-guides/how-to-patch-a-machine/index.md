@@ -8,7 +8,7 @@ weight: 60
 This guide shows you how to create a patch for a machine in a cluster.
 
 Upon logging in, click the "Clusters" menu item on the left.
-Now, select "Config Patches" from the menu under the elipsis:
+Now, select "Config Patches" from the menu under the ellipsis:
 
 {{< imgproc 1.png Resize "900x" >}}
 {{< /imgproc >}}
