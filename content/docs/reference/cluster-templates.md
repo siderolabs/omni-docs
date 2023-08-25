@@ -44,6 +44,11 @@ machines:
   - b885f565-b64f-4c7a-a1ac-d2c8c2781373
   - a54f21dc-6e48-4fc1-96aa-3d7be5e2612b
 ---
+kind: Workers
+name: xlarge
+machines:
+  - 1f721dee-6dbb-4e71-9832-226d73da3841
+---
 kind: Machine
 name: 27c16241-96bf-4f17-9579-ea3a6c4a3ca8
 ---
@@ -67,9 +72,14 @@ name: a54f21dc-6e48-4fc1-96aa-3d7be5e2612b
 locked: true
 install:
   disk: /dev/vda
+---
+kind: Machine
+name: 1f721dee-6dbb-4e71-9832-226d73da3841
+install:
+  disk: /dev/vda
 ```
 
-Each cluster template should have exactly one document of `kind: Cluster`, `kind: ControlPlane`, and `kind: Workers`.
+Each cluster template should have exactly one document of `kind: Cluster`, `kind: ControlPlane`, and any number of `kind: Workers` with different `name`s.
 
 Every `Machine` document must be referenced by either a `ControlPlane` or `Workers` document.
 
@@ -132,6 +142,7 @@ The `Workers` document specifies the worker configuration, defines the number of
 
 ```yaml
 kind: Workers
+name: workers
 machines:
   - b885f565-b64f-4c7a-a1ac-d2c8c2781373
 patches:
@@ -141,7 +152,8 @@ patches:
 | Field | Type | Description |
 |-------|------|-------------|
 | `kind` | string | `Workers` |
-| `machines` | array | List of machine IDs to use for worker nodes. |
+| `name` | string | Worker machine set name: only letters, digits and `-` and `_` are allowed. Defaults to `workers` when omitted. Must be unique and not be `control-planes`. |
+| `machines` | array | List of machine IDs to use as worker nodes in the machine set. |
 | `patches` | array | List of [patches](#patches) to apply to the machine set. |
 
 ### `Machine`
