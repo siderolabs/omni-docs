@@ -45,8 +45,6 @@ machines:
 ---
 kind: Machine
 name: 27c16241-96bf-4f17-9579-ea3a6c4a3ca8
-install:
-  disk: /dev/vda
 ---
 kind: Machine
 name: 4bd92fba-998d-4ef3-ab43-638b806dd3fe
@@ -157,8 +155,13 @@ patches:
 |-------|------|-------------|
 | `kind` | string | `Machine` |
 | `name` | string | Machine ID. |
-| `install.disk` | string | Disk to install Talos on, default value is `/dev/sda`. |
+| `install.disk` | string | Disk to install Talos on. Matters only for Talos running from ISO or iPXE. |
 | `patches` | array | List of [patches](#patches) to apply to the machine. |
+
+{{% alert title="Note" %}}
+When Talos is not installed and the install disk is not specified, Omni will try to pick the install disk automatically.
+It will find a smallest disk which is larger than 5GB.
+{{% /alert %}}
 
 ## Common Fields
 
