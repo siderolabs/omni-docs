@@ -15,12 +15,12 @@ Log into Omni using another account with `Admin` permissions.
 
 Find newly added user in the list of users.
 
-Now, select "Edit User" from the menu under the elipsis:
+Now, select "Edit User" from the menu under the ellipsis:
 
 {{< imgproc 1.png Resize "900x" >}}
 {{< /imgproc >}}
 
-Change it's role to `Reader`, `Operator` or `Admin`:
+Change its role to `Reader`, `Operator` or `Admin`:
 
 {{< imgproc 2.png Resize "900x" >}}
 {{< /imgproc >}}
