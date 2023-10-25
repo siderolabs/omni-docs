@@ -26,7 +26,7 @@ Finally, click "Create Cluster"
 
 {{% /tab %}}
 
-{{% tab header="CLI" %}}
+{{% tab header="CLI Manual Allocation" %}}
 
 Create a file called `cluster.yaml` with the following content:
 
@@ -60,6 +60,57 @@ install:
 {{% alert title="Note" color="info" %}}
 Be sure to update the UUIDs and install disks with the UUIDs and disks of the machines in your account.
 {{% /alert %}}
+
+Now, validate the document:
+
+```bash
+omnictl cluster template validate -f cluster.yaml
+```
+
+Create the cluster:
+
+```bash
+omnictl cluster template sync -f cluster.yaml --verbose
+```
+
+Finally, wait for the cluster to be up:
+
+```bash
+omnictl cluster template status -f cluster.yaml
+```
+
+{{% /tab %}}
+
+{{% tab header="CLI Machine Classes" %}}
+
+Create a file called `cluster.yaml` with the following content:
+
+```yaml
+kind: Cluster
+name: example
+kubernetes:
+  version: v1.28.0
+talos:
+  version: v1.5.4
+---
+kind: ControlPlane
+machineClass:
+  name: control-planes
+  size: 1
+---
+kind: Workers
+machineClass:
+  name: workers
+  size: 1
+---
+kind: Workers
+name: secondary
+machineClass:
+  name: secondary-workers
+  size: unlimited
+```
+
+Be sure to create machine classes `control-planes`, `workers` and `secondary-workers` beforehand. See [machine classes how-to](/docs/how-to-guides/how-to-create-machine-classes/).
 
 Now, validate the document:
 

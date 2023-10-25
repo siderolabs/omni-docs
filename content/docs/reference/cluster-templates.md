@@ -133,8 +133,9 @@ patches:
 | Field | Type | Description |
 |-------|------|-------------|
 | `kind` | string | `ControlPlane` |
-| `machines` | array | List of machine IDs to use for control plane nodes. |
+| `machines` | array | List of machine IDs to use for control plane nodes (mutually exclusive with `machineClass`). |
 | `patches` | array | List of [patches](#patches) to apply to the machine set. |
+| `machineClass` | [MachineClass](#machineclass) | Machine Class configuration (mutually exclusive with `machines`). |
 
 ### `Workers`
 
@@ -153,8 +154,30 @@ patches:
 |-------|------|-------------|
 | `kind` | string | `Workers` |
 | `name` | string | Worker machine set name: only letters, digits and `-` and `_` are allowed. Defaults to `workers` when omitted. Must be unique and not be `control-planes`. |
-| `machines` | array | List of machine IDs to use as worker nodes in the machine set. |
+| `machines` | array | List of machine IDs to use as worker nodes in the machine set (mutually exclusive with `machineClass`). |
 | `patches` | array | List of [patches](#patches) to apply to the machine set. |
+| `machineClass` | [MachineClass](#machineclass) | Machine Class configuration (mutually exclusive with `machines`). |
+
+### `MachineClass`
+
+The `MachineClass` section of the [Control Plane](#controlplane) or the [Workers](#workers) defines the rule for picking the machines in the machine set.
+
+```yaml
+kind: Workers
+name: workers
+machineClass:
+  name: worker-class
+  size: 2
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `name` | string | Name of the machine class to use. |
+| `size` | number | Number of machines to pick from the matching machine class. |
+
+{{% alert title="Note" %}}
+`size` field supports keyword `unlimited|infinity` which makes the machine set pick all available machines from the specified machine class.
+{{% /alert %}}
 
 ### `Machine`
 
