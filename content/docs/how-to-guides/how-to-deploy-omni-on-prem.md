@@ -74,11 +74,11 @@ Take note of the following information from the Auth0 application:
   - Domain
   - Client ID
 
-### Azure AD
+### Entra (Azure AD)
 
-In Azure AD, click "Enterprise Applications".
+In the Azure portal, click "Enterprise Applications".
 
-Click "New Application" and search for "Azure AD SAML Toolkit".
+Click "New Application" and search for "Entra SAML Toolkit".
 
 Name this application something more meaningful if desired and click "Create".
 
