@@ -94,3 +94,42 @@ omnictl cluster template status -f template-manifest.yaml
 ```
 
 After the sync, your cluster will be restored to the snapshot you specified.
+
+## Restarting Kubelet on Worker Nodes
+
+To ensure a healthy cluster operation, the kubelet needs to be restarted on all worker nodes.
+
+{{% alert title="Note" color="info" %}}
+For this step, you need [talosctl](../how-to-install-talosctl) to be installed and **talosconfig** to be configured for this cluster.
+You can download talosconfig using the Web UI or by
+
+```bash
+omnictl talosconfig -c my-cluster
+```
+
+{{% /alert %}}
+
+Get the IDs of the worker nodes:
+
+```bash
+omnictl get clustermachine -l omni.sidero.dev/role-worker,omni.sidero.dev/cluster=my-cluster
+```
+
+The output will look like this:
+
+```text
+NAMESPACE   TYPE             ID                                     VERSION
+default     ClusterMachine   26b87860-38b4-400f-af72-bc8d26ab6cd6   3
+default     ClusterMachine   2f6af2ad-bebb-42a5-b6b0-2b9397acafbc   3
+default     ClusterMachine   5f93376a-95f6-496c-b4b7-630a0607ac7f   3
+default     ClusterMachine   c863ccdf-cdb7-4519-878e-5484a1be119a   3
+```
+
+Gather the IDs in this output, and issue a kubelet restart on them using `talosctl`:
+
+```bash
+talosctl -n 26b87860-38b4-400f-af72-bc8d26ab6cd6 service kubelet restart
+talosctl -n 2f6af2ad-bebb-42a5-b6b0-2b9397acafbc service kubelet restart
+talosctl -n 5f93376a-95f6-496c-b4b7-630a0607ac7f service kubelet restart
+talosctl -n c863ccdf-cdb7-4519-878e-5484a1be119a service kubelet restart
+```
