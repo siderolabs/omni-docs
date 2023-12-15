@@ -6,7 +6,7 @@ draft: false
 weight: 60
 ---
 
-This guide shows you how to create and a cluster from registered machines.
+This guide shows you how to create a cluster from registered machines.
 
 {{< tabpane text=true >}}
 {{% tab header="UI" %}}

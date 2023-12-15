@@ -25,8 +25,9 @@ omnictl apply [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -57,8 +58,9 @@ omnictl cluster delete cluster-name [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -89,8 +91,9 @@ omnictl cluster kubernetes manifest-sync cluster-name [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -119,8 +122,9 @@ omnictl cluster kubernetes upgrade-pre-checks cluster-name [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -144,8 +148,9 @@ Commands to render, validate, manage cluster templates.
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -175,8 +180,9 @@ omnictl cluster machine lock machine-id [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -204,8 +210,9 @@ omnictl cluster machine unlock machine-id [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -229,8 +236,9 @@ Commands to manage cluster machines.
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -262,8 +270,9 @@ omnictl cluster status cluster-name [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -287,6 +296,7 @@ omnictl cluster template delete [flags]
 ```
       --destroy-disconnected-machines   removes all disconnected machines which are part of the cluster from Omni
   -d, --dry-run                         dry run
+  -f, --file string                     path to the cluster template file.
   -h, --help                            help for delete
   -v, --verbose                         verbose output (show diff for each resource)
 ```
@@ -294,9 +304,9 @@ omnictl cluster template delete [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-  -f, --file string         path to the cluster template file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -318,15 +328,49 @@ omnictl cluster template diff [flags]
 ### Options
 
 ```
-  -h, --help   help for diff
+  -f, --file string   path to the cluster template file.
+  -h, --help          help for diff
 ```
 
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-  -f, --file string         path to the cluster template file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+```
+
+### SEE ALSO
+
+* [omnictl cluster template](#omnictl-cluster-template)	 - Cluster template management subcommands.
+
+## omnictl cluster template export
+
+Export a cluster template from an existing cluster on Omni.
+
+### Synopsis
+
+Export a cluster template from an existing cluster on Omni. This command requires API access.
+
+```
+omnictl cluster template export cluster-name [flags]
+```
+
+### Options
+
+```
+  -c, --cluster string   cluster name
+  -f, --force            overwrite output file if it exists
+  -h, --help             help for export
+  -o, --output string    output file (default: stdout)
+```
+
+### Options inherited from parent commands
+
+```
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -348,15 +392,16 @@ omnictl cluster template render [flags]
 ### Options
 
 ```
-  -h, --help   help for render
+  -f, --file string   path to the cluster template file.
+  -h, --help          help for render
 ```
 
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-  -f, --file string         path to the cluster template file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -378,6 +423,7 @@ omnictl cluster template status [flags]
 ### Options
 
 ```
+  -f, --file string     path to the cluster template file.
   -h, --help            help for status
   -q, --quiet           suppress output
   -w, --wait duration   wait timeout, if zero, report current status and exit (default 5m0s)
@@ -386,9 +432,9 @@ omnictl cluster template status [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-  -f, --file string         path to the cluster template file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -410,17 +456,18 @@ omnictl cluster template sync [flags]
 ### Options
 
 ```
-  -d, --dry-run   dry run
-  -h, --help      help for sync
-  -v, --verbose   verbose output (show diff for each resource)
+  -d, --dry-run       dry run
+  -f, --file string   path to the cluster template file.
+  -h, --help          help for sync
+  -v, --verbose       verbose output (show diff for each resource)
 ```
 
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-  -f, --file string         path to the cluster template file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -442,15 +489,16 @@ omnictl cluster template validate [flags]
 ### Options
 
 ```
-  -h, --help   help for validate
+  -f, --file string   path to the cluster template file.
+  -h, --help          help for validate
 ```
 
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-  -f, --file string         path to the cluster template file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -468,15 +516,15 @@ Commands to render, validate, manage cluster templates.
 ### Options
 
 ```
-  -f, --file string   path to the cluster template file.
-  -h, --help          help for template
+  -h, --help   help for template
 ```
 
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -484,6 +532,7 @@ Commands to render, validate, manage cluster templates.
 * [omnictl cluster](#omnictl-cluster)	 - Cluster-related subcommands.
 * [omnictl cluster template delete](#omnictl-cluster-template-delete)	 - Delete all cluster template resources from Omni.
 * [omnictl cluster template diff](#omnictl-cluster-template-diff)	 - Show diff in resources if the template is synced.
+* [omnictl cluster template export](#omnictl-cluster-template-export)	 - Export a cluster template from an existing cluster on Omni.
 * [omnictl cluster template render](#omnictl-cluster-template-render)	 - Render a cluster template to a set of resources.
 * [omnictl cluster template status](#omnictl-cluster-template-status)	 - Show template cluster status, wait for the cluster to be ready.
 * [omnictl cluster template sync](#omnictl-cluster-template-sync)	 - Apply template to the Omni.
@@ -506,8 +555,9 @@ Commands to destroy clusters and manage cluster templates.
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -561,8 +611,9 @@ omnictl completion bash
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -602,8 +653,9 @@ omnictl completion fish [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -640,8 +692,9 @@ omnictl completion powershell [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -692,8 +745,9 @@ omnictl completion zsh [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -719,8 +773,9 @@ See each sub-command's help for details on how to use the generated script.
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -751,8 +806,9 @@ omnictl config add <context> [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -776,8 +832,9 @@ omnictl config basic-auth <username> <password> [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -801,8 +858,9 @@ omnictl config context <context> [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -826,8 +884,9 @@ omnictl config contexts [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -851,8 +910,9 @@ omnictl config identity <identity> [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -876,8 +936,9 @@ omnictl config info [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -905,8 +966,9 @@ omnictl config merge <from> [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -933,8 +995,9 @@ omnictl config new [<path>] [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -958,8 +1021,9 @@ omnictl config url <url> [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -979,8 +1043,9 @@ Manage the client configuration file (omniconfig)
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -1014,13 +1079,15 @@ omnictl delete <type> [<id>] [flags]
       --all                Delete all resources of the type.
   -h, --help               help for delete
   -n, --namespace string   The resource namespace. (default "default")
+  -l, --selector string    Selector (label query) to filter on, supports '=' and '==' (e.g. -l key1=value1,key2=value2)
 ```
 
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -1036,7 +1103,7 @@ Download installer media
 This command downloads installer media from the server
 
 It accepts one argument, which is the name of the image to download. Name can be one of the following:
-     
+
      * iso - downloads the latest ISO image
      * AWS AMI (amd64), Vultr (arm64), Raspberry Pi 4 Model B - full image name
      * oracle, aws, vmware - platform name
@@ -1048,8 +1115,7 @@ To get the full list of available images, look at the output of the following co
 The download command tries to match the passed string in this order:
 
     * name
-    * platform
-    * board
+    * profile
 
 By default it will download amd64 image if there are multiple images available for the same name.
 
@@ -1082,8 +1148,9 @@ omnictl download <image name> [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -1117,8 +1184,9 @@ omnictl get <type> [<id>] [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -1156,8 +1224,9 @@ omnictl kubeconfig [local-path] [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -1188,8 +1257,9 @@ omnictl machine-logs machineID [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -1216,8 +1286,9 @@ omnictl serviceaccount create <name> [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -1241,8 +1312,9 @@ omnictl serviceaccount destroy <name> [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -1266,8 +1338,9 @@ omnictl serviceaccount list [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -1292,8 +1365,9 @@ omnictl serviceaccount renew <name> [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -1313,8 +1387,9 @@ Manage service accounts
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -1342,6 +1417,7 @@ omnictl talosconfig [local-path] [flags]
 ### Options
 
 ```
+      --admin            get admin talosconfig (DEBUG-ONLY)
   -c, --cluster string   cluster to use
   -f, --force            force overwrite of talosconfig if already present
   -h, --help             help for talosconfig
@@ -1351,8 +1427,9 @@ omnictl talosconfig [local-path] [flags]
 ### Options inherited from parent commands
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
@@ -1366,9 +1443,10 @@ A CLI for accessing Omni API.
 ### Options
 
 ```
-      --context string      The context to be used. Defaults to the selected context in the omniconfig file.
-  -h, --help                help for omnictl
-      --omniconfig string   The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+  -h, --help                       help for omnictl
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
 ```
 
 ### SEE ALSO
