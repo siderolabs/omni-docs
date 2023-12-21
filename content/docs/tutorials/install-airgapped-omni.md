@@ -3,7 +3,7 @@ title: "Installing Airgapped Omni"
 description: "A tutorial on installing Omni in an airgapped environment."
 date: 2022-10-30T15:50:38-07:00
 draft: false
-weight: 10
+weight: 30
 ---
 
 ## Prerequisites

@@ -11,22 +11,23 @@ Welcome to the Omni user guide! This guide shows you everything from getting sta
 
 ## What is Omni?
 
-Omni is a Kubernetes management platform that diverges from the typical managed services design in order to provide a simple, secure, and resilient platform that can be operated in nearly any environment.
-Tight integration with Talos Linux means the platform is 100% API-driven from Linux to Kubernetes to Omni.
+Omni is a Kubernetes management platform that simplifies the creation and management of Kubernetes clusters on any environment to provide a simple, secure, and resilient platform.
+It automates cluster creation, management and upgrades, and integrates Kubernetes and Omni access into enterprise identity providers.
+While Omni does provide a powerful UI, tight integration with Talos Linux means the platform is 100% API-driven from Linux to Kubernetes to Omni.
 
 ### Simple
 
-Omni can run practically anywhere delivered as a single statically linked binary that contains everything needed to get up and operational quickly and easily.
-Single instance and high availability modes means Omni works just as well on the edge as it does for large data centers.
-The embeded Kubernetes API load balancing means you get highly available Kubernetes out of the box.
+Omni automates the creation of a highly available API endpoint, transparently provides secure encryption, and automates Kubernetes and OS upgrades.
+Omni works just as well on the edge as it does for large data centers.
 
+Omni is also available for license for on-premises installations.
 
 ### Secure
 
-Omni is designed around the idea of data sovereignty, that is to say that you own your data.
-Instead of trusting the security practices of outside entities Omni provides you with full control over you data.
-As a SaaS this means that all Sidero Labs Omni users retain full control over their data and Omni goes to great lengths to ensure it is secured.
-For platform teams this means you can offer the same benefits to your users!
+Omni creates clusters with both Kubernetes and the OS configured for best-practices security.
+All traffic to Omni is wireguard-encrypted.
+Optionally, traffic between the cluster nodes can be encrypted, allowing clusters to span insecure networks.
+Integration with enterprise identity providers ensures that even admin-level kubeconfig is validated against current user access-lists.
 
 ## Is Omni for me?
 
@@ -42,4 +43,4 @@ Some common use cases are:
 
 ## Ready to get started?
 
-[Contact us](https://www.siderolabs.com/contact/) to setup your free 2 week trial and start exploring today!
+[Sign Up](https://signup.siderolabs.io/) to start your free 2 week trial and start exploring today!
