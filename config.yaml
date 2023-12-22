@@ -29,7 +29,8 @@ params:
     footer_about_disable: false
     navbar_logo: true
     navbar_translucent_over_cover_disable: false
-    sidebar_menu_compact: false
+    sidebar_menu_compact: true
+    sidebar_menu_foldable: true
     sidebar_search_disable: true
     feedback:
       enable: false
