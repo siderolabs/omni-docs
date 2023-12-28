@@ -111,6 +111,17 @@ talosctl --talosconfig ./talos-default-talosconfig.yaml --nodes 10.5.0.2 get mem
 ```
 > In the above example you will need to change the name of the `talosconfig` file, if you changed the cluster name from the default, also the `node` IP, using the actual IP or name of the nodes you created (which are shown in Omni.)
 
+### Explore Omni
+Now you have a complete cluster, with a high-availability Kubernetes API endpoint running on the Omni infrastructure, where all authentication is tied in to your enterprise identity provider.
+It's a good time to explore all that Omni can offer, including other areas of the UI such as:
+- etcd backup and restores
+- simple cluster upgrades of Kubernetes and Operating System
+- proxying of workload HTTP access
+- simple scaling up and down of clusters
+- the concept of Machine Sets, that let you manage your infrastructure by classes
+
+And if you are wanting to declaratively manage your clusters and infrastructure declaratively, as code, check out [Cluster Templates](../../reference/cluster-templates/).
+
 ### Destroy the Cluster
 
 When you are all done, you can remove the cluster by clicking "Destroy Cluster", in the bottom right of the Cluster Overview panel.
