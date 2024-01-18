@@ -22,6 +22,12 @@ If you have an existing cluster, simply check the checkbox in the features secti
 {{< imgproc 2.png Resize "900x" >}}
 {{< /imgproc >}}
 
+If you are using cluster templates, you can enable the feature by adding the following to the cluster template YAML:
+```yaml
+features:
+  enableWorkloadProxy: true
+```
+
 You will notice that the "Exposed Services" section will appear on the left menu for the cluster the feature is enabled on.
 
 ## Exposing a Kubernetes Service

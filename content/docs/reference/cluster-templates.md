@@ -25,6 +25,8 @@ kubernetes:
   version: v1.26.0
 talos:
   version: v1.3.2
+features:
+  diskencryption: true
 patches:
   - name: kubespan-enabled
     inline:
@@ -100,6 +102,11 @@ kubernetes:
   version: v1.26.1
 talos:
   version: v1.3.3
+features:
+  enableWorkloadProxy: true
+  diskEncryption: true
+  backupConfiguration:
+    interval: 1h
 patches:
   - file: patches/example-patch.yaml
 ```
@@ -112,6 +119,9 @@ patches:
 | `annotations` | map[string]string | Annotations to be applied to the cluster. |
 | `kubernetes.version` | string | Kubernetes version to use, `vA.B.C`. |
 | `talos.version` | string | Talos version to use, `vA.B.C`. |
+| `features.enableWorkloadProxy` | boolean | Whether to enable the workload proxy feature. Defaults to `false`. |
+| `features.diskEncryption` | boolean | Whether to enable disk encryption. Defaults to `false`. |
+| `features.backupConfiguration.interval` | string | Cluster etcd backup interval. Must be a valid [Go duration](https://pkg.go.dev/time#ParseDuration). Zero `0` disables automatic backups. |
 | `patches` | array | List of [patches](#patches) to apply to the cluster. |
 
 ### `ControlPlane`
@@ -159,6 +169,13 @@ annotations:
     my-annotation: my-value
 machines:
   - b885f565-b64f-4c7a-a1ac-d2c8c2781373
+updateStrategy:
+  rolling:
+    maxParallelism: 3
+deleteStrategy:
+  type: Rolling
+  rolling:
+    maxParallelism: 5
 patches:
   - file: patches/example-workers-patch.yaml
 ```
@@ -172,6 +189,8 @@ patches:
 | `machines` | array | List of machine IDs to use as worker nodes in the machine set (mutually exclusive with `machineClass`). |
 | `patches` | array | List of [patches](#patches) to apply to the machine set. |
 | `machineClass` | [MachineClass](#machineclass) | Machine Class configuration (mutually exclusive with `machines`). |
+| `updateStrategy` | [UpdateStrategy](#updatestrategy) | Update strategy for the machine set. Defaults to `type: Rolling` with `maxParallelism: 1`. |
+| `deleteStrategy` | [UpdateStrategy](#updatestrategy) | Delete strategy for the machine set. Defaults to `type: Unset`. |
 
 ### `MachineClass`
 
@@ -193,6 +212,27 @@ machineClass:
 {{% alert title="Note" %}}
 `size` field supports keyword `unlimited|infinity` which makes the machine set pick all available machines from the specified machine class.
 {{% /alert %}}
+
+### `UpdateStrategy`
+
+The `UpdateStrategy` section of the [Workers](#workers) defines the update and/or the delete strategy for the machine set.
+
+```yaml
+kind: Workers
+name: workers
+updateStrategy:
+  rolling:
+    maxParallelism: 3
+deleteStrategy:
+  type: Rolling
+  rolling:
+    maxParallelism: 5
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `type` | string | Strategy type. Can be `Rolling` or `Unset`. Defaults to `Rolling` for `updateStrategy` and `Unset` for the `deleteStrategy`. When `Unset`, all updates and/or deletes will be applied at once. |
+| `rolling.maxParallelism` | number | Maximum number of machines to update and/or delete in parallel. Only used when the `type` is `Rolling`. Defaults to `1`. |
 
 ### `Machine`
 
