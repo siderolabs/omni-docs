@@ -127,3 +127,44 @@ And if you are wanting to declaratively manage your clusters and infrastructure 
 When you are all done, you can remove the cluster by clicking "Destroy Cluster", in the bottom right of the Cluster Overview panel.
 This will wipe the machine and return them to the Available state.
 
+## Cluster example
+
+We have a complete example of a managed cluster complete with a monitoring stack and application management.
+It can be found in our [community contrib repo](https://github.com/siderolabs/contrib/blob/main/examples/omni).
+
+### Components
+
+The contrib example includes:
+
+- [Cilium](https://cilium.io/get-started/) for cluster networking
+- [Hubble](https://docs.cilium.io/en/stable/gettingstarted/hubble_intro/) for network observability
+- [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) for application management
+- [Rook/Ceph](https://rook.io/docs/rook/latest-release/Getting-Started/intro/) for persistent storage
+- [Prometheus](https://prometheus.io/docs/introduction/overview/) for metrics collection and alerting
+- [Grafana](https://grafana.com/docs/grafana/latest/introduction/) for metrics visualization
+
+### Use
+
+You will need to copy the contents of the `omni` directory to a git repository that can be accessed by the cluster you create.
+You will need to update the [ArgoCD ApplicationSet](https://github.com/siderolabs/contrib/blob/main/examples/omni/apps/argocd/argocd/bootstrap-app-set.yaml) template to reference your new git repo, and regenerate the ArgoCD bootstrap patch.
+
+```bash
+sed -i 's|https://github.com/siderolabs/contrib.git|<your-git-repo>|' apps/argocd/argocd/bootstrap-app-set.yaml
+kustomize build apps/argocd/argocd | yq -i 'with(.cluster.inlineManifests.[] | select(.name=="argocd"); .contents=load_str("/dev/stdin"))' infra/patches/argocd.yaml
+```
+
+With these changes made you should commit the new values and push them to the git repo.
+
+Next you should register your machines with Omni (see guides for [AWS](../../how-to-guides/how-to-register-an-aws-ec2-instance), [GCP](../../how-to-guides/how-to-register-a-gcp-instance), [Azure](../../how-to-guides/how-to-register-an-azure-instance/), [Hetzner](../../how-to-guides/how-to-register-a-hetzner-server/), and [bare metal](../../how-to-guides/how-to-register-a-bare-metal-machine-iso/)) and create [machine classes](../../how-to-guides/how-to-create-machine-classes/) to match your hardware.
+By default, the example [cluster template](../../reference/cluster-templates) is configured to use 3 instances of machine classes named `omni-contrib-controlplane`, and all instances that match a machines class called `omni-contrib-workers`.
+You can modify these settings in the [cluster-template.yaml](https://github.com/siderolabs/contrib/blob/main/examples/omni/infra/cluster-template.yaml), but keep in mind that for Rook/Ceph to work you will need to use at least 3 instances with additional block devices for storage.
+
+Once machines are registered you can create the cluster using the cluster template.
+
+```bash
+omnictl template sync --file infra/cluster-template.yaml
+```
+
+This should create the cluster as described, bootstrap ArgoCD, and begin installing applications from your repo.
+Depending on your infrastructure, it should take 5-10 mins for the cluster to come fully online with all applications working and healthy.
+Monitoring can be viewed directly from Omni using the [workload proxy](../../how-to-guides/how-to-expose-http-service-from-a-cluster/) feature, with links to Grafana and Hubble found on the left-hand side of the Omni UI.
