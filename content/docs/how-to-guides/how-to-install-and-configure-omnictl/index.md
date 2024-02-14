@@ -22,6 +22,12 @@ This guide assumes the downloaded binary is named `omnictl`.
 Add the downloaded `omniconfig.yaml` to the default location to use it with `omnictl`:
 
 ```bash
+cp omniconfig.yaml ~/.config/omni/config
+```
+
+If you would like to merge the `omniconfig.yaml` with an existing configuration, use the following command:
+
+```bash
 omnictl config merge ./omniconfig.yaml
 ```
 
