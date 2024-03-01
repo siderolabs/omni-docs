@@ -15,11 +15,6 @@ For SAML integration sections, this guide assumes Azure AD will be the provider 
 
 There are several prerequisites for deploying Omni on-prem.
 
-### Image Access
-
-You will need access to the Sidero Labs registry at `harbor.dev.siderolabs.io`.
-Access to this registry will be provided to you by the Sidero Labs staff as part of the onboarding process.
-
 ### Install Docker
 
 Install Docker according to the Ubuntu installation guide [here](https://docs.docker.com/engine/install/ubuntu/).
@@ -131,7 +126,7 @@ docker run \
   -v <path to TLS certificate>:/tls.crt \
   -v <path to TLS key>:/tls.key \
   -v $PWD/omni.asc:/omni.asc \
-  harbor.dev.siderolabs.io/images/omni:<tag> \
+  ghcr.io/siderolabs/omni:<tag> \
     --account-id=${OMNI_ACCOUNT_UUID} \
     --name=onprem-omni \
     --cert=/tls.crt \
@@ -174,7 +169,7 @@ docker run \
   -v <path to full chain TLS certificate>:/tls.crt \
   -v <path to TLS key>:/tls.key \
   -v $PWD/omni.asc:/omni.asc \
-  harbor.dev.siderolabs.io/images/omni:<tag> \
+  ghcr.io/siderolabs/omni:<tag> \
     --account-id=${OMNI_ACCOUNT_UUID} \
     --name=onprem-omni \
     --cert=/tls.crt \
