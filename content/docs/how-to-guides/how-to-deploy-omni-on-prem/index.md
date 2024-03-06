@@ -11,6 +11,12 @@ Small differences should be expected when using a different OS.
 
 For SAML integration sections, this guide assumes Azure AD will be the provider for SAML.
 
+{{% alert title="Note" color="info" %}}
+Omni is availble via a [Business Source License](https://github.com/siderolabs/omni/blob/main/LICENSE) which allows free installations in non-production environments.
+If you would like to deploy Omni for production use please contact [Sidero sales](mailto:sales@siderolabs.com?subject=Omni%20license%20inquiry&body=Hello,%20I%20would%20like%20to%20purchase%20an%20on-prem%20license%20for%20Omni.).
+If you would like to subscribe to the hosted version of Omni please see the [SaaS pricing](https://www.siderolabs.com/pricing/).
+{{% /alert %}}
+
 ## Prereqs
 
 There are several prerequisites for deploying Omni on-prem.
@@ -22,7 +28,7 @@ Install Docker according to the Ubuntu installation guide [here](https://docs.do
 ### Generate Certs
 
 On-prem Omni will require valid SSL certificates.
-This means that self-signed certs *will not* work as of the time of this writing.
+This means that self-signed certs _will not_ work as of the time of this writing.
 Generating certificates is left as an exercise to the user, but here is a rough example that was tested using [DigitalOcean's DNS integration](https://certbot-dns-digitalocean.readthedocs.io/en/stable/) with certbot to generate certificates.
 The process should be very similar for other providers like Route53.
 
@@ -55,9 +61,9 @@ Create an Auth0 application of the type "single page web application".
 
 Configure the Auth0 application with the following:
 
-  - Allowed callback URLs: `https://<domain name for onprem omni>`
-  - Allowed web origins: `https://<domain name for onprem omni>`
-  - Allowed logout URLs: `https://<domain name for onprem omni>`
+- Allowed callback URLs: `https://<domain name for onprem omni>`
+- Allowed web origins: `https://<domain name for onprem omni>`
+- Allowed logout URLs: `https://<domain name for onprem omni>`
 
 Disable username/password auth on "Authentication - Database - Applications" tab.
 
@@ -66,8 +72,9 @@ Enable GitHub and Google login on the "Authentication - Social" tab.
 Enable email access in the GitHub settings.
 
 Take note of the following information from the Auth0 application:
-  - Domain
-  - Client ID
+
+- Domain
+- Client ID
 
 ### SAML Identity Providers
 
