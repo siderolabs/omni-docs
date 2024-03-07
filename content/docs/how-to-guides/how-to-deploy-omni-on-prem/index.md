@@ -129,7 +129,6 @@ docker run \
   --net=host \
   --cap-add=NET_ADMIN \
   -v $PWD/etcd:/_out/etcd \
-  -v /var/run/docker.sock:/var/run/docker.sock \
   -v <path to TLS certificate>:/tls.crt \
   -v <path to TLS key>:/tls.key \
   -v $PWD/omni.asc:/omni.asc \
@@ -172,7 +171,6 @@ docker run \
   --net=host \
   --cap-add=NET_ADMIN \
   -v $PWD/etcd:/_out/etcd \
-  -v /var/run/docker.sock:/var/run/docker.sock \
   -v <path to full chain TLS certificate>:/tls.crt \
   -v <path to TLS key>:/tls.key \
   -v $PWD/omni.asc:/omni.asc \

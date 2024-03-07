@@ -397,7 +397,6 @@ sudo docker run \
   --net=host \
   --cap-add=NET_ADMIN \
   -v $PWD/etcd:/_out/etcd \
-  -v /var/run/docker.sock:/var/run/docker.sock \
   -v $PWD/certs/fullchain.pem:/fullchain.pem \
   -v $PWD/certs/privkey.pem:/privkey.pem \
   -v $PWD/certs/omni.asc:/omni.asc \
