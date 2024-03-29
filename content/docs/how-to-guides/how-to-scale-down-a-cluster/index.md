@@ -1,5 +1,5 @@
 ---
-title: How to Scale Down a Cluster
+title: Scale Down a Cluster
 description: "A guide on how to scale down a cluster with Omni."
 date: 2023-02-22T12:46:28-08:00
 draft: false
@@ -16,3 +16,4 @@ Now, select "Destroy" from the menu under the elipsis:
 {{< /imgproc >}}
 
 The cluster will now scale down.
+

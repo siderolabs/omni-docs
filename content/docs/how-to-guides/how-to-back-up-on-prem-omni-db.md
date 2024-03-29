@@ -1,5 +1,5 @@
 ---
-title: "How to Back Up On-prem Omni Database"
+title: "Back Up On-prem Omni Database"
 date: 2022-12-28T10:00:00+01:00
 draft: false
 weight: 210

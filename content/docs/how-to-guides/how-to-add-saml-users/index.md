@@ -1,5 +1,5 @@
 ---
-title: "How to Add a User to Omni with SAML Enabled"
+title: "Add a User to Omni with SAML Enabled"
 description: "A guide on how to add a user to Omni with SAML authentication enabled."
 draft: false
 weight: 60

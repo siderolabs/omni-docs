@@ -1,5 +1,5 @@
 ---
-title: How to Restore Etcd of a Cluster Managed by Cluster Templates to an Earlier Snapshot
+title: Restore Etcd of a Cluster Managed by Cluster Templates to an Earlier Snapshot
 description: A guide on how to restore a cluster's etcd to an earlier snapshot.
 draft: false
 weight: 40
@@ -9,6 +9,7 @@ This guide shows you how to restore a cluster's etcd to an earlier snapshot.
 This is useful when you need to revert a cluster to an earlier state.
 
 This tutorial has the following requirements:
+
 - The CLI tool `omnictl` must be installed and configured.
 - The cluster which you want to restore **must still exist** (not deleted from Omni) and have backups in the past.
 - The cluster **must be managed using cluster templates** (not via the UI).
@@ -16,11 +17,13 @@ This tutorial has the following requirements:
 ## Finding the Cluster's UUID
 
 To find the cluster's UUID, run the following command, replacing `my-cluster` with the name of your cluster:
+
 ```bash
 omnictl get clusteruuid my-cluster
 ```
 
 The output will look like this:
+
 ```text
 NAMESPACE   TYPE          ID              VERSION   UUID
 default     ClusterUUID   my-cluster      1         bb874758-ee54-4d3b-bac3-4c8349737298
@@ -31,11 +34,13 @@ Note the `UUID` column, which contains the cluster's UUID.
 ## Finding the Snapshot to Restore
 
 List the available snapshots for the cluster:
+
 ```bash
 omnictl get etcdbackup -l omni.sidero.dev/cluster=my-cluster
 ```
 
 The output will look like this:
+
 ```text
 NAMESPACE   TYPE         ID                         VERSION     CREATED AT                         SNAPSHOT
 external    EtcdBackup   my-cluster-1701184522   undefined   {"nanos":0,"seconds":1701184522}   FFFFFFFF9A99FBF6.snapshot
@@ -52,6 +57,7 @@ This will take the cluster into the non-bootstrapped state.
 Only then we can create the new control plane with the restored etcd.
 
 Use the following command to delete the control plane, replacing `my-cluster` with the name of your cluster:
+
 ```bash
 omnictl delete machineset my-cluster-control-planes
 ```
@@ -88,6 +94,7 @@ machines:
 ## Syncing the Template
 
 To sync the template, run the following command:
+
 ```bash
 omnictl cluster template sync -f template-manifest.yaml
 omnictl cluster template status -f template-manifest.yaml

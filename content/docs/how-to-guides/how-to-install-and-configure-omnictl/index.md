@@ -1,5 +1,5 @@
 ---
-title: How to Install and Configure Omnictl
+title: Install and Configure Omnictl
 description: "A guide on installing and configuring `omnictl` for Omni."
 date: 2023-01-30T00:00:00Z
 draft: false

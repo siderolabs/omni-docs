@@ -1,5 +1,5 @@
 ---
-title: "How to Configure Entra ID AD for Omni"
+title: "Configure Entra ID AD for Omni"
 draft: false
 weight: 230
 ---
@@ -14,9 +14,9 @@ Under the "Manage" section of the application, select "Single sign-on", then "SA
 
 In section 1 of this form, enter identifier, reply, and sign on URLs that match the following and save:
 
-  - Identifier (Entity ID): `https://<domain name for omni>/saml/metadata`
-  - Reply URL (Assertion Consumer Service URL): `https://<domain name for omni>/saml/acs`
-  - Sign on URL: `https://<domain name for omni>/login`
+- Identifier (Entity ID): `https://<domain name for omni>/saml/metadata`
+- Reply URL (Assertion Consumer Service URL): `https://<domain name for omni>/saml/acs`
+- Sign on URL: `https://<domain name for omni>/login`
 
 From section 3, copy the "App Federation Metadata Url" for later use.
 

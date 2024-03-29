@@ -1,5 +1,5 @@
 ---
-title: "How to Register a GCP Instance"
+title: "Register a GCP Instance"
 description: "A guide on how to register a GCP instance with Omni."
 date: 2022-11-23T15:35:30-07:00
 draft: false

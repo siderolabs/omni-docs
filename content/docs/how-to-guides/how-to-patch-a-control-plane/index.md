@@ -1,5 +1,5 @@
 ---
-title: "How to Create a Patch For Cluster Control Planes"
+title: "Create a Patch For Cluster Control Planes"
 description: "A guide on how to create a config patch for the control plane of a cluster."
 draft: false
 weight: 60
@@ -32,3 +32,4 @@ Click "Save" to create the config patch:
 
 {{< imgproc 5.png Resize "900x" >}}
 {{< /imgproc >}}
+

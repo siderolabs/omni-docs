@@ -1,5 +1,5 @@
 ---
-title: "How to Create a Service Account Kubeconfig"
+title: "Create a Service Account Kubeconfig"
 description: "A guide on how to create a service account kubeconfig in Omni."
 date: 2023-02-24T00:00:00Z
 draft: false
@@ -28,6 +28,5 @@ Replace `<user>` with any value you would like.
 {{% /alert %}}
 
 This command will create a service account token with the given username and obtain a kubeconfig file for the given cluster and username.
-
 
 You can now use `kubectl` with the generated kubeconfig.

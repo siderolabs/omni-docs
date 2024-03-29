@@ -1,5 +1,5 @@
 ---
-title: "How to Create a Machine Class"
+title: "Create a Machine Class"
 description: "A guide on how to create a machine class."
 date: 2023-10-25T17:19:38+04:00
 draft: false
@@ -49,7 +49,6 @@ Click "Create Machine Class".
 {{< imgproc 7.png Resize "900x" >}}
 {{< /imgproc >}}
 
-
 {{% /tab %}}
 
 {{% tab header="CLI" %}}
@@ -58,15 +57,13 @@ Create a file called `machine-class.yaml` with the following content:
 
 ```yaml
 metadata:
-    namespace: default
-    type: MachineClasses.omni.sidero.dev
-    id: test
+  namespace: default
+  type: MachineClasses.omni.sidero.dev
+  id: test
 spec:
-    matchlabels:
-                                                                # match machines:
-        - omni.sidero.dev/arch: amd64, omni.sidero.dev/cpus > 2 # with arch == amd64 and > 2 CPUs
-                                                                # or
-        - omni.sidero.dev/arch: arm64, omni.sidero.dev/cpus > 4 # with arch == amd64 and > 4 CPUs
+  matchlabels:
+    # matches machines with amd64 architecture and more than 2 CPUs
+    - omni.sidero.dev/arch: amd64, omni.sidero.dev/cpus > 2
 ```
 
 Create the machine class:

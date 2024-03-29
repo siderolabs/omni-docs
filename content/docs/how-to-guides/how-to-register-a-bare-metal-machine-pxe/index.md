@@ -1,10 +1,11 @@
 ---
-title: How to Register a Bare Metal Machine (PXE/iPXE)
+title: Register a Bare Metal Machine (PXE/iPXE)
 description: "A guide on how to register a bare metal machines with Omni using PXE/iPXE."
 date: 2022-11-15T15:55:21-08:00
 draft: false
 weight: 20
 ---
+
 This guide shows you how to register a bare metal machine with Omni by PXE/iPXE booting.
 
 ## Copy the Required Kernel Parameters
@@ -52,7 +53,6 @@ Place the following in `/var/lib/matchbox/profiles/default.json`:
 
 Update `siderolink.api`, `talos.events.sink`, and `talos.logging.kernel` with the kerenl parameters copied from the dashboard.
 
-
 Place the following in `/var/lib/matchbox/groupss/default.json`:
 
 ### Create the Group
@@ -64,6 +64,7 @@ Place the following in `/var/lib/matchbox/groupss/default.json`:
   "profile": "default"
 }
 ```
+
 {{% /tab %}}
 {{< /tabpane >}}
 

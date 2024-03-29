@@ -1,5 +1,5 @@
 ---
-title: "How to install talosctl"
+title: "Install talosctl"
 description: "A guide on how to install talosctl."
 weight: 50
 ---
@@ -13,3 +13,4 @@ curl -sL https://talos.dev/install | sh
 ```
 
 You now have `talosctl` installed.
+

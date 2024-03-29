@@ -1,5 +1,5 @@
 ---
-title: How to Register a Hetzner Server
+title: Register a Hetzner Server
 description: "A guide on how to register a Hetzner server with Omni."
 date: 2022-11-16T12:46:28-08:00
 draft: false

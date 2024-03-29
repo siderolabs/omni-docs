@@ -1,5 +1,5 @@
 ---
-title: "How to Use Kubectl With Omni"
+title: "Use Kubectl With Omni"
 date: 2022-11-17T10:14:18-08:00
 draft: false
 weight: 90

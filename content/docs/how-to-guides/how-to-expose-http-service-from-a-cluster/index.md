@@ -1,5 +1,5 @@
 ---
-title: "How to Expose an HTTP Service from a Cluster"
+title: "Expose an HTTP Service from a Cluster"
 description: "A guide on how to expose am HTTP service from a cluster for external access."
 date: 2023-08-10T00:00:00Z
 draft: false
@@ -23,6 +23,7 @@ If you have an existing cluster, simply check the checkbox in the features secti
 {{< /imgproc >}}
 
 If you are using cluster templates, you can enable the feature by adding the following to the cluster template YAML:
+
 ```yaml
 features:
   enableWorkloadProxy: true
@@ -74,11 +75,13 @@ spec:
 ```
 
 Apply it to the cluster:
+
 ```bash
 kubectl apply -f nginx.yaml
 ```
 
 Note the following annotations on the cluster:
+
 ```yaml
 omni-kube-service-exposer.sidero.dev/port: "50080"
 omni-kube-service-exposer.sidero.dev/label: Sample Nginx
@@ -96,10 +99,12 @@ If not set, the default name of `<service-name>.<service-namespace>` will be use
 The annotation `omni-kube-service-exposer.sidero.dev/icon` can be set to render an icon for this service on the Omni Web left menu.
 
 If set, valid values are:
+
 - Either a base64-encoded SVG
 - Or a base64-encoded GZIP of an SVG
 
 To encode an SVG file `icon.svg` to be used for the annotation, you can use the following command:
+
 ```bash
 gzip -c icon.svg | base64
 ```

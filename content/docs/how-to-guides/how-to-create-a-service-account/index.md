@@ -1,5 +1,5 @@
 ---
-title: "How to Create an Omni Service Account"
+title: "Create an Omni Service Account"
 description: "A guide on how to create an Omni service account."
 date: 2023-07-03T00:00:00Z
 draft: false

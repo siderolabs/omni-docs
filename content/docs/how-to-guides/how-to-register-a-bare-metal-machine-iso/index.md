@@ -1,5 +1,5 @@
 ---
-title: How to Register a Bare Metal Machine (ISO)
+title: Register a Bare Metal Machine (ISO)
 description: "A guide on how to register bare metal machines with Omni using an ISO."
 date: 2022-10-29T09:38:16-07:00
 draft: false
@@ -61,7 +61,6 @@ sdb      8:0    0 39.1G  0 disk
 ```
 
 In this example `sdb` is the USB drive.
-
 
 ```bash
 dd if=<path to ISO> of=/dev/sdb conv=fdatasync

@@ -1,5 +1,5 @@
 ---
-title: "How to auto-assign roles to SAML users"
+title: "Auto-assign roles to SAML users"
 description: "A guide on how to assign Omni roles to SAML users automatically."
 draft: false
 weight: 60

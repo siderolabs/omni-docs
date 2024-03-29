@@ -1,5 +1,5 @@
 ---
-title: "How to Create Etcd Backups"
+title: "Create Etcd Backups"
 date: 2023-11-11T07:00:00-07:00
 description: "A guide on how to create cluster etcd backups using Omni."
 draft: false
@@ -22,7 +22,7 @@ ephemeral   EtcdBackupOverallStatus   etcdbackup-overall-status   1         s3  
 ```
 
 The combination of the `CONFIGURATION NAME` and `CONFIGURATION ERROR` fields display the current backup store configuration status.
-Currently, Omni supports two backup stores: `local` and `s3`. 
+Currently, Omni supports two backup stores: `local` and `s3`.
 These are configured during Omni initialization.
 The output above indicates that the backup store is set to use the `s3` store.
 However, the s3 configuration itself has not yet been added, so the` CONFIGURATION ERROR` field shows `not initialized`.
@@ -31,7 +31,7 @@ The rest of the fields show as empty because no backups have been created yet.
 ### S3 configuration
 
 To use S3 as the backup storage, you will first need to configure the S3 credentials for Omni to use.
-This can be done by creating an `EtcdBackupS3Configs.omni.sidero.dev` resource in Omni. 
+This can be done by creating an `EtcdBackupS3Configs.omni.sidero.dev` resource in Omni.
 Below is an example for Minio S3:
 
 ```yaml
@@ -49,14 +49,15 @@ spec:
 ```
 
 Let's go through the fields:
+
 - `bucket` - the name of the S3 bucket for storing backups. This is the only field required in all cases.
 - `region` - the region of the S3 bucket. If not provided, Omni will use the default region.
 - `endpoint` - the S3 endpoint. If not provided, Omni will use the default AWS S3 endpoint.
-- `accesskeyid` and `secretaccesskey` - the credentials to access the S3 bucket. If not provided, 
+- `accesskeyid` and `secretaccesskey` - the credentials to access the S3 bucket. If not provided,
   Omni will assume it runs in an EC2 instance with an IAM role that has access to the specified S3 bucket.
 - `sessiontoken` - the session token (if any) for accessing the S3 bucket.
 
-Save it as `<file-name>.yaml` and apply using `omnictl apply -f <file-name>.yaml`. 
+Save it as `<file-name>.yaml` and apply using `omnictl apply -f <file-name>.yaml`.
 During resource creation, Omni will validate the provided credentials by attempting to list the objects in the bucket.
 It will return an error if the validation fails and will not update the resource.
 
@@ -98,45 +99,45 @@ This command print per-cluster backup status. The output will be similar to this
 
 ```yaml
 metadata:
-    namespace: ephemeral
-    type: EtcdBackupStatuses.omni.sidero.dev
-    id: <cluster-name>
-    version: 1
-    owner: EtcdBackupController
-    phase: running
+  namespace: ephemeral
+  type: EtcdBackupStatuses.omni.sidero.dev
+  id: <cluster-name>
+  version: 1
+  owner: EtcdBackupController
+  phase: running
 spec:
-    status: 1
-    error: ""
-    lastbackuptime:
-        seconds: 1702166400
-        nanos: 985220192
-    lastbackupattempt:
-        seconds: 1702166400
-        nanos: 985220192
+  status: 1
+  error: ""
+  lastbackuptime:
+    seconds: 1702166400
+    nanos: 985220192
+  lastbackupattempt:
+    seconds: 1702166400
+    nanos: 985220192
 ```
 
 You can also get the overall status of the backup subsystem, where the output will be similar to this:
 
 ```yaml
 metadata:
-    namespace: ephemeral
-    type: EtcdBackupOverallStatuses.omni.sidero.dev
-    id: etcdbackup-overall-status
-    version: 3
-    owner: EtcdBackupOverallStatusController
-    phase: running
+  namespace: ephemeral
+  type: EtcdBackupOverallStatuses.omni.sidero.dev
+  id: etcdbackup-overall-status
+  version: 3
+  owner: EtcdBackupOverallStatusController
+  phase: running
 spec:
-    configurationname: s3
-    configurationerror: ""
-    lastbackupstatus:
-        status: 1
-        error: ""
-        lastbackuptime:
-            seconds: 1702166400
-            nanos: 985220192
-        lastbackupattempt:
-            seconds: 1702166400
-            nanos: 985220192
+  configurationname: s3
+  configurationerror: ""
+  lastbackupstatus:
+    status: 1
+    error: ""
+    lastbackuptime:
+      seconds: 1702166400
+      nanos: 985220192
+    lastbackupattempt:
+      seconds: 1702166400
+      nanos: 985220192
 ```
 
 ### Automatic backup
@@ -175,7 +176,7 @@ Your machine UUIDs will likely be different, and the Kubernetes and Talos versio
 You will need both of these, as well as the cluster name, in your cluster template.
 To obtain these, refer to the `clustermachinestatus` and `cluster` resources.
 
-In this example, we are going to set the backup interval for the cluster to one hour. Save this template 
+In this example, we are going to set the backup interval for the cluster to one hour. Save this template
 as `<file-name>.yaml`. Before applying this change, we want to ensure that no automatic backup is enabled for this
 cluster. To do that, let's run the following command:
 

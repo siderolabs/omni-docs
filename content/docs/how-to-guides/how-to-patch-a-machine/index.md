@@ -1,5 +1,5 @@
 ---
-title: "How to Create a Patch For Cluster Machines"
+title: "Create a Patch For Cluster Machines"
 description: "A guide on how to create a config patch for a machine in a cluster."
 draft: false
 weight: 60
@@ -32,3 +32,4 @@ Click "Save" to create the config patch:
 
 {{< imgproc 5.png Resize "900x" >}}
 {{< /imgproc >}}
+

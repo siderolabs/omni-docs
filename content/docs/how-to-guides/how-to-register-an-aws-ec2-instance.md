@@ -1,5 +1,5 @@
 ---
-title: "How to Register an AWS EC2 Instance"
+title: "Register an AWS EC2 Instance"
 description: "A guide on how to register an AWS EC2 instance with Omni."
 date: 2022-10-29T15:35:30-07:00
 draft: false

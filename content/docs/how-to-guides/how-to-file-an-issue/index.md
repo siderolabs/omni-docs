@@ -1,5 +1,5 @@
 ---
-title: "How to File an Issue"
+title: "File an Issue"
 description: "A guide on how to file an issue for Omni."
 weight: 50
 ---
@@ -17,3 +17,4 @@ Now, click on the "New issue" button:
 {{< /imgproc >}}
 
 Choose the issue type, fill in the details, and submit the issue.
+

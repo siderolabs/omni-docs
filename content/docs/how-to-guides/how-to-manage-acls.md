@@ -1,5 +1,5 @@
 ---
-title: "How to Manage Access Policies (ACLs)"
+title: "Manage Access Policies (ACLs)"
 description: "A guide on how to manage Omni ACLs."
 #date: 2023-05-28T12:00:00Z
 weight: 50
@@ -79,7 +79,6 @@ Only the users who have the Omni role `Admin` can manage ACLs.
 Users who have the Omni role `Operator` or above are assigned to the Kubernetes role `system:masters` by default, in addition to the ACLs.
 {{% /alert %}}
 
-
 ## Create Kubernetes RBAC resources
 
 Locally, create `rbac.yaml` with a `Namespace` called `my-app`, and a `Role` & `RoleBinding` to give access to the `my-app-read-only` group:
@@ -116,6 +115,7 @@ subjects:
 ```
 
 As the cluster admin, apply the manifests to the Kubernetes cluster `production`:
+
 ```bash
 kubectl apply -f rbac.yaml
 ```

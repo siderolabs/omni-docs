@@ -1,5 +1,5 @@
 ---
-title: "How to Register an Azure Instance"
+title: "Register an Azure Instance"
 description: "A guide on how to register an Azure instance with Omni."
 date: 2023-05-1T15:35:30-07:00
 draft: false
@@ -103,6 +103,7 @@ az image create \
 
 {{% tab header="CLI" %}}
 Creating an instance requires setting the os-disk-size property, which is easiest to achieve via the CLI:
+
 ```bash
 az vm create \
     --name azure-worker \
@@ -111,7 +112,7 @@ az vm create \
     --admin-username talos \
     --generate-ssh-keys \
     --verbose \
-    --os-disk-size-gb 20 
+    --os-disk-size-gb 20
 ```
 
 {{% /tab %}}

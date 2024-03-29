@@ -1,5 +1,5 @@
 ---
-title: "How to Configure Okta for Omni"
+title: "Configure Okta for Omni"
 draft: false
 weight: 240
 ---
