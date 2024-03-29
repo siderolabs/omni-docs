@@ -12,8 +12,8 @@ weight: 60
 First, click the "Clusters" section button in the sidebar.
 Next, click the "Create Cluster" button.
 
-{{< imgproc how-to-enable-disk-encryption-1.png Resize "900x" >}}
-{{< /imgproc >}}
+{{% imgproc how-to-enable-disk-encryption-1.png Resize "900x" %}}
+{{% /imgproc %}}
 
 Select Talos version `>=` `1.5.0`.
 Click "Enable Encryption" checkbox.

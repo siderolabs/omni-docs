@@ -34,6 +34,8 @@ patches:
         network:
           kubespan:
             enabled: true
+systemExtensions:
+  - siderolabs/hello-world-service
 ---
 kind: ControlPlane
 machines:
@@ -50,6 +52,8 @@ kind: Workers
 name: xlarge
 machines:
   - 1f721dee-6dbb-4e71-9832-226d73da3841
+systemExtensions:
+  - siderolabs/hello-world-service
 ---
 kind: Machine
 name: 27c16241-96bf-4f17-9579-ea3a6c4a3ca8
@@ -68,6 +72,8 @@ kind: Machine
 name: b885f565-b64f-4c7a-a1ac-d2c8c2781373
 install:
   disk: /dev/vda
+systemExtensions:
+  - siderolabs/hello-world-service
 ---
 kind: Machine
 name: a54f21dc-6e48-4fc1-96aa-3d7be5e2612b
@@ -109,6 +115,8 @@ features:
     interval: 1h
 patches:
   - file: patches/example-patch.yaml
+systemExtensions:
+  - siderolabs/hello-world-service
 ```
 
 | Field | Type | Description |
@@ -123,6 +131,7 @@ patches:
 | `features.diskEncryption` | boolean | Whether to enable disk encryption. Defaults to `false`. |
 | `features.backupConfiguration.interval` | string | Cluster etcd backup interval. Must be a valid [Go duration](https://pkg.go.dev/time#ParseDuration). Zero `0` disables automatic backups. |
 | `patches` | array | List of [patches](#patches) to apply to the cluster. |
+| `systemExtensions` | array | The list of system extensions to be installed on every machine in the cluster. |
 
 ### `ControlPlane`
 
@@ -145,6 +154,8 @@ machines:
   - 8fdb574a-a252-4d7d-94f0-5cdea73e140a
 patches:
   - file: patches/example-controlplane-patch.yaml
+systemExtensions:
+  - siderolabs/hello-world-service
 ```
 
 | Field | Type | Description |
@@ -155,6 +166,7 @@ patches:
 | `machines` | array | List of machine IDs to use for control plane nodes (mutually exclusive with `machineClass`). |
 | `patches` | array | List of [patches](#patches) to apply to the machine set. |
 | `machineClass` | [MachineClass](#machineclass) | Machine Class configuration (mutually exclusive with `machines`). |
+| `systemExtensions` | array | The list of system extensions to be installed on every machine in the machine set. |
 
 ### `Workers`
 
@@ -178,6 +190,8 @@ deleteStrategy:
     maxParallelism: 5
 patches:
   - file: patches/example-workers-patch.yaml
+systemExtensions:
+  - siderolabs/hello-world-service
 ```
 
 | Field | Type | Description |
@@ -191,6 +205,7 @@ patches:
 | `machineClass` | [MachineClass](#machineclass) | Machine Class configuration (mutually exclusive with `machines`). |
 | `updateStrategy` | [UpdateStrategy](#updatestrategy) | Update strategy for the machine set. Defaults to `type: Rolling` with `maxParallelism: 1`. |
 | `deleteStrategy` | [UpdateStrategy](#updatestrategy) | Delete strategy for the machine set. Defaults to `type: Unset`. |
+| `systemExtensions` | array | The list of system extensions to be installed on every machine in the machine set. |
 
 ### `MachineClass`
 
@@ -251,6 +266,8 @@ install:
   disk: /dev/vda
 patches:
   - file: patches/example-machine-patch.yaml
+systemExtensions:
+  - siderolabs/hello-world-service
 ```
 
 | Field | Type | Description |
@@ -262,6 +279,7 @@ patches:
 | `locked` | string | Whether the machine should be marked as locked. Can be `true` only if the machine is used as a worker. |
 | `install.disk` | string | Disk to install Talos on. Matters only for Talos running from ISO or iPXE. |
 | `patches` | array | List of [patches](#patches) to apply to the machine. |
+| `systemExtensions` | array | The list of system extensions to be installed on the machine. |
 
 {{% alert title="Note" %}}
 When Talos is not installed and the install disk is not specified, Omni will try to pick the install disk automatically.

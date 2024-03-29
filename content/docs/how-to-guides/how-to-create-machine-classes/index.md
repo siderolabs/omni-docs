@@ -13,41 +13,41 @@ This guide shows you how to create and a machine class.
 
 First, click the "Machine Classes" section button in the sidebar.
 
-{{< imgproc 0.png Resize "900x" >}}
-{{< /imgproc >}}
+{{% imgproc 0.png Resize "900x" %}}
+{{% /imgproc %}}
 
 Next, click the "Create Machine Class" button.
 
-{{< imgproc 1.png Resize "900x" >}}
-{{< /imgproc >}}
+{{% imgproc 1.png Resize "900x" %}}
+{{% /imgproc %}}
 
 Add machine query conditions by typing them manually in the input box.
 
-{{< imgproc 2.png Resize "900x" >}}
-{{< /imgproc >}}
+{{% imgproc 2.png Resize "900x" %}}
+{{% /imgproc %}}
 
 Clicking the label in the machine list will add them to the input box.
 
-{{< imgproc 3.png Resize "900x" >}}
-{{< /imgproc >}}
+{{% imgproc 3.png Resize "900x" %}}
+{{% /imgproc %}}
 
 Clicking on "+" will add blocks to match the machines using boolean `OR` operator.
 
-{{< imgproc 4.png Resize "900x" >}}
-{{< /imgproc >}}
+{{% imgproc 4.png Resize "900x" %}}
+{{% /imgproc %}}
 
-{{< imgproc 5.png Resize "900x" >}}
-{{< /imgproc >}}
+{{% imgproc 5.png Resize "900x" %}}
+{{% /imgproc %}}
 
 Name the machine class.
 
-{{< imgproc 6.png Resize "900x" >}}
-{{< /imgproc >}}
+{{% imgproc 6.png Resize "900x" %}}
+{{% /imgproc %}}
 
 Click "Create Machine Class".
 
-{{< imgproc 7.png Resize "900x" >}}
-{{< /imgproc >}}
+{{% imgproc 7.png Resize "900x" %}}
+{{% /imgproc %}}
 
 {{% /tab %}}
 
