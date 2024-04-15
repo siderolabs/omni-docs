@@ -63,7 +63,7 @@ metadata:
 spec:
   matchlabels:
     # matches machines with amd64 architecture and more than 2 CPUs
-    - omni.sidero.dev/arch: amd64, omni.sidero.dev/cpus > 2
+    - omni.sidero.dev/arch = amd64, omni.sidero.dev/cpus > 2
 ```
 
 Create the machine class:

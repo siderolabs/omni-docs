@@ -162,7 +162,7 @@ You can modify these settings in the [cluster-template.yaml](https://github.com/
 Once machines are registered you can create the cluster using the cluster template.
 
 ```bash
-omnictl template sync --file infra/cluster-template.yaml
+omnictl cluster template sync --file infra/cluster-template.yaml
 ```
 
 This should create the cluster as described, bootstrap ArgoCD, and begin installing applications from your repo.
