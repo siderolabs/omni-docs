@@ -159,10 +159,10 @@ Next you should register your machines with Omni (see guides for [AWS](../../how
 By default, the example [cluster template](../../reference/cluster-templates) is configured to use 3 instances of machine classes named `omni-contrib-controlplane`, and all instances that match a machines class called `omni-contrib-workers`.
 You can modify these settings in the [cluster-template.yaml](https://github.com/siderolabs/contrib/blob/main/examples/omni/infra/cluster-template.yaml), but keep in mind that for Rook/Ceph to work you will need to use at least 3 instances with additional block devices for storage.
 
-Once machines are registered you can create the cluster using the cluster template.
+Once machines are registered you can create the cluster using the cluster template in the `infra` directory.
 
 ```bash
-omnictl cluster template sync --file infra/cluster-template.yaml
+omnictl cluster template sync --file cluster-template.yaml
 ```
 
 This should create the cluster as described, bootstrap ArgoCD, and begin installing applications from your repo.
