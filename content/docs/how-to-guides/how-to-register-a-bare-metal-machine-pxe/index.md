@@ -53,7 +53,7 @@ Place the following in `/var/lib/matchbox/profiles/default.json`:
 
 Update `siderolink.api`, `talos.events.sink`, and `talos.logging.kernel` with the kerenl parameters copied from the dashboard.
 
-Place the following in `/var/lib/matchbox/groupss/default.json`:
+Place the following in `/var/lib/matchbox/groups/default.json`:
 
 ### Create the Group
 
