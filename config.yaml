@@ -52,8 +52,8 @@ params:
         url: "https://slack.dev.talos-systems.io"
         icon: fab fa-slack
         desc: Chat with other project developers
-      - name: Office hours (16:30 UTC)
-        url: "https://meet.google.com/day-pxhv-zky"
+      - name: Office hours (2nd Monday every month @ 16:30 UTC)
+        url: "https://meet.google.com/ivb-kjfm-jfc"
         icon: fa fa-video
         desc: Discussion and help from your fellow users
       - name: Contact us
