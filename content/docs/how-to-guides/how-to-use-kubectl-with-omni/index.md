@@ -5,29 +5,33 @@ draft: false
 weight: 90
 ---
 
-This guide shows you how to use `kubectl` with an Omni-managed cluster.
+With an Omni managed cluster, you use `kubectl` as with any other Kubernetes cluster, with the caveat that you must use the `kubeconfig` file that you download from Omni, and have the OIDC plug-in installed for your `kubectl`.
 
+All Kubernetes `kubectl` commands are routed through the API endpoint created by Omni, and Omni validates access through the configured OIDC provider or other user authorization mechanism.
+This ensures your Kubernetes cluster is safe - unlike other systems, mere possession of a `kubeconfig` grants no access - the user also has be valid in the configured authentication system of Omni.
+
+### Download the KubeConfig file
 Navigate to the clusters page by clicking on the "Clusters" button in the sidebar.
 
-{{< imgproc 1.png Resize "900x" >}}
-{{< /imgproc >}}
-
-Click the three dots in the cluster's item to access the options menu.
-
-{{< imgproc 2.png Resize "900x" >}}
-{{< /imgproc >}}
-
-Click "Download kubeconfig".
-
-{{< imgproc 3.png Resize "900x" >}}
-{{< /imgproc >}}
-
-Alternatively you can click on the cluster and download the `kubeconfig` from the cluster dashboard.
+Click on the cluster and download the `kubeconfig` from the cluster dashboard.
+The downloaded file will reflect the name of the cluster.
 
 {{< imgproc 4.png Resize "900x" >}}
 {{< /imgproc >}}
 
-Install the `oidc-login` plugin per the official documentation: https://github.com/int128/kubelogin.
+### Install the OIDC plug in
+Install the `oidc-login` plugin per the official documentation: https://github.com/int128/kubelogin#getting-started
+
+### Access the cluster with kubectl
+```
+kubectl --kubeconfig ./talos-default-kubeconfig.yaml get nodes
+```
+Be sure you use the name of the downloaded kubeconfig file, which will vary with the name of the cluster.
+
+The first time you use the `kubectl` command to query a cluster, a browser window will open requiring you to authenticate with your identity provider.
+
+ > If you get a message `error: unknown command "oidc-login" for "kubectl" Unable to connect to the server` then you need to install the oidc-login plugin as noted above, and ensure it is in your $PATH.
+
 
 ## OIDC authentication over SSH
 If you need to use `kubectl`, `talosctl`, or `omnictl` on a remote host over SSH you may need a way to forward your local client traffic to the remote host where `kubectl-oidc_login` is installed.

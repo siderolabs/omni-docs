@@ -1,7 +1,7 @@
 ---
 title: "Configure Keycloak for Omni"
 draft: false
-weight: 220
+weight: 200
 ---
 
 1. Log in to Keycloak.
