@@ -76,7 +76,7 @@ gpg --quick-generate-key "Omni (Used for etcd data encryption) how-to-guide@side
 This will generate a new GPG key pair with the specified properties.
 
 What's going on here?
-- `quick-gnerate-key` allows us to quickly generate a new GPG key pair.
+- `quick-generate-key` allows us to quickly generate a new GPG key pair.
 -`"Omni (Used for etcd data encryption) how-to-guide@siderolabs.com"` is the user ID associated with the key which generally consists of the real name, a comment, and an email address for the user.
 - `rsa4096` specifies the algorithm type and key size.
 - `cert` means this key can be used to certify other keys.
@@ -99,7 +99,7 @@ gpg --quick-add-key $FPR rsa4096 encr never
 ```
 
 In this command:
-- `$FPR` is the fingprint of the key we are adding the subkey to.
+- `$FPR` is the fingerprint of the key we are adding the subkey to.
 - `rsa4096` and `encr` specify that the new subkey will be an RSA encryption key with a size of 4096 bits.
 - `never` means this subkey will never expire.
 
@@ -170,8 +170,8 @@ Gitea
 Keycloak
 - `quay.io/keycloak/keycloak:21.1.1`
 Omni
-- `ghcr.io/siderolabs/omni:v0.11.0`
-    - [Contact Us](https://www.siderolabs.com/contact/) if you would like the image used to deploy Omni in an airgapped, or on-prem environement.
+- `ghcr.io/siderolabs/omni:v0.31.0`
+   
 - `ghcr.io/siderolabs/imager:v1.4.5`
     - pull this image to match the version of Talos you would like to use.
 Talos
@@ -214,7 +214,7 @@ docker save -o image-tarfile.tar \
   images
 ```
 
-Here is an an example of the command used for the images in this tutuorial:
+Here is an an example of the command used for the images in this tutorial:
 
 ```bash
 docker save -o registry/all_images.tar \
@@ -309,22 +309,22 @@ You may now log in at the `https://${GITEA_HOSTNAME}:3000` to begin configuring 
 
 ### Gitea setup
 
-This is just the bare minimum setup to run Omni.  Gitea has many additional configuration options and security measures to use in accordance with your industry's security standards. More information on the configuration of Gitea can be found (here)[https://docs.gitea.com/].
+This is just the bare minimum setup to run Omni.  Gitea has many additional configuration options and security measures to use in accordance with your industry's security standards. More information on the configuration of Gitea can be found [here](https://docs.gitea.com/).
 
 #### Create a user
 
-Click the **Register** button at the **top right** corner.  The first user created will be created as an admin and permissions which can be adjusted accordingly afterwards if you like.
+Click the **Register** button at the **top right** corner.  The first user created will be created as an administrator - permissions can be adjusted afterwards if you like.
 
 #### Create organizations
 
-After registering an admin user, the organizations, can be created which will act as the package repositories for storing images.  Create the following organizations:
+After registering an admin user, the organizations can be created which will act as the package repositories for storing images.  Create the following organizations:
 - `siderolabs`
 - `keycloak`
 - `coredns`
 - `etcd-development`
 - `registry-k8s-io-proxy`
 
-> **NOTE:** If you are using self-signed certs and would like to push images to your local Gitea using Docker, you will also need to configure your certs.d directory as described (here)[https://docs.docker.com/engine/security/certificates/].
+> **NOTE:** If you are using self-signed certs and would like to push images to your local Gitea using Docker, you will also need to configure your certs.d directory as described [here](https://docs.docker.com/engine/security/certificates/).
 
 ### Push Images to Gitea
 

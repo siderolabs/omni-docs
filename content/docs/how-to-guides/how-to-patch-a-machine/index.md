@@ -2,7 +2,7 @@
 title: "Create a Patch For Cluster Machines"
 description: "A guide on how to create a config patch for a machine in a cluster."
 draft: false
-weight: 60
+weight: 40
 ---
 
 Omni allows you to create patches and target the patches to all members of a cluster; all control plane nodes; all worker nodes; or specific machines.
@@ -11,7 +11,7 @@ Now, select "Config Patches" from the menu under the ellipsis:
 
 {{< imgproc 1.png Resize "900x" >}}
 {{< /imgproc >}}
-(Yoou can also navigate to the specific cluster, and then select Config Patches in the right hand menu.)
+(You can also navigate to the specific cluster, and then select Config Patches in the right hand menu.)
 
 Next, click "Create Patch":
 

@@ -44,3 +44,11 @@ Some common use cases are:
 ## Ready to get started?
 
 [Sign Up](https://signup.siderolabs.io/) to start your free 2 week trial and start exploring today!
+
+## Status
+For the real-time status of Omni and other Sidero Labs services, see https://status.siderolabs.com/
+You can subscribe to updates by clicking the Bell icon in the top right corner.
+
+## Security notifications
+If you have a security question, concern or issue with Omni, please email security@siderolabs.com
+

@@ -15,10 +15,12 @@ Each version of Omni will support versions of Talos Linux where the first stable
 For example, because Talos Linux 1.3.0 was released on 2022-12-15, the Omni version released on Jun 30th, 2024 will not support any version of 1.3.x, even though patch releases of 1.3 were made within the prior 18 months.
 However, all versions of Talos Linux Talos 1.4 and later (which was released on 2023-04-18) are supported.
 
-> Note: SecureBoot with Omni is only supported for Talos Linux versions of 1.7.0 or greater.
+
 
 ### Current minimum Talos Linux support within Omni
 Talos Linux 1.3
+
+> Note: SecureBoot with Omni is only supported for Talos Linux versions of 1.7.0 or greater.
 
 Note that each version of Talos Linux generally supports up to five prior versions of Kubernetes at the time it was released.
 See https://www.talos.dev/latest/introduction/support-matrix/ for details.

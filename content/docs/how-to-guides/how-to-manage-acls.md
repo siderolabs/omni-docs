@@ -2,7 +2,7 @@
 title: "Manage Access Policies (ACLs)"
 description: "A guide on how to manage Omni ACLs."
 #date: 2023-05-28T12:00:00Z
-weight: 50
+weight: 40
 ---
 
 This guide will show how to give the user `support@example.com` full access to the `staging` cluster but limited access to the `production` cluster.

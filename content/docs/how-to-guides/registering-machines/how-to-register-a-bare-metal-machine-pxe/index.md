@@ -51,7 +51,7 @@ Place the following in `/var/lib/matchbox/profiles/default.json`:
 }
 ```
 
-Update `siderolink.api`, `talos.events.sink`, and `talos.logging.kernel` with the kerenl parameters copied from the dashboard.
+Update `siderolink.api`, `talos.events.sink`, and `talos.logging.kernel` with the kernel parameters copied from the dashboard.
 
 Place the following in `/var/lib/matchbox/groups/default.json`:
 

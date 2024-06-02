@@ -2,7 +2,7 @@
 title: "Auto-assign roles to SAML users"
 description: "A guide on how to assign Omni roles to SAML users automatically."
 draft: false
-weight: 60
+weight: 40
 ---
 
 This guide shows you how to configure your Omni instance, so that new users logging in

@@ -2,7 +2,7 @@
 title: "Use Kubectl With Omni"
 date: 2022-11-17T10:14:18-08:00
 draft: false
-weight: 90
+weight: 40
 ---
 
 With an Omni managed cluster, you use `kubectl` as with any other Kubernetes cluster, with the caveat that you must use the `kubeconfig` file that you download from Omni, and have the OIDC plug-in installed for your `kubectl`.

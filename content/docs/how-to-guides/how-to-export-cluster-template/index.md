@@ -2,7 +2,7 @@
 title: "Export a Cluster Template from a Cluster Created in the UI"
 description: "A guide on how to export a cluster template from a cluster created in the UI."
 draft: false
-weight: 60
+weight: 40
 ---
 
 This guide shows you how to export a cluster template from a cluster created in the UI.

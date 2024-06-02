@@ -12,7 +12,7 @@ Small differences should be expected when using a different OS.
 For SAML integration sections, this guide assumes Azure AD will be the provider for SAML.
 
 {{% alert title="Note" color="info" %}}
-Omni is availble via a [Business Source License](https://github.com/siderolabs/omni/blob/main/LICENSE) which allows free installations in non-production environments.
+Omni is available via a [Business Source License](https://github.com/siderolabs/omni/blob/main/LICENSE) which allows free installations in non-production environments.
 If you would like to deploy Omni for production use please contact [Sidero sales](mailto:sales@siderolabs.com?subject=Omni%20license%20inquiry&body=Hello,%20I%20would%20like%20to%20purchase%20an%20on-prem%20license%20for%20Omni.).
 If you would like to subscribe to the hosted version of Omni please see the [SaaS pricing](https://www.siderolabs.com/pricing/).
 {{% /alert %}}

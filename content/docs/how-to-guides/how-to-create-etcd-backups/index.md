@@ -3,7 +3,7 @@ title: "Create Etcd Backups"
 date: 2023-11-11T07:00:00-07:00
 description: "A guide on how to create cluster etcd backups using Omni."
 draft: false
-weight: 60
+weight: 40
 ---
 
 ## CLI

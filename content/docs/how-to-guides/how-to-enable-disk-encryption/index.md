@@ -3,7 +3,7 @@ title: "Enable Disk Encryption"
 description: "A guide on how to enable Omni KMS assisted disk encryption for a cluster."
 date: 2022-10-30T15:50:38-07:00
 draft: false
-weight: 60
+weight: 40
 ---
 
 {{< tabpane text=true >}}

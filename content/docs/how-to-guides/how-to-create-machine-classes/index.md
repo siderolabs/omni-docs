@@ -3,7 +3,7 @@ title: "Create a Machine Class"
 description: "A guide on how to create a machine class."
 date: 2023-10-25T17:19:38+04:00
 draft: false
-weight: 60
+weight: 40
 ---
 
 This guide shows you how to create and a machine class.

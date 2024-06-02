@@ -2,7 +2,7 @@
 title: Install Talos System Extensions
 description: "A guide on how to install Talos system extensions."
 draft: false
-weight: 60
+weight: 40
 ---
 
 {{< tabpane text=true >}}

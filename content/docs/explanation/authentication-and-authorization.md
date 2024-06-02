@@ -24,6 +24,6 @@ SAML alters Omni user management:
   - the first user gets `Admin` role;
   - any subsequently created user gets `None` role.
   - `Admin` can change other users' roles.
-  - Creating or deleting a user is not possible.
-  - Omni gets user attributes from SAML assertion and adds them as labels to `Identity` resource with `saml.omni.sidero.dev/` prefix.
+  - Creating or deleting a user is not possible from within Omni - only within the IdP.
+  - Omni gets the user attributes from the SAML assertion and adds them as labels to `Identity` resource with `saml.omni.sidero.dev/` prefix.
   - ACL can be used to adjust fine grained permissions instead of changing the user roles.
