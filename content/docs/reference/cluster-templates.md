@@ -128,6 +128,7 @@ systemExtensions:
 | `kubernetes.version` | string | Kubernetes version to use, `vA.B.C`. |
 | `talos.version` | string | Talos version to use, `vA.B.C`. |
 | `features.enableWorkloadProxy` | boolean | Whether to enable the workload proxy feature. Defaults to `false`. |
+| `features.useEmbeddedDiscoveryService` | boolean | Whether to use the embedded discovery service that runs inside the Omni instance instead of the public one (`discovery.talos.dev`). Defaults to `false`. It is only valid if the Omni instance has the feature enabled. |
 | `features.diskEncryption` | boolean | Whether to enable disk encryption. Defaults to `false`. |
 | `features.backupConfiguration.interval` | string | Cluster etcd backup interval. Must be a valid [Go duration](https://pkg.go.dev/time#ParseDuration). Zero `0` disables automatic backups. |
 | `patches` | array | List of [patches](#patches) to apply to the cluster. |
@@ -137,7 +138,7 @@ systemExtensions:
 
 The `ControlPlane` document specifies the control plane configuration, defines the number of control plane nodes, and the list of machines to use.
 
-As control plane machines run an `etcd` cluster, it is recommended to use a number of machines for the control plane that can achieve a stable quorum (i.e. 1, 3, 5, etc.).
+As control plane machines run an `etcd` cluster, it is recommended to use a number of machines for the control plane that can achieve a stable quorum (e.g., 1, 3, 5, etc.).
 Changing the set of machines in the control plane will trigger a rolling scale-up/scale-down of the control plane.
 
 The control plane should have at least a single machine, but it is recommended to use at least 3 machines for the control plane for high-availability.
