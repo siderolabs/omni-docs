@@ -14,7 +14,7 @@ You need to deploy an omni instance the [how to deploy omni on prem guide](https
 --advertised-api-url=https://$OMNI_DOMAIN/
 --bind-addr=127.0.0.1:8080
 --machine-api-bind-addr=127.0.0.1:8090
---siderolink-api-advertised-url=grpcs://api.$OMNI_DOMAIN:443
+--siderolink-api-advertised-url=https://api.$OMNI_DOMAIN:443
 --k8s-proxy-bind-addr=127.0.0.1:8100
 --advertised-kubernetes-proxy-url=https://kube.$OMNI_DOMAIN/
 --account-id=$OMNI_UUID
@@ -96,4 +96,4 @@ http {
 
 # How to use
 
-The omni instance will be available at `https://$OMNI_DOMAIN/`, the API at `grpcs://api.$OMNI_DOMAIN/` and the kubernetes proxy at `https://kube.$OMNI_DOMAIN/`.
+The omni instance will be available at `https://$OMNI_DOMAIN/`, the API at `https://api.$OMNI_DOMAIN/` and the kubernetes proxy at `https://kube.$OMNI_DOMAIN/`.
