@@ -2,6 +2,8 @@
 title: "Configure Keycloak for Omni"
 draft: false
 weight: 200
+aliases:
+  - ../how-to-configure-keycloak-for-omni/
 ---
 
 1. Log in to Keycloak.

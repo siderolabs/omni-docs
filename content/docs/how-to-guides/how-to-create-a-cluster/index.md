@@ -4,6 +4,8 @@ description: "A guide on how to create a cluster."
 date: 2022-10-30T15:50:38-07:00
 draft: false
 weight: 40
+aliases:
+  - ../how-to-enable-disk-encryption/
 ---
 
 This guide shows you how to create a cluster from registered machines.
@@ -13,6 +15,12 @@ This guide shows you how to create a cluster from registered machines.
 
 First, click the "Clusters" section button in the sidebar.
 Next, click the "Create Cluster" button.
+
+You may name the cluster, as well specify the version of Talos Linux and Kubernetes that the cluster should be created with.
+You may also enable  optional cluster features, such as Disk Encryption or [Workload Service Proxying](../how-to-expose-http-service-from-a-cluster/index.md).
+
+> Note that disk encryption can only be enabled during cluster creation.
+Enabling this checkbox will configure the cluster to use Omni as a [Key Management Server](../../explanation/omni-kms-disk-encryption.md), and local disk access will not the possible unless the machine is connected to Omni. 
 
 {{% imgproc how-to-create-a-cluster-1.png Resize "900x" %}}
 {{% /imgproc %}}
@@ -34,9 +42,9 @@ Create a file called `cluster.yaml` with the following content:
 kind: Cluster
 name: example
 kubernetes:
-  version: v1.26.0
+  version: v1.27.0
 talos:
-  version: v1.3.2
+  version: v1.5.2
 ---
 kind: ControlPlane
 machines:
@@ -56,6 +64,20 @@ name: <worker machine UUID>
 install:
   disk: /dev/<disk>
 ```
+
+> If enabling optional features such as disk encryption, add them to the Cluster document e.g.:
+```yaml
+kind: Cluster
+name: example
+kubernetes:
+  version: v1.27.0
+talos:
+  version: v1.5.2
+features:
+  diskEncryption: true
+```
+
+
 
 {{% alert title="Note" color="info" %}}
 Be sure to update the UUIDs and install disks with the UUIDs and disks of the machines in your account.

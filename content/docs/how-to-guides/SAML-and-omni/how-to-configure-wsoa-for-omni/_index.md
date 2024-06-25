@@ -3,6 +3,8 @@ title: Configure Workspace ONE Access for Omni
 description: "How to configure VMware Workspace ONE Access for Omni using SAML."
 draft: false
 weight: 230
+aliases:
+  - ../how-to-configure-wsoa-for-omni/
 ---
 
 ## Workspace ONE Access

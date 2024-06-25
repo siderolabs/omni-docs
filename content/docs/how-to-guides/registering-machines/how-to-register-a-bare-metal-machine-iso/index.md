@@ -4,6 +4,8 @@ description: "A guide on how to register bare metal machines with Omni using an 
 date: 2022-10-29T09:38:16-07:00
 draft: false
 weight: 10
+aliases:
+  - ../how-to-register-a-bare-metal-machine-iso/
 ---
 
 This guide shows you how to register a bare metal machine with Omni by booting from an ISO.

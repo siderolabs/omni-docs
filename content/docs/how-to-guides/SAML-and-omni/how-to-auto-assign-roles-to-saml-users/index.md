@@ -3,9 +3,11 @@ title: "Auto-assign roles to SAML users"
 description: "A guide on how to assign Omni roles to SAML users automatically."
 draft: false
 weight: 40
+aliases:
+  - ../how-to-auto-assign-roles-to-saml-users/
 ---
 
-This guide shows you how to configure your Omni instance, so that new users logging in
+This guide shows you how to configure your Omni instance so that new users logging in
 with SAML authentication are automatically assigned to a role based on their SAML role attributes.
 
 Create the file `assign-operator-to-engineers-label.yaml` for the `SAMLLabelRule` resource, with the following content:

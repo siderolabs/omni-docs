@@ -3,6 +3,8 @@ title: "Deploy Omni On-prem"
 date: 2022-11-17T13:06:13-08:00
 draft: false
 weight: 200
+aliases:
+  - ../how-to-deploy-omni-on-prem/
 ---
 
 This guide shows you how to deploy Omni on-prem.

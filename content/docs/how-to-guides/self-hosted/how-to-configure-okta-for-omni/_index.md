@@ -2,6 +2,9 @@
 title: "Configure Okta for Omni"
 draft: false
 weight: 240
+aliases:
+  - ../how-to-configure-okta-for-omni/
+
 ---
 
 1. Log in to Otka

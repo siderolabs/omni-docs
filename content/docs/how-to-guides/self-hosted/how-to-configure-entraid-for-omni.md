@@ -2,6 +2,9 @@
 title: "Configure Entra ID AD for Omni"
 draft: false
 weight: 230
+aliases:
+  - ../how-to-configure-entraid-for-omni/
+
 ---
 
 In the Azure portal, click "Enterprise Applications".

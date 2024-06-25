@@ -3,24 +3,23 @@ title: "Add a User to Omni with SAML Enabled"
 description: "A guide on how to add a user to Omni with SAML authentication enabled."
 draft: false
 weight: 60
+aliases:
+  - ../how-to-add-saml-users/
 ---
 
 This guide shows you how to create a user in an Omni instance with SAML authentication enabled.
 
-Enable new user access to Omni in your SAML identity provider.
-
-Make user login from the new user account.
+Grant the new user access to Omni in your SAML identity provider.
+The new user should login to the new user account, in order for Omni to have the account synchronized with the SAML provider.
 
 Log into Omni using another account with `Admin` permissions.
-
-Find newly added user in the list of users.
-
+Find the newly added user in the list of users.
 Now, select "Edit User" from the menu under the ellipsis:
 
 {{< imgproc 1.png Resize "900x" >}}
 {{< /imgproc >}}
 
-Change its role to `Reader`, `Operator` or `Admin`:
+Change the role to `Reader`, `Operator` or `Admin` as appropriate:
 
 {{< imgproc 2.png Resize "900x" >}}
 {{< /imgproc >}}
