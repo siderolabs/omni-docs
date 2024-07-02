@@ -797,36 +797,9 @@ omnictl config add <context> [flags]
 ### Options
 
 ```
-      --basic-auth string   basic auth credentials
-  -h, --help                help for add
-      --identity string     identity to use for authentication
-      --url string          URL of the server (default "grpc://127.0.0.1:8080")
-```
-
-### Options inherited from parent commands
-
-```
-      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
-      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
-      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
-```
-
-### SEE ALSO
-
-* [omnictl config](#omnictl-config)	 - Manage the client configuration file (omniconfig)
-
-## omnictl config basic-auth
-
-Set the basic auth credentials
-
-```
-omnictl config basic-auth <username> <password> [flags]
-```
-
-### Options
-
-```
-  -h, --help   help for basic-auth
+  -h, --help              help for add
+      --identity string   identity to use for authentication
+      --url string        URL of the server (default "grpc://127.0.0.1:8080")
 ```
 
 ### Options inherited from parent commands
@@ -986,10 +959,9 @@ omnictl config new [<path>] [flags]
 ### Options
 
 ```
-      --basic-auth string   basic auth credentials
-  -h, --help                help for new
-      --identity string     identity to use for authentication
-      --url string          URL of the server (default "grpc://127.0.0.1:8080")
+  -h, --help              help for new
+      --identity string   identity to use for authentication
+      --url string        URL of the server (default "grpc://127.0.0.1:8080")
 ```
 
 ### Options inherited from parent commands
@@ -1052,7 +1024,6 @@ Manage the client configuration file (omniconfig)
 
 * [omnictl](#omnictl)	 - A CLI for accessing Omni API.
 * [omnictl config add](#omnictl-config-add)	 - Add a new context
-* [omnictl config basic-auth](#omnictl-config-basic-auth)	 - Set the basic auth credentials
 * [omnictl config context](#omnictl-config-context)	 - Set the current context
 * [omnictl config contexts](#omnictl-config-contexts)	 - List defined contexts
 * [omnictl config identity](#omnictl-config-identity)	 - Set the auth identity for the current context
@@ -1107,7 +1078,7 @@ It accepts one argument, which is the name of the image to download. Name can be
      * iso - downloads the latest ISO image
      * AWS AMI (amd64), Vultr (arm64), Raspberry Pi 4 Model B - full image name
      * oracle, aws, vmware - platform name
-     * rockpi_4, rock64 - board name
+     * rpi_generic, rockpi_4c, rock64 - board name
 
 To get the full list of available images, look at the output of the following command:
     omnictl get installationmedia -o yaml
@@ -1129,7 +1100,7 @@ To download the latest Vultr image, run:
 
 To download the latest Radxa ROCK PI 4 image, run:
 
-    omnictl download "rockpi_4"
+    omnictl download "rpi_generic"
 
 
 ```
@@ -1139,10 +1110,15 @@ omnictl download <image name> [flags]
 ### Options
 
 ```
-      --arch string                  Image architecture to download (amd64, arm64) (default "amd64")
-  -h, --help                         help for download
-      --initial-labels stringArray   Bake initial labels into the generated installation media
-      --output string                Output file or directory, defaults to current working directory (default ".")
+      --arch string                     Image architecture to download (amd64, arm64) (default "amd64")
+      --extensions stringArray          Generate installation media with extensions pre-installed
+      --extra-kernel-args stringArray   Add extra kernel args to the generated installation media
+  -h, --help                            help for download
+      --initial-labels stringArray      Bake initial labels into the generated installation media
+      --output string                   Output file or directory, defaults to current working directory (default ".")
+      --pxe                             Print PXE URL and exit
+      --secureboot                      Download SecureBoot enabled installation media
+      --talos-version string            Talos version to be used in the generated installation media (default "1.7.4")
 ```
 
 ### Options inherited from parent commands
@@ -1210,9 +1186,11 @@ omnictl kubeconfig [local-path] [flags]
 ### Options
 
 ```
+      --break-glass                 get kubeconfig that allows accessing nodes bypasing Omni (if enabled for the account)
   -c, --cluster string              cluster to use
   -f, --force                       force overwrite of kubeconfig if already present, force overwrite on kubeconfig merge
       --force-context-name string   force context name for kubeconfig merge
+      --grant-type string           Authorization grant type to use. One of (auto|authcode|authcode-keyboard)
       --groups strings              group to be used in the service account token (groups). only used when --service-account is set to true (default [system:masters])
   -h, --help                        help for kubeconfig
   -m, --merge                       merge with existing kubeconfig (default true)
@@ -1400,6 +1378,39 @@ Manage service accounts
 * [omnictl serviceaccount list](#omnictl-serviceaccount-list)	 - List service accounts
 * [omnictl serviceaccount renew](#omnictl-serviceaccount-renew)	 - Renew a service account by registering a new public key to it
 
+## omnictl support
+
+Download the support bundle for a cluster
+
+### Synopsis
+
+The command collects all non-sensitive information for the cluster from the Omni state.
+
+```
+omnictl support [local-path] [flags]
+```
+
+### Options
+
+```
+  -c, --cluster string   cluster to use
+  -h, --help             help for support
+  -O, --output string    support bundle output (default "support.zip")
+  -v, --verbose          verbose output
+```
+
+### Options inherited from parent commands
+
+```
+      --context string             The context to be used. Defaults to the selected context in the omniconfig file.
+      --insecure-skip-tls-verify   Skip TLS verification for the Omni GRPC and HTTP API endpoints.
+      --omniconfig string          The path to the omni configuration file. Defaults to 'OMNICONFIG' env variable if set, otherwise the config directory according to the XDG specification.
+```
+
+### SEE ALSO
+
+* [omnictl](#omnictl)	 - A CLI for accessing Omni API.
+
 ## omnictl talosconfig
 
 Download the admin talosconfig of a cluster
@@ -1417,7 +1428,7 @@ omnictl talosconfig [local-path] [flags]
 ### Options
 
 ```
-      --admin            get admin talosconfig (DEBUG-ONLY)
+      --break-glass      get operator talosconfig that allows bypassing Omni (if enabled for the account)
   -c, --cluster string   cluster to use
   -f, --force            force overwrite of talosconfig if already present
   -h, --help             help for talosconfig
@@ -1461,5 +1472,6 @@ A CLI for accessing Omni API.
 * [omnictl kubeconfig](#omnictl-kubeconfig)	 - Download the admin kubeconfig of a cluster
 * [omnictl machine-logs](#omnictl-machine-logs)	 - Get logs for a machine
 * [omnictl serviceaccount](#omnictl-serviceaccount)	 - Manage service accounts
+* [omnictl support](#omnictl-support)	 - Download the support bundle for a cluster
 * [omnictl talosconfig](#omnictl-talosconfig)	 - Download the admin talosconfig of a cluster
 
