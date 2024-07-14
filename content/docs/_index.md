@@ -17,7 +17,7 @@ Omni is a Kubernetes management platform that simplifies the creation and manage
 
 #### Simple
 
-Omni automates the creation of a highly available API endpoint, transparently provides secure encryption, and automates Kubernetes and OS upgrades. Omni works on the edge as it does for large data centers.
+Omni automatically creates a highly available API endpoint, transparently provides secure encryption, and automates Kubernetes and OS upgrades. Omni works on the edge as it does for large data centers.
 
 Omni is also available for license for on-premises installations.
 
