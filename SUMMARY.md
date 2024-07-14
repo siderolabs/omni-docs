@@ -69,6 +69,7 @@
           * [Configure Keycloak for Omni](content/docs/how-to-guides/self-hosted/how-to-configure-keycloak-for-omni/\_index.md)
         * [how-to-configure-okta-for-omni](content/docs/how-to-guides/self-hosted/how-to-configure-okta-for-omni/README.md)
           * [Configure Okta for Omni](content/docs/how-to-guides/self-hosted/how-to-configure-okta-for-omni/\_index.md)
+        * [Configure Unifi Identity Enterprise for Omni](content/docs/how-to-guides/SAML-and-omni/how-to-configure-uiie-for-omni/index.md)
         * [how-to-deploy-omni-on-prem](content/docs/how-to-guides/self-hosted/how-to-deploy-omni-on-prem/README.md)
           * [Deploy Omni On-prem](content/docs/how-to-guides/self-hosted/how-to-deploy-omni-on-prem/index.md)
         * [how-to-expose-omni-with-nginx](content/docs/how-to-guides/self-hosted/how-to-expose-omni-with-nginx/README.md)

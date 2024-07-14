@@ -83,7 +83,8 @@ Take note of the following information from the Auth0 application:
 - [EntraID/Azure AD](../how-to-configure-entraid-for-omni)
 - [Keycloak](../how-to-configure-keycloak-for-omni)
 - [Okta](../how-to-configure-okta-for-omni)
-- [Workspace ONE Access](../../saml-and-omni/how-to-configure-wsoa-for-omni)
+- [Workspace ONE Access](../../SAML-and-omni/how-to-configure-wsoa-for-omni)
+- [Unifi Identity Enterprise](../../SAML-and-omni/how-to-configure-uiie-for-omni)
 
 ## Create Etcd Encryption Key
 
