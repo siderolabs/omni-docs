@@ -11,14 +11,14 @@ layout:
   description:
     visible: true
   tableOfContents:
-    visible: true
+    visible: false
   outline:
     visible: true
   pagination:
     visible: true
 ---
 
-# Omni Documentation
+# Omni Documentation&#x20;
 
 Welcome to the Omni user guide! This guide shows you everything from getting started to more advanced deployments with Omni.
 
