@@ -5,6 +5,17 @@ weight: 10
 menu:
   main:
     weight: 10
+layout:
+  title:
+    visible: false
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Omni Documentation
