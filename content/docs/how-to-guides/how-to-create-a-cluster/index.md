@@ -1,40 +1,48 @@
 ---
-title: "Create a Cluster"
-description: "A guide on how to create a cluster."
-date: 2022-10-30T15:50:38-07:00
+title: Create a Cluster
+date: 2022-10-30T22:50:38.000Z
 draft: false
 weight: 40
 aliases:
   - ../how-to-enable-disk-encryption/
+description: A guide on how to create a cluster.
 ---
+
+# Create a Cluster
 
 This guide shows you how to create a cluster from registered machines.
 
-{{< tabpane text=true >}}
-{{% tab header="UI" %}}
+\{{< tabpane text=true >\}} {
 
-First, click the "Clusters" section button in the sidebar.
-Next, click the "Create Cluster" button.
 
-You may name the cluster, as well specify the version of Talos Linux and Kubernetes that the cluster should be created with.
-You may also enable  optional cluster features, such as Disk Encryption or [Workload Service Proxying](../how-to-expose-http-service-from-a-cluster/index.md).
 
-> Note that disk encryption can only be enabled during cluster creation.
-Enabling this checkbox will configure the cluster to use Omni as a [Key Management Server](../../explanation/omni-kms-disk-encryption.md), and local disk access will not the possible unless the machine is connected to Omni. 
+}
 
-{{% imgproc how-to-create-a-cluster-1.png Resize "900x" %}}
-{{% /imgproc %}}
+First, click the "Clusters" section button in the sidebar. Next, click the "Create Cluster" button.
 
-Select the role for each machine you would like to create a cluster from.
-Now that each machine has a role, choose the install disk from the dropdown menu for each machine.
-Finally, click "Create Cluster"
+You may name the cluster, as well specify the version of Talos Linux and Kubernetes that the cluster should be created with. You may also enable optional cluster features, such as Disk Encryption or [Workload Service Proxying](../how-to-expose-http-service-from-a-cluster/index.md).
 
-{{% imgproc how-to-create-a-cluster-2.png Resize "900x" %}}
-{{% /imgproc %}}
+> Note that disk encryption can only be enabled during cluster creation. Enabling this checkbox will configure the cluster to use Omni as a [Key Management Server](../../explanation/omni-kms-disk-encryption.md), and local disk access will not the possible unless the machine is connected to Omni.
 
-{{% /tab %}}
+{
 
-{{% tab header="CLI Manual Allocation" %}}
+} {}
+
+Select the role for each machine you would like to create a cluster from. Now that each machine has a role, choose the install disk from the dropdown menu for each machine. Finally, click "Create Cluster"
+
+{
+
+} {}
+
+{
+
+}
+
+{
+
+
+
+}
 
 Create a file called `cluster.yaml` with the following content:
 
@@ -66,6 +74,7 @@ install:
 ```
 
 > If enabling optional features such as disk encryption, add them to the Cluster document e.g.:
+
 ```yaml
 kind: Cluster
 name: example
@@ -77,11 +86,9 @@ features:
   diskEncryption: true
 ```
 
+{
 
-
-{{% alert title="Note" color="info" %}}
-Be sure to update the UUIDs and install disks with the UUIDs and disks of the machines in your account.
-{{% /alert %}}
+} Be sure to update the UUIDs and install disks with the UUIDs and disks of the machines in your account. {}
 
 Now, validate the document:
 
@@ -101,9 +108,15 @@ Finally, wait for the cluster to be up:
 omnictl cluster template status -f cluster.yaml
 ```
 
-{{% /tab %}}
+{
 
-{{% tab header="CLI Machine Classes" %}}
+}
+
+{
+
+
+
+}
 
 Create a file called `cluster.yaml` with the following content:
 
@@ -132,7 +145,7 @@ machineClass:
   size: unlimited
 ```
 
-Be sure to create machine classes `control-planes`, `workers` and `secondary-workers` beforehand. See [machine classes how-to](/docs/how-to-guides/how-to-create-machine-classes/).
+Be sure to create machine classes `control-planes`, `workers` and `secondary-workers` beforehand. See [machine classes how-to](../../../../docs/how-to-guides/how-to-create-machine-classes/).
 
 Now, validate the document:
 
@@ -152,6 +165,8 @@ Finally, wait for the cluster to be up:
 omnictl cluster template status -f cluster.yaml
 ```
 
-{{% /tab %}}
+{
 
-{{< /tabpane >}}
+}
+
+\{{< /tabpane >\}}

@@ -1,33 +1,32 @@
 ---
 title: Register a Hetzner Server
-description: "A guide on how to register a Hetzner server with Omni."
-date: 2022-11-16T12:46:28-08:00
+date: 2022-11-16T20:46:28.000Z
 draft: false
 weight: 40
+description: A guide on how to register a Hetzner server with Omni.
 ---
+
+# Register a Hetzner Server
 
 This guide shows you how to register a Hetzner server with Omni.
 
-## Dashboard
+### Dashboard
 
 Upon logging in you will be presented with the Omni dashboard.
 
-{{< imgproc register-a-hetzner-server-1.png Resize "900x" >}}
-{{< /imgproc >}}
+\{{< imgproc register-a-hetzner-server-1.png Resize "900x" >\}} \{{< /imgproc >\}}
 
-## Download the Hetzner Image
+### Download the Hetzner Image
 
-First, download the Hetzner image from the Omni portal by clicking on the "Download Installation Media" button.
-Now, click on the "Options" dropdown menu and search for the "Hetzner" option.
-Notice there are two options: one for `amd64` and another for `arm64`.
-Select the appropriate option for the machine you are registering.
-Now, click the "Download" button.
+First, download the Hetzner image from the Omni portal by clicking on the "Download Installation Media" button. Now, click on the "Options" dropdown menu and search for the "Hetzner" option. Notice there are two options: one for `amd64` and another for `arm64`. Select the appropriate option for the machine you are registering. Now, click the "Download" button.
 
-{{< imgproc register-a-hetzner-server-2.png Resize "900x" >}}
-{{< /imgproc >}}
+\{{< imgproc register-a-hetzner-server-2.png Resize "900x" >\}} \{{< /imgproc >\}}
 
-{{< tabpane text=true >}}
-{{% tab header="Packer" %}}
+\{{< tabpane text=true >\}} {
+
+
+
+}
 
 Place the following in the same directory as the downloaded installation media and name the file `hcloud.pkr.hcl`:
 
@@ -81,10 +80,11 @@ packer build .
 
 Take note of the image ID produced by by running this command.
 
-{{% /tab %}}
-{{< /tabpane >}}
+{
 
-## Create a Server
+} \{{< /tabpane >\}}
+
+### Create a Server
 
 ```bash
 hcloud context create talos
@@ -94,16 +94,14 @@ hcloud server create --name omni-talos-1 \
     --type cx21 --location <location>
 ```
 
-{{% alert title="Warning" color="warning" %}}
-Machines must be able to egress to your account's WireGuard port and port 443.
-{{% /alert %}}
+{
 
-## Conclusion
+} Machines must be able to egress to your account's WireGuard port and port 443. {}
 
-Navigate to the "Machines" menu in the sidebar.
-You should now see a machine listed.
+### Conclusion
 
-{{< imgproc register-a-hetzner-server-3.png Resize "900x" >}}
-{{< /imgproc >}}
+Navigate to the "Machines" menu in the sidebar. You should now see a machine listed.
+
+\{{< imgproc register-a-hetzner-server-3.png Resize "900x" >\}} \{{< /imgproc >\}}
 
 You now have a Hetzner server registered with Omni and ready to provision.

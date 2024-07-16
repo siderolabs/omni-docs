@@ -1,2 +1,0 @@
-# SAML-and-omni
-

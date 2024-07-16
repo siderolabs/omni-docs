@@ -1,42 +1,44 @@
 ---
-title: "Register an Azure Instance"
-description: "A guide on how to register an Azure instance with Omni."
-date: 2023-05-1T15:35:30-07:00
+title: Register an Azure Instance
+date: 2023-05-01T22:35:30.000Z
 draft: false
 weight: 30
+description: A guide on how to register an Azure instance with Omni.
 ---
+
+# Register an Azure Instance
 
 This guide shows you how to register an Azure instance with Omni.
 
-## Dashboard
+### Dashboard
 
 Upon logging in you will be presented with the Omni dashboard.
 
-{{< imgproc 1.png Resize "900x" >}}
-{{< /imgproc >}}
+\{{< imgproc 1.png Resize "900x" >\}} \{{< /imgproc >\}}
 
-## Download the Image
+### Download the Image
 
-Download the Azure image from the Omni portal by clicking on the "Download Installation Media" button.
-Click on the "Options" dropdown menu and search for the "Azure" option.
-Notice there are two options: one for `amd64` and another for `arm64`.
-Select the appropriate architecture for the machine you are registering, then click the "Download" button.
+Download the Azure image from the Omni portal by clicking on the "Download Installation Media" button. Click on the "Options" dropdown menu and search for the "Azure" option. Notice there are two options: one for `amd64` and another for `arm64`. Select the appropriate architecture for the machine you are registering, then click the "Download" button.
 
 Once downloaded to your local machine, untar with `tar -xvf /path/to/image`
 
-## Upload the Image
+### Upload the Image
 
-{{< tabpane text=true >}}
-{{% tab header="UI" %}}
+\{{< tabpane text=true >\}} {
 
-In the Azure console, navigate to `Storage accounts`, and create a new storage account.
-Once the account is provisioned, navigate to the resource and click `Upload`. In the `Upload Blob` form, select `Create New` container, and name your container (e.g. `omni-may-2023`).
-Now click `Browse for Files`, and select the `disk.vhd` file that you uncompressed above, then select `Upload`.
 
-{{% /tab %}}
-{{% tab header="CLI" %}}
-We'll make use of the following environment variables throughout the setup.
-Edit the variables below with your correct information.
+
+}
+
+In the Azure console, navigate to `Storage accounts`, and create a new storage account. Once the account is provisioned, navigate to the resource and click `Upload`. In the `Upload Blob` form, select `Create New` container, and name your container (e.g. `omni-may-2023`). Now click `Browse for Files`, and select the `disk.vhd` file that you uncompressed above, then select `Upload`.
+
+{
+
+} {
+
+
+
+} We'll make use of the following environment variables throughout the setup. Edit the variables below with your correct information.
 
 ```bash
 # Storage account to use
@@ -68,21 +70,27 @@ az storage blob upload \
   -n omni-azure.vhd
 ```
 
-{{% /tab %}}
-{{< /tabpane >}}
+{
 
-## Convert the Image
+} \{{< /tabpane >\}}
 
-{{< tabpane text=true >}}
-{{% tab header="UI" %}}
+### Convert the Image
 
-In the Azure console select `Images`, and then `Create`.
-Select a Resource Group, Name your image (e.g. omni-may), and set the OS type to Linux.
-Now `Browse` to the storage blob created above, navigating to the container with the uploaded `disk.vhd`.
-Select "Standard HDD" for account type, then click `Review and Create`, then `Create`.
+\{{< tabpane text=true >\}} {
 
-{{% /tab %}}
-{{% tab header="CLI" %}}
+
+
+}
+
+In the Azure console select `Images`, and then `Create`. Select a Resource Group, Name your image (e.g. omni-may), and set the OS type to Linux. Now `Browse` to the storage blob created above, navigating to the container with the uploaded `disk.vhd`. Select "Standard HDD" for account type, then click `Review and Create`, then `Create`.
+
+{
+
+} {
+
+
+
+}
 
 Now that the image is present in our blob storage, we'll register it.
 
@@ -94,15 +102,19 @@ az image create \
   -g $GROUP
 ```
 
-{{% /tab %}}
-{{< /tabpane >}}
+{
 
-## Create an Azure Instance
+} \{{< /tabpane >\}}
 
-{{< tabpane text=true >}}
+### Create an Azure Instance
 
-{{% tab header="CLI" %}}
-Creating an instance requires setting the os-disk-size property, which is easiest to achieve via the CLI:
+\{{< tabpane text=true >\}}
+
+{
+
+
+
+} Creating an instance requires setting the os-disk-size property, which is easiest to achieve via the CLI:
 
 ```bash
 az vm create \
@@ -115,10 +127,10 @@ az vm create \
     --os-disk-size-gb 20
 ```
 
-{{% /tab %}}
-{{< /tabpane >}}
+{
 
-## Conclusion
+} \{{< /tabpane >\}}
 
-In the Omni UI, navigate to the "Machines" menu in the sidebar.
-You should now see the Azure machine that was created listed as an available machine, registered with Omni and ready to provision.
+### Conclusion
+
+In the Omni UI, navigate to the "Machines" menu in the sidebar. You should now see the Azure machine that was created listed as an available machine, registered with Omni and ready to provision.

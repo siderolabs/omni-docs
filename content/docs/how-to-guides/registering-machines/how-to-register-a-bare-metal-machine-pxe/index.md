@@ -1,29 +1,32 @@
 ---
 title: Register a Bare Metal Machine (PXE/iPXE)
-description: "A guide on how to register a bare metal machines with Omni using PXE/iPXE."
-date: 2022-11-15T15:55:21-08:00
+date: 2022-11-15T23:55:21.000Z
 draft: false
 weight: 20
+description: A guide on how to register a bare metal machines with Omni using PXE/iPXE.
 ---
+
+# Register a Bare Metal Machine (PXE/iPXE)
 
 This guide shows you how to register a bare metal machine with Omni by PXE/iPXE booting.
 
-## Copy the Required Kernel Parameters
+### Copy the Required Kernel Parameters
 
-Upon logging in you will be presented with the Omni dashboard.
-Click the "Copy Kernel Parameters" button and save the value for later.
+Upon logging in you will be presented with the Omni dashboard. Click the "Copy Kernel Parameters" button and save the value for later.
 
-{{< imgproc register-a-bare-metal-machine-pxe-1.png Resize "900x" >}}
-{{< /imgproc >}}
+\{{< imgproc register-a-bare-metal-machine-pxe-1.png Resize "900x" >\}} \{{< /imgproc >\}}
 
-{{< tabpane text=true >}}
-{{% tab header="Matchbox" %}}
+\{{< tabpane text=true >\}} {
 
-## Download the PXE/iPXE Assets
+
+
+}
+
+### Download the PXE/iPXE Assets
 
 Download `vmlinuz` and `initramfs.xz` from the [release](https://github.com/siderolabs/talos/releases) of your choice (Talos Linux 1.2.6 or greater is required), and place them in `/var/lib/matchbox/assets`.
 
-### Create the Profile
+#### Create the Profile
 
 Place the following in `/var/lib/matchbox/profiles/default.json`:
 
@@ -55,7 +58,7 @@ Update `siderolink.api`, `talos.events.sink`, and `talos.logging.kernel` with th
 
 Place the following in `/var/lib/matchbox/groups/default.json`:
 
-### Create the Group
+#### Create the Group
 
 ```json
 {
@@ -65,17 +68,16 @@ Place the following in `/var/lib/matchbox/groups/default.json`:
 }
 ```
 
-{{% /tab %}}
-{{< /tabpane >}}
+{
+
+} \{{< /tabpane >\}}
 
 Once your machine is configured to PXE boot using your tool of choice, power the machine on.
 
-## Conclusion
+### Conclusion
 
-Navigate to the "Machines" menu in the sidebar.
-You should now see a machine listed.
+Navigate to the "Machines" menu in the sidebar. You should now see a machine listed.
 
-{{< imgproc register-a-bare-metal-machine-pxe-2.png Resize "900x" >}}
-{{< /imgproc >}}
+\{{< imgproc register-a-bare-metal-machine-pxe-2.png Resize "900x" >\}} \{{< /imgproc >\}}
 
 You now have a bare metal machine registered with Omni and ready to provision.

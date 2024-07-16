@@ -1,40 +1,38 @@
 ---
 title: Register a Bare Metal Machine (ISO)
-description: "A guide on how to register bare metal machines with Omni using an ISO."
-date: 2022-10-29T09:38:16-07:00
+date: 2022-10-29T16:38:16.000Z
 draft: false
 weight: 10
 aliases:
   - ../how-to-register-a-bare-metal-machine-iso/
+description: A guide on how to register bare metal machines with Omni using an ISO.
 ---
+
+# Register a Bare Metal Machine (ISO)
 
 This guide shows you how to register a bare metal machine with Omni by booting from an ISO.
 
-## Dashboard
+### Dashboard
 
 Upon logging in you will be presented with the Omni dashboard.
 
-{{< imgproc register-a-bare-metal-machine-iso-1.png Resize "900x" >}}
-{{< /imgproc >}}
+\{{< imgproc register-a-bare-metal-machine-iso-1.png Resize "900x" >\}} \{{< /imgproc >\}}
 
-## Download the ISO
+### Download the ISO
 
-First, download the ISO from the Omni portal by clicking on the "Download Installation Media" button.
-Now, click on the "Options" dropdown menu and search for the "ISO" option.
-Notice there are two options: one for `amd64` and another for `arm64`.
-Select the appropriate option for the machine you are registering.
-Now that you have selected the ISO option for the appropriate architecture, click the "Download" button.
+First, download the ISO from the Omni portal by clicking on the "Download Installation Media" button. Now, click on the "Options" dropdown menu and search for the "ISO" option. Notice there are two options: one for `amd64` and another for `arm64`. Select the appropriate option for the machine you are registering. Now that you have selected the ISO option for the appropriate architecture, click the "Download" button.
 
-{{< imgproc register-a-bare-metal-machine-iso-2.png Resize "900x" >}}
-{{< /imgproc >}}
+\{{< imgproc register-a-bare-metal-machine-iso-2.png Resize "900x" >\}} \{{< /imgproc >\}}
 
-## Write the ISO to a USB Stick
+### Write the ISO to a USB Stick
 
-First, plug the USB drive into your local machine.
-Now, find the device path for your USB drive and write the ISO to the USB drive.
+First, plug the USB drive into your local machine. Now, find the device path for your USB drive and write the ISO to the USB drive.
 
-{{< tabpane text=true >}}
-{{% tab header="macOS" %}}
+\{{< tabpane text=true >\}} {
+
+
+
+}
 
 ```zsh
 diskutil list
@@ -51,8 +49,13 @@ In this example `disk2` is the USB drive.
 dd if=<path to ISO> of=/dev/disk2 conv=fdatasync
 ```
 
-{{% /tab %}}
-{{% tab header="Linux" %}}
+{
+
+} {
+
+
+
+}
 
 ```zsh
 $ lsblk
@@ -68,24 +71,22 @@ In this example `sdb` is the USB drive.
 dd if=<path to ISO> of=/dev/sdb conv=fdatasync
 ```
 
-{{% /tab %}}
-{{< /tabpane >}}
+{
 
-## Boot the Machine
+} \{{< /tabpane >\}}
 
-Now that we have our bootable USB drive, plug it into the machine you are registering.
-Once the machine is booting you will notice logs from Talos Linux on the console stating that it is reachable over an IP address.
+### Boot the Machine
 
-{{% alert title="Warning" color="warning" %}}
-Machines must be able to egress to your account's WireGuard port and port 443.
-{{% /alert %}}
+Now that we have our bootable USB drive, plug it into the machine you are registering. Once the machine is booting you will notice logs from Talos Linux on the console stating that it is reachable over an IP address.
 
-## Conclusion
+{
 
-Navigate to the "Machines" menu in the sidebar.
-You should now see a machine listed.
+} Machines must be able to egress to your account's WireGuard port and port 443. {}
 
-{{< imgproc register-a-bare-metal-machine-iso-3.png Resize "900x" >}}
-{{< /imgproc >}}
+### Conclusion
+
+Navigate to the "Machines" menu in the sidebar. You should now see a machine listed.
+
+\{{< imgproc register-a-bare-metal-machine-iso-3.png Resize "900x" >\}} \{{< /imgproc >\}}
 
 You now have a bare metal machine registered with Omni and ready to provision.
