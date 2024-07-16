@@ -5,20 +5,9 @@ weight: 10
 menu:
   main:
     weight: 10
-layout:
-  title:
-    visible: false
-  description:
-    visible: true
-  tableOfContents:
-    visible: false
-  outline:
-    visible: true
-  pagination:
-    visible: true
 ---
 
-# Omni Documentation&#x20;
+# Omni Documentation
 
 Welcome to the Omni user guide! This guide shows you everything from getting started to more advanced deployments with Omni.
 
@@ -54,6 +43,8 @@ Some common use cases are:
 ### Status
 
 For the real-time status of Omni and other Sidero Labs services, see https://status.siderolabs.com/ You can subscribe to updates by clicking the Bell icon in the top right corner.
+
+For a list of the most recent updates, bug fixes and changes, please see and subscribe to the GitHub [Release notes.](https://github.com/siderolabs/omni/releases)
 
 ### Security notifications
 
