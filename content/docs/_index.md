@@ -19,7 +19,9 @@ Omni is a Kubernetes management platform that simplifies the creation and manage
 
 Omni automatically creates a highly available Kubernetes API endpoint, transparently provides secure encryption, and automates Kubernetes and OS upgrades. Omni is perfectly suited for managing edge clusters or single node clusters, and in large data centers.
 
-Omni is also available for license for on-premises installations.
+Omni is available as a SaaS operated by Sidero Labs, and for licensing for on-premises installations.
+
+Enterprise support and fully managed and operated plans are available.
 
 #### Secure
 
@@ -27,7 +29,7 @@ Omni creates clusters with both Kubernetes and the OS configured for best-practi
 
 ### Is Omni for me?
 
-Omni is excellent for managing clusters in just about any environment you have. Machines in the cloud, on-premise, edge, home - they all can be managed with Omni. Unique to Omni you can even create hybrid clusters consisting of machines in disparate locations around the world.
+Omni is excellent for managing clusters in just about any environment you have. Machines in the cloud, on-premise, edge, home - they all can be managed with Omni. With Omni you can even create hybrid clusters consisting of machines in disparate locations around the world.
 
 Some common use cases are:
 
@@ -40,9 +42,11 @@ Some common use cases are:
 
 [Sign Up](https://signup.siderolabs.io/) to start your free 2 week trial and start exploring today!
 
+We suggest you join the #omni channel in our community [slack channel](https://slack.dev.talos-systems.io/)
+
 ### Status
 
-For the real-time status of Omni and other Sidero Labs services, see https://status.siderolabs.com/ You can subscribe to updates by clicking the Bell icon in the top right corner.
+For real-time status of Omni and other Sidero Labs services, see https://status.siderolabs.com/ You can subscribe to updates by clicking the Bell icon in the top right corner.
 
 For a list of the most recent updates, bug fixes and changes, please see and subscribe to the GitHub [Release notes.](https://github.com/siderolabs/omni/releases)
 
