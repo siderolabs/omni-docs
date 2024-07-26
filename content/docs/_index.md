@@ -53,3 +53,9 @@ For a list of the most recent updates, bug fixes and changes, please see and sub
 ### Security notifications
 
 If you have a security question, concern or issue with Omni, please email security@siderolabs.com
+
+
+
+```markup
+Note: Omni and Talos Linux may utilize KubeSpan, covered under U.S. Patent 11,968,180
+```
