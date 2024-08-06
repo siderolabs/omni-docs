@@ -1,4 +1,3 @@
-root: ./content/docs/
 
 structure:
-  readme: ./_index.md
+  readme: ./content/docs/_index.md
