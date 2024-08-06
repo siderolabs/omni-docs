@@ -2,4 +2,3 @@ root: ./content/docs/
 
 structure:
   readme: ./_index.md
-  summary: ./SUMMARY.md
