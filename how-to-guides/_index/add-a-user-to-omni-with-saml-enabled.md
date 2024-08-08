@@ -10,7 +10,7 @@ Grant the new user access to Omni in your SAML identity provider. The new user s
 
 Log into Omni using another account with `Admin` permissions. Find the newly added user in the list of users. Now, select “Edit User” from the menu under the ellipsis:
 
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/saml-and-omni/how-to-add-saml-users/1_hua901737e4925730a232bd3bea08818ea_124383_900x0_resize_catmullrom_3.png" alt="" height="431" width="900"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 Change the role to `Reader`, `Operator` or `Admin` as appropriate:
 
