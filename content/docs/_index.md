@@ -1,12 +1,3 @@
----
-title: Omni Documentation
-linkTitle: Documentation
-weight: 10
-menu:
-  main:
-    weight: 10
----
-
 # Omni Documentation
 
 Welcome to the Omni user guide! This guide shows you everything from getting started to more advanced deployments with Omni.
@@ -20,6 +11,10 @@ Omni is a Kubernetes management platform that simplifies the creation and manage
 Omni automatically creates a highly available Kubernetes API endpoint, transparently provides secure encryption, and automates Kubernetes and OS upgrades. Omni is perfectly suited for managing edge clusters or single node clusters, and in large data centers.
 
 Omni is available as a SaaS operated by Sidero Labs, and for licensing for on-premises installations.
+
+{% hint style="info" %}
+Omni is released under the BUSL. Using Omni for production use requires a commercial license. Contact [sales@SideroLabs.com](mailto:sales@siderolabs.com) for more information. Non-production use, such as using Omni for a home lab, does not require a license.
+{% endhint %}
 
 Enterprise support and fully managed and operated plans are available.
 
@@ -46,16 +41,16 @@ We suggest you join the #omni channel in our community [slack channel](https://s
 
 ### Status
 
-For real-time status of Omni and other Sidero Labs services, see https://status.siderolabs.com/ You can subscribe to updates by clicking the Bell icon in the top right corner.
+For real-time status of Omni and other Sidero Labs services, see [https://status.siderolabs.com/ ](https://status.siderolabs.com/)
 
-For a list of the most recent updates, bug fixes and changes, please see and subscribe to the GitHub [Release notes.](https://github.com/siderolabs/omni/releases)
+You can subscribe to updates by clicking the Bell icon in the top right corner.
+
+For recent updates, bug fixes and changes, subscribe to the GitHub [Release notes.](https://github.com/siderolabs/omni/releases)
 
 ### Security notifications
 
-If you have a security question, concern or issue with Omni, please email security@siderolabs.com
+If you have a security question, concern or issue with Omni, please email [security@siderolabs.com](mailto:security@siderolabs.com)
 
-
-
-```markup
-Note: Omni and Talos Linux may utilize KubeSpan, covered under U.S. Patent 11,968,180
-```
+{% hint style="info" %}
+Omni and Talos Linux may utilize KubeSpan, covered under U.S. Patent 11,968,180
+{% endhint %}
