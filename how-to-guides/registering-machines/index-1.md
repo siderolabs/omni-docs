@@ -8,9 +8,7 @@ This guide shows you how to register a bare metal machine with Omni by PXE/iPXE 
 
 ### Copy the Required Kernel Parameters <a href="#copy-the-required-kernel-parameters" id="copy-the-required-kernel-parameters"></a>
 
-Upon logging in you will be presented with the Omni dashboard. Click the “Copy Kernel Parameters” button and save the value for later.
-
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/registering-machines/how-to-register-a-bare-metal-machine-pxe/register-a-bare-metal-machine-pxe-1_hu0be398a1d6bb39386fc95dcd73c16f2d_294360_900x0_resize_catmullrom_3.png" alt="" height="563" width="900"><figcaption></figcaption></figure>
+Upon logging in you will be presented with the Omni dashboard. Click the “Copy Kernel Parameters” button on the right hand side, and save the value for later.
 
 ### Download the PXE/iPXE Assets <a href="#download-the-pxeipxe-assets" id="download-the-pxeipxe-assets"></a>
 
@@ -64,8 +62,6 @@ Once your machine is configured to PXE boot using your tool of choice, power the
 
 ### Conclusion <a href="#conclusion" id="conclusion"></a>
 
-Navigate to the “Machines” menu in the sidebar. You should now see a machine listed.
-
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/registering-machines/how-to-register-a-bare-metal-machine-pxe/register-a-bare-metal-machine-pxe-2_hub2723a3bce83670dc2756e84b1b5c70c_291403_900x0_resize_catmullrom_3.png" alt="" height="582" width="900"><figcaption></figcaption></figure>
+Navigate to the “Machines” menu in the sidebar of Omni. You should now see a machine listed.
 
 You now have a bare metal machine registered with Omni and ready to provision.

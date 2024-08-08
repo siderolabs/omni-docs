@@ -2,33 +2,23 @@
 description: A guide on how to install Talos system extensions.
 ---
 
-# Install Talos System Extensions
+# Install Talos Linux Extensions
 
 {% tabs %}
 {% tab title="UI" %}
 
 
-On the overview page click “Download Installation Media” button:
-
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/how-to-install-talos-system-extensions/1_hu8cd91d96fbe1337d206c057b94486f4c_787685_900x0_resize_q75_catmullrom.jpg" alt="" height="527" width="900"><figcaption></figcaption></figure>
+On the overview page click “Download Installation Media” button on the right.
 
 Select the list of extensions you want to be installed on the machine, Talos version and installation media type:
 
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/how-to-install-talos-system-extensions/2_hu8cd91d96fbe1337d206c057b94486f4c_911357_900x0_resize_q75_catmullrom.jpg" alt="" height="527" width="900"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/2.jpg" alt=""><figcaption></figcaption></figure>
 
-Click “Download”:
-
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/how-to-install-talos-system-extensions/3_hu8cd91d96fbe1337d206c057b94486f4c_872286_900x0_resize_q75_catmullrom.jpg" alt="" height="527" width="900"><figcaption></figcaption></figure>
+Click “Download”
 
 Boot the machine with that installation media. It will have all extensions installed.
 
-{% hint style="info" %}
-{% code overflow="wrap" %}
-```
-Updating extensions after the cluster is created is possible only when using CLI.
-```
-{% endcode %}
-{% endhint %}
+You can also add, remove or modify the extensions on an existing machine in a cluster by navigating to the Nodes view in a cluster, clicking on a machine, selecting the Extensions panel, then select Update Extensions to add or remove extensions.
 {% endtab %}
 
 {% tab title="CLI" %}

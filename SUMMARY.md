@@ -35,7 +35,7 @@
     * [Configure Keycloak for Omni](how-to-guides/\_index-1/\_index.md)
     * [Back Up On-prem Omni Database](how-to-guides/\_index-1/how-to-back-up-on-prem-omni-db.md)
     * [How to expose Omni with Nginx (HTTPS)](how-to-guides/\_index-1/index-1.md)
-  * [Install Talos System Extensions](how-to-guides/index-6.md)
+  * [Install Talos Linux Extensions](how-to-guides/index-6.md)
   * [Scale a Cluster Up or Down](how-to-guides/index-7.md)
   * [Etcd backups](how-to-guides/index-8.md)
   * [Restore Etcd of a Cluster Managed by Cluster Templates](how-to-guides/index-9.md)

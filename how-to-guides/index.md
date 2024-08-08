@@ -8,23 +8,23 @@ This guide shows you how to create a cluster from registered machines.
 
 {% tabs %}
 {% tab title="UI" %}
-First, click the "Clusters" section button in the sidebar. Next, click the "Create Cluster" button.
+First, click the "Clusters" section button in the sidebar. Next, click the "Create Cluster" button on the right.
 
-You may name the cluster, as well as specify the version of Talos Linux and Kubernetes that the cluster should be created with. You may also enable optional cluster features, such as Disk Encryption or [Workload Service Proxying](index-12.md).
+You may name the cluster, as well as specify the version of Talos Linux and Kubernetes that the cluster should be created with. You may also enable optional cluster features, such as [Disk Encryption](../explanation/omni-kms-disk-encryption.md) or [Workload Service Proxying](index-12.md).
 
 {% hint style="info" %}
 Note that disk encryption can only be enabled during cluster creation. Enabling this checkbox will configure the cluster to use Omni as a [Key Management Server](../explanation/omni-kms-disk-encryption.md), and local disk access will not the possible unless the machine is connected to Omni.
 {% endhint %}
 
+From the Available Machines list, select the role (CP for control plane, WX (where X is a number) for workers) for each machine you would like to be a member of the cluster. Optionally, choose the install disk for the OS from the dropdown menu for each machine.&#x20;
 
+<figure><img src="../.gitbook/assets/Screenshot 2024-08-07 at 8.49.09 PM.png" alt=""><figcaption></figcaption></figure>
 
+Finally, click “Create Cluster”
 
-
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/how-to-create-a-cluster/how-to-create-a-cluster-1_hu0be398a1d6bb39386fc95dcd73c16f2d_322061_900x0_resize_catmullrom_3.png" alt="" height="563" width="900"><figcaption></figcaption></figure>
-
-Select the role for each machine you would like to create a cluster from. Now that each machine has a role, choose the install disk from the dropdown menu for each machine. Finally, click “Create Cluster”
-
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/how-to-create-a-cluster/how-to-create-a-cluster-2_hub2723a3bce83670dc2756e84b1b5c70c_367125_900x0_resize_catmullrom_3.png" alt="" height="582" width="900"><figcaption></figcaption></figure>
+{% hint style="info" %}
+For HA clusters, 3 control plane nodes are required.
+{% endhint %}
 {% endtab %}
 
 {% tab title="CLI with manual machine allocation" %}

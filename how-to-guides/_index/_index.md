@@ -3,10 +3,12 @@
 1. Log in to Otka
 2. Create a new App Integration
 3. Select “SAML 2.0”
-4. Give the Application a recognisable name (we suggest simply “Omni”)
-5. Set the SAML Settings and Attribute Statements as show below:
+4. Give the Application a recognizable name (we suggest simply “Omni”)
+5. Set the SAML Settings and Attribute Statements as shown below:
 
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/self-hosted/how-to-configure-okta-for-omni/okta_create_saml_app_hu45dbf777b0f214075ee3b6298aad066b_92305_600x0_resize_catmullrom_3.png" alt="" height="920" width="600"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/okta_create_saml_app.png" alt=""><figcaption></figcaption></figure>
+
+
 
 6. Click “Next” and optionally fill out the Feedback, then click “Finish”
 

@@ -8,7 +8,7 @@ This guide shows you how to create a cluster consisting of any combination of ba
 
 Refer to the general guide on creating a cluster to get started. To create a hybrid cluster, navigate to the cluster, then apply the following cluster patch by clicking on "Config Patches", and create a new patch with the target of "Cluster":
 
-\{{< imgproc how-to-create-a-hybrid-cluster-1.png Resize "900x" >\}} \{{< /imgproc >\}}
+<figure><img src="../.gitbook/assets/Screenshot 2024-08-07 at 9.28.24 PM.png" alt=""><figcaption></figcaption></figure>
 
 ```yaml
 machine:

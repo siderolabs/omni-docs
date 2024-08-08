@@ -10,11 +10,9 @@ You first need to enable the workload service proxying feature on the cluster yo
 
 If you are creating a new cluster, you can enable the feature by checking the checkbox in the “Cluster Features” section:
 
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/how-to-expose-http-service-from-a-cluster/1_hube5cdec06c430ebcb1241aa5e52a7514_540691_900x0_resize_catmullrom_3.png" alt="" height="551" width="900"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2024-08-07 at 10.06.49 PM.png" alt=""><figcaption></figcaption></figure>
 
-If you have an existing cluster, simply check the checkbox in the features section of the cluster overview page:
-
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/how-to-expose-http-service-from-a-cluster/2_hu70ac6cdf22cf9b56cc898881605733c3_489682_900x0_resize_catmullrom_3.png" alt="" height="555" width="900"><figcaption></figcaption></figure>
+For an existing cluster, simply check the checkbox in the features section of the cluster overview page.
 
 If you are using cluster templates, you can enable the feature by adding the following to the cluster template YAML:
 
@@ -108,8 +106,6 @@ gzip -c icon.svg | base64
 You will notice that the Service you annotated will appear under the “Exposed Services” section in Omni Web, on the left menu when the cluster is selected.
 
 Clicking it will render the Service in Omni.
-
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/how-to-expose-http-service-from-a-cluster/3_hu3bad979e686e2c1bd1e1d3b9e779ec0b_227328_900x0_resize_catmullrom_3.png" alt="" height="594" width="900"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 This feature only works with HTTP services. **Raw TCP or UDP are not supported**.

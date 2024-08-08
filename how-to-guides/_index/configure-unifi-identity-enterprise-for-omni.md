@@ -12,15 +12,15 @@ First, login to the UIIE Manager portal and navigate to the SSO Apps section in 
 
 Next, Add a new app. Choose “Add Custom App”
 
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/saml-and-omni/how-to-configure-uiie-for-omni/001_hube88d041c8722ff5870e1a557ef7f5fb_20291_700x0_resize_catmullrom_3.png" alt="" height="217" width="700"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/001 (1).png" alt=""><figcaption></figcaption></figure>
 
 Next, click Add on the “SAML 2.0” option for Sign-on Method
 
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/saml-and-omni/how-to-configure-uiie-for-omni/002_hu40d8958b6353cdf71550173f3bdedd66_36379_700x0_resize_catmullrom_3.png" alt="" height="218" width="700"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/002 (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 You’ll now be in the Add SAML 2.0 App screen where we’ll define the app.
 
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/saml-and-omni/how-to-configure-uiie-for-omni/003_hu1df4c52570a243c2222fd1d15fa9a41e_52043_700x0_resize_catmullrom_3.png" alt="" height="711" width="700"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/003 (1).png" alt=""><figcaption></figcaption></figure>
 
 | Option                      | Value                                  | Description                                                             |
 | --------------------------- | -------------------------------------- | ----------------------------------------------------------------------- |
@@ -39,15 +39,15 @@ You’ll now be on the screen to manage the app, here you’ll want to assign us
 
 Once you’ve assigned the user(s) accordingly, click the “Settings” bubble at the top of the screen as some final configuration is needed here.
 
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/saml-and-omni/how-to-configure-uiie-for-omni/004_hu46f83771c0b601857c193ca0a5028f8e_4547_300x0_resize_catmullrom_3.png" alt="" height="57" width="300"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/004 (1).png" alt=""><figcaption></figcaption></figure>
 
 Expand the “Sign On” section at the bottom of the settings page via the “Show More” down arrow.
 
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/saml-and-omni/how-to-configure-uiie-for-omni/005_hue8664a600bc11a2201622be11020c424_3607_700x0_resize_catmullrom_3.png" alt="" height="64" width="700"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/005 (1).png" alt=""><figcaption></figcaption></figure>
 
 At the bottom of this section, you’ll see an “Attibute Statements” block, here the mappings from UIIE to Omni fields needs to be entered as below. Use the “Add Another” button to create new ones.
 
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/saml-and-omni/how-to-configure-uiie-for-omni/006_hu3b220caa2fc90e79d17bded94497ce18_14816_700x0_resize_catmullrom_3.png" alt="" height="158" width="700"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/006 (1).png" alt=""><figcaption></figcaption></figure>
 
 | Name      | Name Format | Value      | Description              |
 | --------- | ----------- | ---------- | ------------------------ |
@@ -57,7 +57,7 @@ At the bottom of this section, you’ll see an “Attibute Statements” block, 
 
 Lastly, you’ll need the IDP Metadata file which can be obtained via the View Setup Instructions link or downloaded as an xml file via the Identity Provider metadata link; both of which are slightly further up the page.
 
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/saml-and-omni/how-to-configure-uiie-for-omni/007_hufc071bbd2302f90af4e9922640382f19_19488_700x0_resize_catmullrom_3.png" alt="" height="146" width="700"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/007 (1).png" alt=""><figcaption></figcaption></figure>
 
 A copy of this file needs to be on the host which will run the Omni container as we’ll feed it in to the container at runtime. You can copy paste contents or download/upload the file whichever is easiest. For the remainder of this guide, we’ll assume this file ends up at the following location on your container host: `~/uiieIDPmetadata.xml`
 

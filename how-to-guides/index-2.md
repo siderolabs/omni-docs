@@ -8,9 +8,7 @@ All Kubernetes `kubectl` commands are routed through the API endpoint created by
 
 Navigate to the clusters page by clicking on the “Clusters” button in the sidebar.
 
-Click on the cluster and download the `kubeconfig` from the cluster dashboard. The downloaded file will reflect the name of the cluster.
-
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/how-to-use-kubectl-with-omni/4_hub2723a3bce83670dc2756e84b1b5c70c_1012765_900x0_resize_catmullrom_3.png" alt="" height="582" width="900"><figcaption></figcaption></figure>
+Click on the cluster and then click "Download  kubeconfig" from the cluster dashboard on the right. The downloaded file will reflect the name of the cluster.
 
 #### Install the OIDC plug in <a href="#install-the-oidc-plug-in" id="install-the-oidc-plug-in"></a>
 

@@ -72,13 +72,9 @@ When users access the Kubernetes cluster through Omni, they will have the groups
 
 Kubernetes RBAC then can be used to grant permissions to these groups.
 
-{
-
-} Only the users who have the Omni role `Admin` can manage ACLs.
-
-Users who have the Omni role `Operator` or above are assigned to the Kubernetes role `system:masters` by default, in addition to the ACLs. {
-
-}
+{% hint style="info" %}
+Only the users who have the Omni role `Admin` can manage ACLs. Users who have the Omni role `Operator` or above are assigned to the Kubernetes role `system:masters` by default, in addition to the ACLs.&#x20;
+{% endhint %}
 
 ### Create Kubernetes RBAC resources
 
@@ -139,10 +135,8 @@ kubectl get pod -n default
 
 The user should not be able to list pods in namespace `default`.
 
-{
+{% hint style="warning" %}
+If the user `support@example.com` has the Omni role `Operator` or above assigned, they will have `system:masters` role in Kubernetes as well as the `my-app-read-only` role.
 
-} If the user `support@example.com` has the Omni role `Operator` or above assigned, they will have `system:masters` role in Kubernetes as well as the `my-app-read-only` role.
-
-Therefore, they will still be able to list pods in all namespaces. {
-
-}
+Therefore, they will still be able to list pods in all namespaces.
+{% endhint %}

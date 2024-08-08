@@ -8,8 +8,6 @@ description: A guide on how to register an Azure instance with Omni.
 
 Upon logging in you will be presented with the Omni dashboard.
 
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/registering-machines/how-to-register-an-azure-instance/1_hu0be398a1d6bb39386fc95dcd73c16f2d_294614_900x0_resize_catmullrom_3.png" alt="" height="563" width="900"><figcaption></figcaption></figure>
-
 ### Download the Image <a href="#download-the-image" id="download-the-image"></a>
 
 Download the Azure image from the Omni portal by clicking on the “Download Installation Media” button. Click on the “Options” dropdown menu and search for the “Azure” option. Notice there are two options: one for `amd64` and another for `arm64`. Select the appropriate architecture for the machine you are registering, then click the “Download” button.
