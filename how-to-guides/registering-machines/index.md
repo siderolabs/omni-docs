@@ -69,6 +69,4 @@ Machines must be able to egress to your account’s WireGuard port and TCP port 
 
 Navigate to the “Machines” menu in the sidebar of Omni. You should now see a machine listed.
 
-<figure><img src="https://omni.siderolabs.com/docs/how-to-guides/registering-machines/how-to-register-a-bare-metal-machine-iso/register-a-bare-metal-machine-iso-3_hub2723a3bce83670dc2756e84b1b5c70c_291403_900x0_resize_catmullrom_3.png" alt="" height="582" width="900"><figcaption></figcaption></figure>
-
 You now have a bare metal machine registered with Omni and ready to provision.
