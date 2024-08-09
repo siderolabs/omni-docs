@@ -64,11 +64,11 @@ Take note of the following information from the Auth0 application:
 
 #### SAML Identity Providers
 
-* [EntraID/Azure AD](../\_index/how-to-configure-entraid-for-omni.md)
+* [EntraID/Azure AD](../using-saml-with-omni/how-to-configure-entraid-for-omni.md)
 * [Keycloak](\_index.md)
-* [Okta](../\_index/\_index.md)
-* [Workspace ONE Access](../\_index/configure-workspace-one-access-for-omni.md)
-* [Unifi Identity Enterprise](../\_index/configure-unifi-identity-enterprise-for-omni.md)
+* [Okta](../using-saml-with-omni/\_index.md)
+* [Workspace ONE Access](../using-saml-with-omni/configure-workspace-one-access-for-omni.md)
+* [Unifi Identity Enterprise](../using-saml-with-omni/configure-unifi-identity-enterprise-for-omni.md)
 
 ### Create Etcd Encryption Key
 
