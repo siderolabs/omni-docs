@@ -14,6 +14,10 @@ To create an Omni service account, use the following command:
 omnictl serviceaccount create <sa-name>
 ```
 
+{% hint style="info" %}
+By default, the created service account will have a lifetime of 1 year, and uses the role of the creating user. These options can be adjusted by passing in the `--ttl` and `--role` parameters to the command. [See the command for details](../reference/cli.md#omnictl-serviceaccount-create).
+{% endhint %}
+
 The output of this command will print `OMNI_ENDPOINT` and `OMNI_SERVICE_ACCOUNT_KEY`.
 
 {% hint style="warning" %}
