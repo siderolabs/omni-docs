@@ -16,7 +16,7 @@ Each version of Omni will support versions of Talos Linux where the first stable
 
 #### Current minimum Talos Linux support within Omni
 
-Talos Linux 1.3
+Talos Linux 1.4
 
 > Note: SecureBoot with Omni is only supported for Talos Linux versions of 1.7.0 or greater.
 
