@@ -1,5 +1,5 @@
 root: ./
 
 redirects:
-  docs/how-to-guides/self-hosted/how-to-deploy-omni-on-prem/: how-to-guides/self_hosted/index.md
+  docs/how-to-guides/self-hosted/how-to-deploy-omni-on-prem: how-to-guides/self_hosted/index.md
 
