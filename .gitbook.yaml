@@ -1,3 +1,5 @@
+root: ./
 
-structure:
-  readme: ./content/docs/_index.md
+redirects:
+  docs/how-to-guides/self-hosted/how-to-deploy-omni-on-prem/: how-to-guides/self_hosted/index.md
+
