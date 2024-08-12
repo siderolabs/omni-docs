@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Omni Documentation](content/docs/\_index.md)
+* [Omni Documentation](README.md)
 * [Omni Support Matrix](support.md)
 * [Tutorials](tutorials/README.md)
   * [Getting Started with Omni](tutorials/getting\_started.md)
@@ -26,7 +26,7 @@
   * [Install talosctl](how-to-guides/how-to-install-talosctl.md)
   * [Install and Configure Omnictl](how-to-guides/index-1.md)
   * [Use Kubectl With Omni](how-to-guides/index-2.md)
-  * [Create a Kubeconfig for a Service Account](how-to-guides/index-3.md)
+  * [Create a Kubeconfig for a Service Account](how-to-guides/create-a-kubeconfig-for-a-service-account.md)
   * [Create a Patch For Cluster Machines](how-to-guides/index-4.md)
   * [Manage Access Policies (ACLs)](how-to-guides/how-to-manage-acls.md)
   * [Create a Hybrid Cluster](how-to-guides/index-5.md)
