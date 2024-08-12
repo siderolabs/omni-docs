@@ -4,7 +4,7 @@ description: A guide on how to create an Omni service account.
 
 # Create an Omni Service Account
 
-You will need `omnictl` installed and configured to follow this guide. If you haven't done so already, follow the [`omnictl` guide](index-1.md).
+You will need `omnictl` installed and configured to follow this guide. If you haven't done so already, follow the [`omnictl` guide](install-and-configure-omnictl.md).
 
 ### Creating the Service Account
 

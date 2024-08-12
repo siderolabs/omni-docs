@@ -66,7 +66,7 @@ Take note of the following information from the Auth0 application:
 
 * [EntraID/Azure AD](../using-saml-with-omni/how-to-configure-entraid-for-omni.md)
 * [Keycloak](\_index.md)
-* [Okta](../using-saml-with-omni/\_index.md)
+* [Okta](../using-saml-with-omni/configure-okta-for-omni.md)
 * [Workspace ONE Access](../using-saml-with-omni/configure-workspace-one-access-for-omni.md)
 * [Unifi Identity Enterprise](../using-saml-with-omni/configure-unifi-identity-enterprise-for-omni.md)
 

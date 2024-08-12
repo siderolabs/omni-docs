@@ -24,4 +24,4 @@ Type in the desired config patch:
 
 Click “Save” to create the config patch.
 
-For an example of a patch to enable node-to-node network encryption - the KubeSpan feature of Talos Linux - see [Creating a Hybrid Cluster](index-5.md).
+For an example of a patch to enable node-to-node network encryption - the KubeSpan feature of Talos Linux - see [Creating a Hybrid Cluster](create-a-hybrid-cluster.md).

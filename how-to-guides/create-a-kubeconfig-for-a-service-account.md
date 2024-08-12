@@ -4,7 +4,7 @@ description: A guide on how to create a kubeconfig for a service account in Omni
 
 # Create a Kubeconfig for a Service Account
 
-You need `omnictl` installed and configured to follow this guide. If you haven't done so already, follow the [`omnictl` guide](index-1.md).
+You need `omnictl` installed and configured to follow this guide. If you haven't done so already, follow the [`omnictl` guide](install-and-configure-omnictl.md).
 
 You also need to have a cluster created in Omni to follow this guide.
 
