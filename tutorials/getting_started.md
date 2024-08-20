@@ -1,78 +1,62 @@
 ---
-description: A short guide on setting up a Talos Linux cluster with Omni.
+description: Setting up a Talos Linux cluster with Omni.
 ---
 
 # Getting Started with Omni
 
-In this Getting Started guide we will create a high availability Kubernetes cluster running on Talos Linux, in Omni. This guide will use UTM/QEMU, but the same process will work with bare metal machines, cloud instances, and edge devices.
+In this Getting Started guide we will create a high availability Kubernetes cluster with [Talos Linux](https://talos.dev) managed by Omni. This guide will use UTM/QEMU, but the same process will work with bare metal machines, cloud instances, and edge devices.
 
-### Prerequisites
+If you would like to watch a quick video of the process you can follow along here.
 
-#### Network access
+{% embed url="https://www.youtube.com/watch?v=0gPF0_fLins" %}
 
-If your machines have outgoing access, you are all set. At a minimum all machines should have outgoing access to the Wireguard endpoint shown on the Omni Home panel, which lists the IP address and UDP port that machines should be able to reach. Machines need to be able to reach that address both on the UDP port specified, and on TCP port 443.
+## Prerequisites
 
-#### Some virtual or physical machines
+### Network access
 
-The simplest way to experience Omni is to be able to fire up virtual machines. We suggest any virtualization platform that can boot off an ISO (UTM, ProxMox, Fusion, etc) although any cloud platform can also be used with minor adjustments. Bare metal can also be used, but is often slower to boot.
+If your machines have outgoing internet access, you are all set. Machines should have access to the Wireguard Endpoint shown on the Omni Home panel, which lists the IP address and port (e.g. 199.99.99.100:10001) that machines will connect to. Machines need to be able to reach that address both on the UDP port specified, and on TCP port 443.
+
+### Create virtual or boot physical machines
+
+The simplest way to experience Omni is to create some virtual machines. We suggest any virtualization platform that can boot off an ISO (UTM, ProxMox, VMware Fusion, etc) although any cloud platform can also be used with minor adjustments. Bare metal can boot from a physical CD, USB drive, virtual media, or PXE.
 
 ### `talosctl`
 
-`talosctl` is the command line tool for issuing API calls and operating system commands to machines in an Omni cluster. It is not required - cluster management is done via the Omni UI or `omnictl`, but `talosctl` can be useful to investigate the state of the nodes and explore functionality.
+`talosctl` is the command line tool for managing Talos Linux via the management API, but when machines connect to Omni it is not required. Instead cluster management is done via the Omni UI or `omnictl`. We still recommend installing `talosctl` to investigate the state of the nodes and explore functionality.
 
-Download `talosctl`:
-
-```bash
-curl -sL https://talos.dev/install | sh
-```
-
-You can also download `talosctl` from within Omni, by selecting the "Download talosctl" button on the right hand side of the Home screen, then selecting the version and platform of `talosctl` desired. You should rename the downloaded file to`talosctl`, make it executable, and copy it to a location on your PATH.
-
-> Please note that  Omni manages the state of the Talos nodes, and protects the security of the Kubernetes and Talos credentials. Because of this, some `talosctl` commands (such as `talosctl reset`) will return `PermissionDenied` on Omni managed clusters - such operations must be done through the Omni UI or Omni API calls.
-
-### `kubectl`
-
-The Kubernetes command-line tool, `kubectl`, allows you to run commands against Kubernetes clusters. You use kubectl to deploy applications, inspect and manage cluster resources, view logs, etc.
-
-Download `kubectl` via one of methods outlined in the [documentation](https://kubernetes.io/docs/tasks/tools/#kubectl).
-
-Omni validates all operations (for Omni itself, Kubernetes, and Talos Linux) against the authentication configured for Omni (which may be GitHub, Google, enterprise SAML, etc.) Thus in order to use `kubectl` with Omni, you **need to install the oidc-login plugin** per the [documentation](https://github.com/int128/kubelogin#getting-started).
-
-Note: When using HomeBrew on Macs with M1 chips, there have been reports of issues with the plugin being installed to the wrong path and not being found. You may find it simpler to copy the file from GitHub and manually put the kubelogin binary on your path under the name kubectl-oidc\_login so that the kubectl plugin mechanism can find it.
-
-### `omnictl`
-
-`omnictl` is also an optional binary. Most cluster operations can be done via the Omni Web UI, but `omnictl` is used for advanced operations, to integrate Omni into CI workflows, or simply if you prefer a CLI to a UI.
-
-Download `omnictl` from within Omni: on the Home tab, click the "Download omnictl" button on the right hand side, select the appropriate platform, and the "Download" button. Make sure to rename the binary, make it executable, and copy to a location on your path. For example:
+Download `talosctl`, `kubectl`, `kubectl-oidc_login`, and `omnictl` (macOS and Linux):
 
 ```bash
-Downloads % mv omnictl-darwin-arm64 omnictl
-Downloads % chmod +x omnictl
-Downloads % mv omnictl /usr/local/bin
+brew install siderolabs/tap/sidero-tools
 ```
 
-### Download Installation Media
+For manual and Windows installation please refer to the [alternate installation methods](https://www.talos.dev/latest/talos-guides/install/talosctl/#manual-and-windows-install) in the Talos documentation.
 
-Omni is a BYO Machine platform - all you need to do is boot your machines off an Omni image. The Omni image will have the necessary credentials and endpoints built into it, that you can use to boot all your machines. To download the installation media, go to the Home screen in Omni, and select "Download Installation Media" from the right hand side. Select the appropriate media and platform type - e.g. I will select `ISO (arm64)` as I am going to boot a virtual machine within UTM on an apple M1.
+Make sure you download the talosconfig and omniconfig files from the Omni web interface and place them in the default locations `~/.talos/config` and `~/.config/omni/config/` respectively.
+
+## Download Installation Media
+
+Omni is a BYO Machine platform - all you need to do is boot your machines (virtual or physical) off an Omni image. To download the installation media, go to the Home Screen in Omni, and select "Download Installation Media" from the right hand side. Select the appropriate media and platform type.
 
 Images exist for many platforms, but you will have to follow the specific installation instructions for that platform (which often involve copying the image to S3 type storage, creating a machine image from it, etc.)
 
-### Boot machines off the downloaded image
+## Boot machines off the downloaded image
 
-Create at least 1 virtual machine with 2GB of memory (4 are suggested) using your Hypervisor. Have each virtual machine boot off the ISO image you just downloaded, and start the virtual machines.
+Create at least 1 virtual machine with 2GB of memory (4GB or more is recommended) using your Hypervisor. Have each virtual machine boot off the ISO image you just downloaded.
 
 After a few seconds, the machines should show in the Machines panel of Omni, with the `available` tag. They will also have tags showing their architecture, memory, cores and other information.
 
-### Create Cluster
+## Create Cluster
 
-Click "Clusters" on the left navigation panel, then "Create Cluster" in the top right. You can give your cluster a name, select the version of Talos Linux to install, and the version of Kubernetes. You can also specify any Patches that should be applied in creating your cluster, but in most cases these are not needed to get started. There are other options on this screen - encryption, backups, machine sets, etc - but we will skip those for this tutorial.
+Click "Clusters" on the left navigation panel, then "Create Cluster" in the top right. You can give your cluster a name, select the version of Talos Linux to install, and the version of Kubernetes. You can also specify any patches that should be applied to your cluster, but in most cases these are not needed to get started.
 
-In the section headed "Available Machines", select at least one machine to be the control plane, by clicking `CP`. (Ideally, you will have 3 control plane nodes.) Select one machine to be a worker, by clicking `W0` next to the machine.
+In the section headed "Available Machines", select at least one machine to be the control plane, by clicking `CP`. You will want an odd number of control plane nodes (e.g. 1, 3, 5). Select one machine to be a worker, by clicking `W0` next to the machine.
 
 Then click `Create Cluster`. Your cluster is now being created, and you will be taken to the Cluster Overview page. From this page you can download the `kubeconfig` and `talosconfig` files for your cluster, by clicking the buttons on the right hand side.
 
-#### Access Kubernetes
+> Please note that because Omni manages the state of the Talos nodes, and protects the security of the Kubernetes and Talos credentials. Because of this, some `talosctl` commands (such as `talosctl reset`) will return `PermissionDenied` on Omni managed clusters - such operations must be done through the Omni UI or API calls.
+
+### Access Kubernetes
 
 You can query your Kubernetes cluster using normal Kubernetes operations:
 
@@ -84,9 +68,9 @@ kubectl --kubeconfig ./talos-default-kubeconfig.yaml get nodes
 
 The first time you use the `kubectl` command to query a cluster, a browser window will open requiring you to authenticate with your identity provider (Google or GitHub most commonly.) If you get a message `error: unknown command "oidc-login" for "kubectl" Unable to connect to the server:` then you need to install the oidc-login plugin as noted above.
 
-#### Access Talos commands
+### Access Talos commands
 
-You can explore Talos API commands. Again, the first time you access the Talos API, a browser window will start to authenticate your request. The downloaded `talosconfig` file for the cluster includes the Omni endpoint, so you _do not need to specify endpoints_, just nodes.
+You can explore Talos API commands. The first time you access the Talos API, a browser window will start to authenticate your request. The downloaded `talosconfig` file for the cluster includes the Omni endpoint, so you _do not need to specify endpoints_, just nodes.
 
 ```bash
 talosctl --talosconfig ./talos-default-talosconfig.yaml --nodes 10.5.0.2 get members
@@ -96,38 +80,38 @@ talosctl --talosconfig ./talos-default-talosconfig.yaml --nodes 10.5.0.2 get mem
 
 > Note that because Omni manages the state of the Talos nodes, and protects the security of the Kubernetes and Talos credentials, some `talosctl` commands (such as `talosctl reset`) will return `PermissionDenied` on Omni managed clusters - such operations must be done through the Omni UI or API calls.
 
-#### Explore Omni
+### Explore Omni
 
 Now you have a complete cluster, with a high-availability Kubernetes API endpoint running on the Omni infrastructure, where all authentication is tied in to your enterprise identity provider. It's a good time to explore all that Omni can offer, including other areas of the UI such as:
 
-* etcd backup and restores
-* simple cluster upgrades of Kubernetes and Operating System
-* proxying of workload HTTP access
-* simple scaling up and down of clusters
-* the concept of Machine Sets, that let you manage your infrastructure by classes
+- etcd backup and restores
+- simple cluster upgrades of Kubernetes and Operating System
+- proxying of workload HTTP access
+- simple scaling up and down of clusters
+- the concept of Machine Sets, that let you manage your infrastructure by classes
 
 If you want to declaratively manage your clusters and infrastructure declaratively, as code, check out [Cluster Templates](../content/reference/cluster-templates/).
 
-#### Destroy the Cluster
+### Destroy the Cluster
 
 When you are all done, you can remove the cluster by clicking "Destroy Cluster", in the bottom right of the Cluster Overview panel. This will wipe the machines and return them to the Available state.
 
-### Deploying a complete cluster example
+## Cluster example
 
 We have an example of a managed cluster complete with a monitoring stack and application management. It can be found in our [community contrib repo](https://github.com/siderolabs/contrib/blob/main/examples/omni).
 
-#### Components
+### Components
 
 The contrib example includes:
 
-* [Cilium](https://cilium.io/get-started/) for cluster networking
-* [Hubble](https://docs.cilium.io/en/stable/gettingstarted/hubble\_intro/) for network observability
-* [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) for application management
-* [Rook/Ceph](https://rook.io/docs/rook/latest-release/Getting-Started/intro/) for persistent storage
-* [Prometheus](https://prometheus.io/docs/introduction/overview/) for metrics collection and alerting
-* [Grafana](https://grafana.com/docs/grafana/latest/introduction/) for metrics visualization
+- [Cilium](https://cilium.io/get-started/) for cluster networking
+- [Hubble](https://docs.cilium.io/en/stable/gettingstarted/hubble_intro/) for network observability
+- [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) for application management
+- [Rook/Ceph](https://rook.io/docs/rook/latest-release/Getting-Started/intro/) for persistent storage
+- [Prometheus](https://prometheus.io/docs/introduction/overview/) for metrics collection and alerting
+- [Grafana](https://grafana.com/docs/grafana/latest/introduction/) for metrics visualization
 
-#### Use
+### Use
 
 You will need to copy the contents of the `omni` directory to a git repository that can be accessed by the cluster you create. Update the [ArgoCD ApplicationSet](https://github.com/siderolabs/contrib/blob/main/examples/omni/apps/argocd/argocd/bootstrap-app-set.yaml) template to reference your new git repo, and regenerate the ArgoCD bootstrap patch.
 
