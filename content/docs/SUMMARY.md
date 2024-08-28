@@ -47,6 +47,8 @@
         * [Scale a Cluster Up or Down](how-to-guides/how-to-scale-a-cluster/index.md)
       * [how-to-use-kubectl-with-omni](how-to-guides/how-to-use-kubectl-with-omni/README.md)
         * [Use Kubectl With Omni](how-to-guides/how-to-use-kubectl-with-omni/index.md)
+      * [how-to-use-audit-log](how-to-guides/how-to-use-audit-log/README.md)
+        * [Use Audit Log in Omni](how-to-guides/how-to-use-audit-log/index.md)
       * [registering-machines](how-to-guides/registering-machines/README.md)
         * [Register machines with Omni](how-to-guides/registering-machines/\_index.md)
         * [Register a Raspberry Pi 4 Model B](how-to-guides/registering-machines/how-to-register-a-raspberry-pi-4-model-b.md)
