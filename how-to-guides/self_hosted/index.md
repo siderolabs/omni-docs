@@ -119,7 +119,7 @@ To pull down the Omni deployment assets for Docker Compose, simply grab them wit
 
 {% code fullWidth="true" %}
 ```
-OMNI_VERSION=0.41.0
+export OMNI_VERSION=0.41.0
 
 curl https://raw.githubusercontent.com/siderolabs/omni/v${OMNI_VERSION}/deploy/env.template -o env.template
 
