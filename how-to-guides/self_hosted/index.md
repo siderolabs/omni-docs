@@ -16,7 +16,11 @@ Install Docker according to the Ubuntu installation guide [here](https://docs.do
 
 #### Generate Certs
 
-On-prem Omni will require valid SSL certificates. This means that self-signed certs _will not_ work as of the time of this writing. Generating certificates is left as an exercise to the user, but here is a rough example that was tested using [DigitalOcean's DNS integration](https://certbot-dns-digitalocean.readthedocs.io/en/stable/) with certbot to generate certificates. The process should be very similar for other providers like Route53.
+On-prem Omni will require valid SSL certific
+
+
+
+ates. This means that self-signed certs _will not_ work as of the time of this writing. Generating certificates is left as an exercise to the user, but here is a rough example that was tested using [DigitalOcean's DNS integration](https://certbot-dns-digitalocean.readthedocs.io/en/stable/) with certbot to generate certificates. The process should be very similar for other providers like Route53.
 
 ```bash
 # Install certbot
@@ -105,7 +109,41 @@ export OMNI_ACCOUNT_UUID=$(uuidgen)
 
 ### Deploy Omni
 
-Running Omni is a simple `docker run`, with some slight differences in flags for Auth0 vs. SAML authentication.
+There are two easy ways to run Omni: docker-compose and a simple `docker run`. We recommend using docker-compose, but both are detailed in separate tabs below.
+
+{% tabs %}
+{% tab title="Docker Compose" %}
+#### Download Assets
+
+To pull down the Omni deployment assets for Docker Compose, simply grab them with curl as follows. Substitute the Omni version as desired.
+
+{% code fullWidth="true" %}
+```
+OMNI_VERSION=0.41.0
+
+curl https://raw.githubusercontent.com/siderolabs/omni/v${OMNI_VERSION}/deploy/env.template -o env.template
+
+curl https://raw.githubusercontent.com/siderolabs/omni/v${OMNI_VERSION}/deploy/compose.yaml -o compose.yaml
+```
+{% endcode %}
+
+#### Customize Template
+
+Open `env.template` for editing and update any fields that are formatted like `<xyz>`. These fields should include things like the desired Omni version, your generated UUID, paths to certs, and etcd information.
+
+Also of important note, you should edit the `Authentication` section to either update the default Auth0 information, or comment it out and uncomment the SAML auth block to use the SAML integration.
+
+#### Run It!
+
+With your environment file in hand, it's now time to run Omni. This can be done with a simple docker-compose command:
+
+```
+docker compose --env-file env.template up -d
+```
+{% endtab %}
+
+{% tab title="Docker Run" %}
+Deploying with a `docker run` is quite straight forward, with only some slight differences depending on the auth mechanism in use.
 
 #### Auth0
 
@@ -188,3 +226,7 @@ The `siderolink-wireguard-advertised-addr` **must** point to an IP, not the doma
 Note that you can omit the `--cert`, `--key`, `--siderolink-api-cert`, and `--siderolink-api-key` flags to run Omni insecurely.
 
 Configuration options are available in the help menu (`--help`).
+
+
+{% endtab %}
+{% endtabs %}
