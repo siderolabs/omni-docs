@@ -150,7 +150,7 @@ docker run \
     --k8s-proxy-bind-addr=0.0.0.0:8100 \
     --advertised-api-url=https://<domain name for onprem omni>/ \
     --siderolink-api-advertised-url=https://<domain name for onprem omni>:8090/ \
-    --siderolink-wireguard-advertised-addr=<ip address of the host running Omni>:50180 \
+    --siderolink-wireguard-advertised-addr=<domain name for onprem omni>:50180 \
     --advertised-kubernetes-proxy-url=https://<domain name for onprem omni>:8100/ \
     --auth-auth0-enabled=true \
     --auth-auth0-domain=<Auth0 domain> \
@@ -158,9 +158,6 @@ docker run \
     --initial-users=<email address>
 ```
 
-{{% alert title="Note" color="info" %}}
-The `siderolink-wireguard-advertised-addr` **must** point to an IP, not the domain name.
-{{% /alert %}}
 
 {{% alert title="Note" color="info" %}}
 Note that you can omit the `--cert`, `--key`, `--siderolink-api-cert`, and `--siderolink-api-key` flags to run Omni insecurely.
@@ -201,10 +198,6 @@ docker run \
 {{% alert title="Note" color="info" %}}
 In a default setup, the first user that logs in via SAML will be the "admin".
 All subsequent users will receive a read-only role and may need to be granted additional access by the admin user from the "Users" tab in Omni.
-{{% /alert %}}
-
-{{% alert title="Note" color="info" %}}
-The `siderolink-wireguard-advertised-addr` **must** point to an IP, not the domain name.
 {{% /alert %}}
 
 {{% alert title="Note" color="info" %}}
