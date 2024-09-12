@@ -6,21 +6,21 @@ For SAML integration sections, this guide assumes Azure AD will be the provider 
 
 <mark style="color:red;">Omni is available via a</mark> [<mark style="color:red;">Business Source License</mark>](https://github.com/siderolabs/omni/blob/main/LICENSE) <mark style="color:red;">which allows free installations in non-production environments. If you would like to deploy Omni for production use please contact</mark> [<mark style="color:red;">Sidero sales</mark>](mailto:sales@siderolabs.com?subject=Omni%20license%20inquiry\&body=Hello,%20I%20would%20like%20to%20purchase%20an%20on-prem%20license%20for%20Omni.)<mark style="color:red;">. If you would like to subscribe to the hosted version of Omni please see the</mark> [<mark style="color:red;">SaaS pricing</mark>](https://www.siderolabs.com/pricing/)<mark style="color:red;">.</mark>&#x20;
 
-### Prereqs
+### Prerequisites
 
-There are several prerequisites for deploying Omni on-prem.
+There are several prerequisites for deploying Omni on-prem. We will assume you have an Ubuntu machine available. Any distribution with Docker should work.
 
 #### Install Docker
 
-Install Docker according to the Ubuntu installation guide [here](https://docs.docker.com/engine/install/ubuntu/).
+Install Docker according to the Ubuntu installation guide [here](https://docs.docker.com/engine/install/ubuntu/). You will also need the docker compose plugin package if you want to use the example docker compose template.
+
+```
+curl -L https://get.docker.io | sh
+```
 
 #### Generate Certs
 
-On-prem Omni will require valid SSL certific
-
-
-
-ates. This means that self-signed certs _will not_ work as of the time of this writing. Generating certificates is left as an exercise to the user, but here is a rough example that was tested using [DigitalOcean's DNS integration](https://certbot-dns-digitalocean.readthedocs.io/en/stable/) with certbot to generate certificates. The process should be very similar for other providers like Route53.
+On-prem Omni will require valid SSL certificates. This means that self-signed certs _will not_ work. Generating certificates is left as an exercise to the user, but here is a rough example that was tested using [DigitalOcean's DNS integration](https://certbot-dns-digitalocean.readthedocs.io/en/stable/) with certbot to generate certificates. The process should be very similar for other providers like Route53.
 
 ```bash
 # Install certbot
@@ -43,7 +43,7 @@ $ certbot certonly --dns-<provider> -d <domain name for onprem omni>
 
 #### Auth0
 
-First, you will need an Auth0 account.
+Create an [Auth0 account](https://auth0.com/signup).
 
 On the account level, configure "Authentication - Social" to allow GitHub and Google login.
 
@@ -67,6 +67,8 @@ Take note of the following information from the Auth0 application:
 * Client ID
 
 #### SAML Identity Providers
+
+Other identity providers also work with Omni. Configuring these should be similar to Auth0.
 
 * [EntraID/Azure AD](../using-saml-with-omni/how-to-configure-entraid-for-omni.md)
 * [Keycloak](\_index.md)
@@ -97,48 +99,49 @@ gpg --export-secret-key --armor how-to-guide@siderolabs.com > omni.asc
 
 **Note:** Do not add passphrases to keys during creation.
 
-### Generate UUID
-
-It is important to generate a unique ID for this Omni deployment. It will also be necessary to use this same UUID each time you "docker run" your Omni instance.
-
-Generate a UUID with:
-
-```bash
-export OMNI_ACCOUNT_UUID=$(uuidgen)
-```
-
 ### Deploy Omni
 
 There are two easy ways to run Omni: docker-compose and a simple `docker run`. We recommend using docker-compose, but both are detailed in separate tabs below.
 
 {% tabs %}
 {% tab title="Docker Compose" %}
+#### Export variables
+
+You will need to specify some customizations for your installation. Export these variables with your information to use in the provided templates
+
+```
+export OMNI_VERSION=0.41.0
+OMNI_ACCOUNT_UUID=$(uuidgen)
+OMNI_DOMAIN_NAME=omni.siderolabs.com
+OMNI_WG_IP=10.10.1.100
+OMNI_ADMIN_EMAIL=omni@siderolabs.com
+AUTH0_CLIENT_ID=xxxyyyzzz
+AUTH0_DOMAIN=dev-aaabbbccc.us.auth0.com
+```
+
 #### Download Assets
 
-To pull down the Omni deployment assets for Docker Compose, simply grab them with curl as follows. Substitute the Omni version as desired.
+To pull down the Omni deployment assets for Docker Compose, simply grab them with curl as follows.
 
 {% code fullWidth="true" %}
 ```
-export OMNI_VERSION=0.41.0
-
-curl https://raw.githubusercontent.com/siderolabs/omni/v${OMNI_VERSION}/deploy/env.template -o env.template
+curl https://raw.githubusercontent.com/siderolabs/omni/v${OMNI_VERSION}/deploy/env.template -o env.template \
+  | envsubst > omni.env
 
 curl https://raw.githubusercontent.com/siderolabs/omni/v${OMNI_VERSION}/deploy/compose.yaml -o compose.yaml
 ```
 {% endcode %}
 
-#### Customize Template
+#### Verify settings
 
-Open `env.template` for editing and update any fields that are formatted like `<xyz>`. These fields should include things like the desired Omni version, your generated UUID, paths to certs, and etcd information.
-
-Also of important note, you should edit the `Authentication` section to either update the default Auth0 information, or comment it out and uncomment the SAML auth block to use the SAML integration.
+Open the omni.env file to check that all of your variables have been set to your environment requirements.
 
 #### Run It!
 
-With your environment file in hand, it's now time to run Omni. This can be done with a simple docker-compose command:
+With your environment file in hand, it's now time to run Omni. This can be done with a simple docker compose command:
 
 ```
-docker compose --env-file env.template up -d
+docker compose --env-file omni.env up -d
 ```
 {% endtab %}
 
@@ -156,7 +159,7 @@ docker run \
   -v <path to TLS key>:/tls.key \
   -v $PWD/omni.asc:/omni.asc \
   ghcr.io/siderolabs/omni:<tag> \
-    --account-id=${OMNI_ACCOUNT_UUID} \
+    --account-id=$(uuidgen) \
     --name=onprem-omni \
     --cert=/tls.crt \
     --key=/tls.key \
@@ -194,7 +197,7 @@ docker run \
   -v <path to TLS key>:/tls.key \
   -v $PWD/omni.asc:/omni.asc \
   ghcr.io/siderolabs/omni:<tag> \
-    --account-id=${OMNI_ACCOUNT_UUID} \
+    --account-id=$(uuidgen) \
     --name=onprem-omni \
     --cert=/tls.crt \
     --key=/tls.key \
