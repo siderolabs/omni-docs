@@ -2,8 +2,6 @@
 
 Welcome to the Omni user guide! This guide shows you everything from getting started to more advanced deployments with Omni.
 
-<button type="button" style="color: blue;">Get Started</button>
-
 ## What is Omni?
 
 Omni is a Kubernetes management platform that simplifies the creation and management of Kubernetes clusters on any environment to provide a simple, secure, and resilient platform. It automates cluster creation, management and upgrades, and integrates Kubernetes and Omni access into enterprise identity providers. While Omni does provide a powerful UI, tight integration with Talos Linux means the platform is 100% API-driven from Linux to Kubernetes to Omni.
@@ -30,10 +28,10 @@ Omni is excellent for managing clusters in just about any environment you have. 
 
 Some common use cases are:
 
-- On-premise bare metal clusters that can be scaled up with machines in the cloud
-- Edge clusters that are supported by machines in the data center and/or cloud
-- Mixed cloud
-- Single node edge clusters
+* On-premise bare metal clusters that can be scaled up with machines in the cloud
+* Edge clusters that are supported by machines in the data center and/or cloud
+* Mixed cloud
+* Single node edge clusters
 
 ## Ready to get started?
 

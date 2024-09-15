@@ -44,6 +44,7 @@
   * [Expose an HTTP Service from a Cluster](how-to-guides/expose-an-http-service-from-a-cluster.md)
   * [Export a Cluster Template from a Cluster Created in the UI](how-to-guides/export-a-cluster-template-from-a-cluster-created-in-the-ui.md)
   * [Using audit log](how-to-guides/using-audit-log.md)
+  * [Set Initial Machine Labels Using Omnictl or Image Factory](how-to-guides/how-to-set-initial-machine-labels.md)
 * [Explanation](explanation/README.md)
   * [Machine Registration](explanation/machine-registration.md)
   * [Authentication and Authorization](explanation/authentication-and-authorization.md)
