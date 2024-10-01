@@ -154,6 +154,7 @@ Deploying with a `docker run` is quite straight forward, with only some slight d
 docker run \
   --net=host \
   --cap-add=NET_ADMIN \
+  --device /dev/net/tun \
   -v $PWD/etcd:/_out/etcd \
   -v <path to TLS certificate>:/tls.crt \
   -v <path to TLS key>:/tls.key \
@@ -192,6 +193,7 @@ Configuration options are available in the help menu (`--help`).
 docker run \
   --net=host \
   --cap-add=NET_ADMIN \
+  --device /dev/net/tun \
   -v $PWD/etcd:/_out/etcd \
   -v <path to full chain TLS certificate>:/tls.crt \
   -v <path to TLS key>:/tls.key \
