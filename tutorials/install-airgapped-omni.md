@@ -374,7 +374,7 @@ Once Keycloak is installed, you can reach it in your browser at \`https://${KEYC
 
 #### Configuring Keycloak
 
-For details on configuring Keycloak as a SAML Identity Provider to be used with Omni, follow this guide: [Configuring Keycloak SAML](https://omni.siderolabs.com/docs/how-to-guides/how-to-configure-keycloak-for-omni/)
+For details on configuring Keycloak as a SAML Identity Provider to be used with Omni, follow this guide: [Configuring Keycloak SAML](../how-to-guides/self\_hosted/\_index.md)
 
 ### Omni
 
