@@ -84,13 +84,13 @@ talosctl --talosconfig ./talos-default-talosconfig.yaml --nodes 10.5.0.2 get mem
 
 Now you have a complete cluster, with a high-availability Kubernetes API endpoint running on the Omni infrastructure, where all authentication is tied in to your enterprise identity provider. It's a good time to explore all that Omni can offer, including other areas of the UI such as:
 
-- etcd backup and restores
-- simple cluster upgrades of Kubernetes and Operating System
-- proxying of workload HTTP access
-- simple scaling up and down of clusters
-- the concept of Machine Sets, that let you manage your infrastructure by classes
+* etcd backup and restores
+* simple cluster upgrades of Kubernetes and Operating System
+* proxying of workload HTTP access
+* simple scaling up and down of clusters
+* the concept of Machine Sets, that let you manage your infrastructure by classes
 
-If you want to declaratively manage your clusters and infrastructure declaratively, as code, check out [Cluster Templates](../content/reference/cluster-templates/).
+If you want to declaratively manage your clusters and infrastructure declaratively, as code, check out [Cluster Templates](../reference/cluster-templates.md).
 
 ### Destroy the Cluster
 
@@ -104,12 +104,12 @@ We have an example of a managed cluster complete with a monitoring stack and app
 
 The contrib example includes:
 
-- [Cilium](https://cilium.io/get-started/) for cluster networking
-- [Hubble](https://docs.cilium.io/en/stable/gettingstarted/hubble_intro/) for network observability
-- [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) for application management
-- [Rook/Ceph](https://rook.io/docs/rook/latest-release/Getting-Started/intro/) for persistent storage
-- [Prometheus](https://prometheus.io/docs/introduction/overview/) for metrics collection and alerting
-- [Grafana](https://grafana.com/docs/grafana/latest/introduction/) for metrics visualization
+* [Cilium](https://cilium.io/get-started/) for cluster networking
+* [Hubble](https://docs.cilium.io/en/stable/gettingstarted/hubble\_intro/) for network observability
+* [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) for application management
+* [Rook/Ceph](https://rook.io/docs/rook/latest-release/Getting-Started/intro/) for persistent storage
+* [Prometheus](https://prometheus.io/docs/introduction/overview/) for metrics collection and alerting
+* [Grafana](https://grafana.com/docs/grafana/latest/introduction/) for metrics visualization
 
 ### Use
 
@@ -122,7 +122,7 @@ kustomize build apps/argocd/argocd | yq -i 'with(.cluster.inlineManifests.[] | s
 
 With these changes made you should commit the new values and push them to the git repo.
 
-Next you should register your machines with Omni (see guides for [AWS](../content/how-to-guides/how-to-register-an-aws-ec2-instance/), [GCP](../content/how-to-guides/how-to-register-a-gcp-instance/), [Azure](../content/how-to-guides/how-to-register-an-azure-instance/), [Hetzner](../content/how-to-guides/how-to-register-a-hetzner-server/), and [bare metal](../content/how-to-guides/how-to-register-a-bare-metal-machine-iso/)) and create [machine classes](../content/how-to-guides/how-to-create-machine-classes/) to match your hardware. By default, the example [cluster template](../content/reference/cluster-templates/) is configured to use 3 instances of machine classes named `omni-contrib-controlplane`, and all instances that match a machine class called `omni-contrib-workers`. You can modify these settings in the [cluster-template.yaml](https://github.com/siderolabs/contrib/blob/main/examples/omni/infra/cluster-template.yaml), but keep in mind that for Rook/Ceph to work you will need to use at least 3 instances with additional block devices for storage.
+Next you should register your machines with Omni (see guides for [AWS](../how-to-guides/registering-machines/how-to-register-an-aws-ec2-instance.md), [GCP](../how-to-guides/registering-machines/register-a-gcp-instance.md), [Azure](../how-to-guides/registering-machines/register-an-azure-instance.md), [Hetzner](../how-to-guides/registering-machines/register-a-hetzner-server.md), and [bare metal](../how-to-guides/registering-machines/index.md)) and create [machine classes](../how-to-guides/create-a-machine-class.md) to match your hardware. By default, the example [cluster template](../reference/cluster-templates.md) is configured to use 3 instances of machine classes named `omni-contrib-controlplane`, and all instances that match a machine class called `omni-contrib-workers`. You can modify these settings in the [cluster-template.yaml](https://github.com/siderolabs/contrib/blob/main/examples/omni/infra/cluster-template.yaml), but keep in mind that for Rook/Ceph to work you will need to use at least 3 instances with additional block devices for storage.
 
 Once machines are registered you can create the cluster using the cluster template in the `infra` directory.
 
@@ -130,4 +130,4 @@ Once machines are registered you can create the cluster using the cluster templa
 omnictl cluster template sync --file cluster-template.yaml
 ```
 
-This should create the cluster as described, bootstrap ArgoCD, and begin installing applications from your repo. Depending on your infrastructure, it should take 5-10 mins for the cluster to come fully online with all applications working and healthy. Monitoring can be viewed directly from Omni using the [workload proxy](../content/how-to-guides/how-to-expose-http-service-from-a-cluster/) feature, with links to Grafana and Hubble found on the left-hand side of the Omni UI.
+This should create the cluster as described, bootstrap ArgoCD, and begin installing applications from your repo. Depending on your infrastructure, it should take 5-10 mins for the cluster to come fully online with all applications working and healthy. Monitoring can be viewed directly from Omni using the [workload proxy](../how-to-guides/expose-an-http-service-from-a-cluster.md) feature, with links to Grafana and Hubble found on the left-hand side of the Omni UI.
