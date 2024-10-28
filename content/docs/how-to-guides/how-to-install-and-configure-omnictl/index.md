@@ -24,7 +24,7 @@ Add the downloaded `omniconfig.yaml` to the default location to use it with `omn
 ```bash
 cp omniconfig.yaml ~/.config/omni/config
 ```
-Set the OMNICONFIG environment variable to point to your configuration file:
+Set the `OMNICONFIG` environment variable to point to your configuration file:
 ```bash
 export OMNICONFIG=~/.config/omni/config/omniconfig.yaml  
 ```
