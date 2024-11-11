@@ -434,7 +434,7 @@ What's going on here:
 
 Guides on creating a cluster on Omni can be found here:
 
-* [Creating an Omni cluster](https://omni.siderolabs.com/docs/how-to-guides/how-to-create-a-cluster/)
+* [Creating an Omni cluster](../how-to-guides/index.md)
 
 Because we're working in an airgapped environment we will need the following values added to our cluster configs so they know where to pull images from. More information on the Talos MachineConfig.registries can be found [here](https://www.talos.dev/v1.4/talos-guides/discovery/).
 
@@ -464,7 +464,7 @@ cluster:
 
 Specifics on patching machines can be found here:
 
-* [Create a Patch for Cluster Machines](https://omni.siderolabs.com/docs/how-to-guides/how-to-patch-a-machine/)
+* [Create a Patch for Cluster Machines](../how-to-guides/create-a-patch-for-cluster-machines.md)
 
 ### Closure
 
