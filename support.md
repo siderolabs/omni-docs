@@ -24,4 +24,4 @@ If you neglect to update Talos Linux to a version where the initial minor versio
 
 Clusters running unsupported versions of Talos Linux or Kubernetes may have limited ability to manage their clusters within Omni - clusters may not be able to have new nodes provisioned to scale up the cluster, for example.
 
-We encourage all users to take advantage of the ease of Talos Linux and Kubernetes upgrades within Omni to ensure they are always running the latest security and bug fixes.
+We encourage all users to take advantage of how easy Omni makes Talos Linux and Kubernetes upgrades, to ensure they are always running the latest security and bug fixes.
