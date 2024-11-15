@@ -5,7 +5,9 @@ description: A guide on how to manage Omni ACLs.
 # Manage Access Policies (ACLs)
 
 This guide will show how to give the user `support@example.com` full access to the `staging` cluster but limited access to the `production` cluster.
-
+{% hint style="warning" %}
+The default without RBAC is to grant Kubernetes admin-level access for users with write permissions on the Omni side.
+{% endhint %}
 ### Create an AccessPolicy resource
 
 Create a local file `acl.yaml`:
