@@ -14,10 +14,7 @@ In order to update the Talos Linux version of all nodes in a cluster, navigate t
 
 Select the new version, and then "Upgrade" (or "Downgrade", if you are selecting an older version than currently deployed.) (Omni will ensure that the Kubernetes version running in the cluster is compatible with the selected version of Talos Linux.)
 
-> **Note**: the recommended upgrade path is to always upgrade to the latest patch release of all intermediate minor releases.\
-> For example, if upgrading from Talos 1.5.0 to Talos 1.6.2, the recommended upgrade path would be:\
-> upgrade from 1.5.0 to latest patch of 1.5 - to v1.5.5\
-> upgrade from v1.5.5 to latest patch of 1.6 - to v1.6.2
+> **Note**: You may upgrade to any Talos version shown. Omni will only allow supported upgrade paths. In some cases this may require an intermediate upgrade before upgrading to the most recent version.
 
 Omni will then cycle through all nodes in the cluster, safely updating them to the selected version of Talos Linux. Omni will update the control plane nodes first. (Omni ensures the etcd cluster is healthy and will remain healthy after the node being updated leaves the etcd cluster, before allowing a control plane node to be upgraded.)
 
