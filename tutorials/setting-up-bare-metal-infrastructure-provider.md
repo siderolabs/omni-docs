@@ -73,7 +73,7 @@ The provider requires its following ports to be accessible:
 
 Start by getting the image reference of the latest version of the provider from [its packages page](https://github.com/siderolabs/omni-infra-provider-bare-metal/pkgs/container/omni-infra-provider-bare-metal).
 
-At the time of writing, it is `ghcr.io/siderolabs/omni-infra-provider-bare-metal:v0.1.0-alpha.1`, and we are going to use it in this tutorial.
+At the time of writing, it is `ghcr.io/siderolabs/omni-infra-provider-bare-metal:v0.1.0-beta.0`, and we are going to use it in this tutorial.
 
 Set the required environment variables, using the service account key you got in the previous step:
 
@@ -90,7 +90,7 @@ docker run -d --name=omni-bare-metal-infra-provider \
 --network host \
 -e OMNI_ENDPOINT \
 -e OMNI_SERVICE_ACCOUNT_KEY \
-ghcr.io/siderolabs/omni-infra-provider-bare-metal:v0.1.0-alpha.1 \
+ghcr.io/siderolabs/omni-infra-provider-bare-metal:v0.1.0-beta.0 \
 --api-advertise-address=172.16.0.42
 ```
 
@@ -103,7 +103,7 @@ docker ps | grep omni-bare-metal-infra-provider
 Sample output:
 
 ```
-7190a326decf   ghcr.io/siderolabs/omni-infra-provider-bare-metal:v0.1.0-alpha.1   "/provider --api-adv…"   About a minute ago   Up About a minute    omni-bare-metal-infra-provider
+7190a326decf   ghcr.io/siderolabs/omni-infra-provider-bare-metal:v0.1.0-beta.0   "/provider --api-adv…"   About a minute ago   Up About a minute    omni-bare-metal-infra-provider
 ```
 
 And start tailing its logs in a separate shell:
