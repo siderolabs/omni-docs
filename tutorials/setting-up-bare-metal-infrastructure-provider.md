@@ -127,6 +127,16 @@ Sample output:
 At this point, the provider is started and established a connection to our Omni instance.
 
 {% hint style="info" %}
+The provider can manage the power state of the machines using either **IPMI** or **Redfish**.
+
+By default, it probes the BMC IP for the Redfish API availability, and if it is available, prefers that over IPMI.
+
+This behavior can be customized using the flags `--redfish-use-always` and `--redfish-use-when-available`.&#x20;
+
+See all Redfish related flags via the `--help` flag.
+{% endhint %}
+
+{% hint style="info" %}
 The provider will start a DHCP proxy server, responding to the DHCP requests from the interface, in which the `--api-advertise-address`resides in. This DHCP proxy server is only responsible of generating PXE-boot responses for the machines configured to PXE boot. It does not affect the existing DHCP server otherwise.
 
 
