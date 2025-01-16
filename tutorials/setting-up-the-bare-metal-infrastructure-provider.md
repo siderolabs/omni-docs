@@ -4,7 +4,7 @@ description: Learn to set up the Bare-Metal Infrastructure Provider for Omni
 
 # Setting Up the Bare-Metal Infrastructure Provider
 
-In this tutorial, we will set up a [Bare-Metal Infrastructure Provider](https://github.com/siderolabs/omni-infra-provider-bare-metal) instance for our Omni instance to be able to provision bare metal machines.
+In this tutorial, we will set up a [Bare-Metal Infrastructure Provider](https://github.com/siderolabs/omni-infra-provider-bare-metal) service for our Omni instance to be able to provision bare metal machines.
 
 ## Requirements
 
@@ -13,7 +13,7 @@ In this tutorial, we will set up a [Bare-Metal Infrastructure Provider](https://
 * Some bare-metal machines with:
   * BMC (baseboard management controller) power management capabilities via one of the following:
     * IPMI
-    * RedFish
+    * Redfish
   * Outbound access to the Omni instance and the Image Factory
 * A machine/container/cluster etc. in the same subnet as the bare-metal machines, in order to run the infrastructure provider service
 
@@ -30,7 +30,7 @@ In this tutorial, we will assume:
 We start by creating an Omni service account for the infrastructure provider to authenticate/authorize to Omni.
 
 {% hint style="info" %}
-The service account needs to use the same ID as the ID of the provider instance we are going to run. The provider ID defaults to `bare-metal`, hence this is what we will use as the name, but if you plan to use a different ID ([passed via `--id`](https://github.com/siderolabs/omni-infra-provider-bare-metal/blob/v0.1.0-alpha.0/cmd/provider/main.go#L96)) or run multiple provider instances, set the name accordingly for the service account.
+Here, we need to create the service account with the same ID as the ID of the provider service we are going to run. It defaults to bare-metal, hence we use it as the name, but if you plan to use a different ID ([passed via `--id`](https://github.com/siderolabs/omni-infra-provider-bare-metal/blob/v0.1.0-alpha.0/cmd/provider/main.go#L96)) or run multiple provider instances, set the name accordingly for the service account.
 {% endhint %}
 
 {% tabs %}
@@ -73,7 +73,7 @@ The provider requires its following ports to be accessible:
 
 Start by getting the image reference of the latest version of the [provider package](https://github.com/siderolabs/omni-infra-provider-bare-metal/pkgs/container/omni-infra-provider-bare-metal).
 
-At the time of writing, it is `ghcr.io/siderolabs/omni-infra-provider-bare-metal:v0.1.0-beta.0`, and thjis is what we shall use in this tutorial.
+At the time of writing, it is `ghcr.io/siderolabs/omni-infra-provider-bare-metal:v0.1.0-beta.0`, and this is what we shall use in this tutorial.
 
 Set the required environment variables, using the service account key from the previous step:
 
@@ -131,7 +131,10 @@ The provider can manage the power state of machines using either **IPMI** or **R
 
 By default, it probes the BMC IP for the Redfish API availability. If Redfish is available, it will be preferred over IPMI.
 
-This behavior can be customized using the flags `--redfish-use-always` and `--redfish-use-when-available`.&#x20;
+This behavior can be customized using the following flags:
+
+* To always use Redfish, set `--redfish-use-always`.
+* To always use IPMI (not probe Redfish), set `--redfish-use-when-available=false`.
 
 See all Redfish related flags via the `--help` flag.
 {% endhint %}
@@ -247,7 +250,7 @@ Then replace the `.metadata.id`field with the ID of the second machine and repea
 {% endtabs %}
 
 {% hint style="danger" %}
-Accepting the machine will wipe ALL disks
+Accepting the machine will **wipe ALL disks**
 {% endhint %}
 
 
