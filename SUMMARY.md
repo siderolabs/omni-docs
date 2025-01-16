@@ -7,7 +7,7 @@
   * [Upgrading Omni Clusters](tutorials/upgrading-clusters.md)
   * [Installing Airgapped Omni](tutorials/install-airgapped-omni.md)
   * [Using SAML and ACLs for fine-grained access control](tutorials/configure-saml-and-acls.md)
-  * [Setting Up Bare-Metal Infrastructure Provider](tutorials/setting-up-bare-metal-infrastructure-provider.md)
+  * [Setting Up the Bare-Metal Infrastructure Provider](tutorials/setting-up-the-bare-metal-infrastructure-provider.md)
 * [How-to guides](how-to-guides/README.md)
   * [Using SAML with Omni](how-to-guides/using-saml-with-omni/README.md)
     * [Add a User to Omni with SAML Enabled](how-to-guides/using-saml-with-omni/add-a-user-to-omni-with-saml-enabled.md)
