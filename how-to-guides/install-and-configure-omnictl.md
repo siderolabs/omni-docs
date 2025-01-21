@@ -7,14 +7,14 @@ description: A guide on installing and configuring `omnictl` for Omni.
 Download `omnictl` and `omniconfig` from the Omni dashboard.
 
 {% hint style="info" %}
-The downloaded binary will be named according the the selected platform and architecture (e.g. `omnictl-linux-amd64`). It is left as an exercise to the user to move the downloaded binary into your `PATH` and make it executable. This guide assumes the downloaded binary is has been renamed `omnictl`.
+The downloaded binary will be named according the the selected platform and architecture (e.g. `omnictl-linux-amd64`). It is left as an exercise to the user to move the downloaded binary into your `PATH` and make it executable. This guide assumes the downloaded binary has been renamed `omnictl`.
 
 For example, to do so on a mac:
 
 ```bash
-Downloads % mv omnictl-darwin-arm64 omnictl
-Downloads % chmod +x omnictl
-Downloads % mv omnictl /usr/local/bin
+mv omnictl-darwin-arm64 omnictl
+chmod +x omnictl
+mv omnictl /usr/local/bin
 ```
 {% endhint %}
 
