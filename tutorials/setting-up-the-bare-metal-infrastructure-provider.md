@@ -177,9 +177,13 @@ At this point, these machines are booted into a special mode of Talos Linux call
 * runs the only the required services to be able to further provisioned by the provider
 {% endhint %}
 
-## 4. Accepting the Machines
+## 4. Configuring and Accepting the Machines in Omni
 
-At this point, the machines should be booted into the Agent Mode, and have established a SideroLink connection to our Omni instance. Let's verify this:
+At this point, the machines should be booted into the Agent Mode, and have established a `SideroLink` connection to our Omni instance.
+
+### 4.1. Verifying the Machines
+
+Let's verify our machines:
 
 {% tabs %}
 {% tab title="From Omni Web UI" %}
@@ -216,6 +220,47 @@ Our machines have the following IDs:
 
 For security reasons, the machines cannot be provisioned in Omni before they are "_Accepted_". We will accept these machines using the Omni API.
 
+### 4.2. Optional: Providing BMC (e.g., IPMI/Redfish) Configuration Manually
+
+Normally, when we accept a machine in Omni, the provider will auto-configure the BMC configuration, such as the IPMI IP, username and password automatically by asking the agent service running on the Talos machine.
+
+Sometimes we do not want this behavior - instead, we already have this information at hand, and want to provide it manually, skipping this step.
+
+To do this, before accepting these machines, we need to create a resource with these credentials in Omni.
+
+Create a `bmc-config.yaml` file with the following contents:
+
+```yaml
+metadata:
+  namespace: default
+  type: InfraMachineBMCConfigs.omni.sidero.dev
+  id: 33313750-3538-5a43-4a44-315430304c46
+spec:
+  ipmi:
+    address: 172.16.0.84
+    port: 623
+    username: admin
+    password: "MySuperSecretPw!_"
+```
+
+Fill it in with the information of your machine ID and IPMI configuration.
+
+As an Omni admin, create this resource using `omnictl`:
+
+```bash
+omnictl apply -f bmc-config.yaml
+```
+
+{% hint style="info" %}
+We can create this resource at a later time as well and the provider would start it.
+
+However, if we want to bypass the automatic credential configuration on machine acceptance, we need to ensure that the `InfraMachineBMCConfig` resource is present before we accept the machine.
+{% endhint %}
+
+### 4.3. Accepting the Machines
+
+As the final step, we need to accept these machines in Omni.
+
 {% hint style="warning" %}
 The following step will wipe the disks of these machines, so proceed with caution!
 {% endhint %}
@@ -250,10 +295,8 @@ Then replace the `.metadata.id`field with the ID of the second machine and repea
 {% endtabs %}
 
 {% hint style="danger" %}
-Accepting the machine will **wipe ALL disks**
+Accepting the machine will **wipe ALL disks**. This is to ensure that the machine is in a clear state, and will be fully managed by Omni from that moment on.
 {% endhint %}
-
-
 
 When you do this, the provider will do the following under the hood:
 
