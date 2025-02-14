@@ -26,6 +26,12 @@ The first time you use the `kubectl` command to query a cluster, a browser windo
 
 > If you get a message `error: unknown command "oidc-login" for "kubectl" Unable to connect to the server` then you need to install the oidc-login plugin as noted above, and ensure it is in your $PATH.
 
+{% hint style="info" %}
+Authentication for `omnictl`, `talosctl`, and `kubectl`will last for 8 hours. After 8 hours you will need to re-authenticate each tool for your environment.
+{% endhint %}
+
+
+
 ### OIDC authentication over SSH <a href="#oidc-authentication-over-ssh" id="oidc-authentication-over-ssh"></a>
 
 If you need to use `kubectl`, `talosctl`, or `omnictl` on a remote host over SSH you may need a way to forward your local client traffic to the remote host where `kubectl-oidc_login` is installed.

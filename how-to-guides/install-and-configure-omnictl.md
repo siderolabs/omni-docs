@@ -4,6 +4,18 @@ description: A guide on installing and configuring `omnictl` for Omni.
 
 # Install and Configure Omnictl
 
+### Recommended installation
+
+To install `omnictl`and the kubectl `oidc-login`plugin automatically on macOS and Linux you can use the provided Hombrew formula.
+
+```
+brew install siderolabs/tap/sidero-tools
+```
+
+This will install `talosctl`, `omnictl`, and `kube-oidc_login`and keep them updated.
+
+### Manual installation
+
 Download `omnictl` and `omniconfig` from the Omni dashboard.
 
 {% hint style="info" %}
