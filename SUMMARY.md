@@ -50,6 +50,7 @@
   * [Machine Registration](explanation/machine-registration.md)
   * [Authentication and Authorization](explanation/authentication-and-authorization.md)
   * [Omni KMS Disk Encryption](explanation/omni-kms-disk-encryption.md)
+  * [Infrastructure Providers](explanation/infrastructure-providers.md)
 * [Reference](reference/README.md)
   * [omnictl CLI](reference/cli.md)
   * [Access Policies (ACLs)](reference/acls.md)
