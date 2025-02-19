@@ -27,7 +27,7 @@
   * [Install talosctl](how-to-guides/how-to-install-talosctl.md)
   * [Install and Configure Omnictl](how-to-guides/install-and-configure-omnictl.md)
   * [Use Kubectl With Omni](how-to-guides/use-kubectl-with-omni.md)
-  * [Create a Kubeconfig for a Service Account](how-to-guides/create-a-kubeconfig-for-a-service-account.md)
+  * [Create a Kubeconfig for a Kubernetes Service Account](how-to-guides/create-a-kubeconfig-for-a-service-account.md)
   * [Create a Patch For Cluster Machines](how-to-guides/create-a-patch-for-cluster-machines.md)
   * [Manage Access Policies (ACLs)](how-to-guides/how-to-manage-acls.md)
   * [Create a Hybrid Cluster](how-to-guides/create-a-hybrid-cluster.md)

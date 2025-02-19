@@ -1,14 +1,18 @@
 ---
-description: A guide on how to create a kubeconfig for a service account in Omni.
+description: >-
+  A guide on how to create a kubeconfig for a Kubernetes service account in
+  Omni.
 ---
 
-# Create a Kubeconfig for a Service Account
+# Create a Kubeconfig for a Kubernetes Service Account
 
-You need `omnictl` installed and configured to follow this guide. If you haven't done so already, follow the [`omnictl` guide](install-and-configure-omnictl.md).
+To follow this guide, you will need `omnictl` installed and configured. (If you haven't done so already, follow the [`omnictl` guide](install-and-configure-omnictl.md).) You will also need also need a cluster created withing Omni.
 
-You also need to have a cluster created in Omni to follow this guide.
+{% hint style="info" %}
+Note that Omni also supports [Omni Service Accounts](create-an-omni-service-account.md), which provide authentication to Omni itself. Kubernetes Service Accounts are used to authenticate to a Kubernetes cluster, not Omni.
+{% endhint %}
 
-### Creating the Service Account Kubeconfig
+### Creating the Kubernetes Service Account Kubeconfig
 
 To create a service account kubeconfig, run the following command:
 
