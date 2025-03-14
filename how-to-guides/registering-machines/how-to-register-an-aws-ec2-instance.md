@@ -1,5 +1,5 @@
 ---
-description: A guide on how to register an AWS EC2 instance with Omni.
+description: A guide on how to register AWS EC2 instances with Omni.
 ---
 
 # Register an AWS EC2 Instance
@@ -15,7 +15,13 @@ REGION="us-west-2"
 First, we need to know what VPC to create the subnet on, so let’s describe the VPCs in the region where we want to create the Omni machines.
 
 ```
-$ aws ec2 describe-vpcs --region $REGION
+aws ec2 describe-vpcs --region $REGION
+```
+
+Output:
+
+```
+
 {
     "Vpcs": [
         {
@@ -40,6 +46,8 @@ $ aws ec2 describe-vpcs --region $REGION
 }
 ```
 
+
+
 Note the `VpcId` (`vpc-04ea926270c55d724`).
 
 Now, create a subnet on that VPC with a CIDR block that is within the CIDR block of the VPC. In the above example, as the VPC has a CIDR block of 172.31.0.0/16, we can use 172.31.128.0/20.
@@ -49,6 +57,11 @@ $ aws ec2 create-subnet \
     --vpc-id vpc-04ea926270c55d724 \
     --region us-west-2 \
     --cidr-block 172.31.128.0/20
+```
+
+Output:
+
+```
 {
     "Subnet": {
         "AvailabilityZone": "us-west-2c",
@@ -80,14 +93,22 @@ Note the `SubnetID` (`subnet-04f4d6708a2c2fb0d`).
 ### Create the Security Group <a href="#create-the-security-group" id="create-the-security-group"></a>
 
 ```bash
-$ aws ec2 create-security-group \
+aws ec2 create-security-group \
     --region $REGION \
     --group-name omni-aws-sg \
     --description "Security Group for Omni EC2 instances"
-{
-    "GroupId": "sg-0b2073b72a3ca4b03"
+
+```
+
+Output
+
+```
+{   
+     "GroupId": "sg-0b2073b72a3ca4b03"
 }
 ```
+
+
 
 Note the `GroupId` (`sg-0b2073b72a3ca4b03`).
 
@@ -127,10 +148,16 @@ aws s3 cp disk.raw s3://<bucket name>/omni-aws.raw
 #### Import the image as a snapshot <a href="#import-the-image-as-a-snapshot" id="import-the-image-as-a-snapshot"></a>
 
 ```
-$ aws ec2 import-snapshot \
+aws ec2 import-snapshot \
     --region $REGION \
     --description "Omni AWS" \
     --disk-container "Format=raw,UserBucket={S3Bucket=<bucket name>,S3Key=omni-aws.raw}"
+
+```
+
+Output:
+
+```
 {
     "Description": "Omni AWS",
     "ImportTaskId": "import-snap-1234567890abcdef0",
@@ -152,9 +179,15 @@ $ aws ec2 import-snapshot \
 Check the status of the import with:
 
 ```
-$ aws ec2 describe-import-snapshot-tasks \
+aws ec2 describe-import-snapshot-tasks \
     --region $REGION \
     --import-task-ids
+```
+
+Output:
+
+```json
+While the import is in progress:
 {
     "ImportSnapshotTasks": [
         {
@@ -175,21 +208,47 @@ $ aws ec2 describe-import-snapshot-tasks \
         }
     ]
 }
+
+Once completed:
+{
+    "ImportSnapshotTasks": [
+        {
+            "Description": "Omni AWS",
+            "ImportTaskId": "import-snap-1234567890abcdef0",
+            "SnapshotTaskDetail": {
+                "DiskImageSize": 8589934592.0,
+                "Format": "raw",
+                "SnapshotId": "snap-056a7e086ecf7b452",
+                "Status": "completed",
+                "UserBucket": {
+                    "S3Bucket": "<bucket name>",
+                    "S3Key": "omni-aws.raw"
+                }
+            },
+            "Tags": []
+        }
+    ]
+}
 ```
 
-Once the `Status` is `completed` note the `SnapshotId` (`snap-0298efd6f5c8d5cff`).
+Once the `Status` is `completed` note the `SnapshotId` (snap-056a7e086ecf7b452).
 
 ### Register the Image <a href="#register-the-image" id="register-the-image"></a>
 
 ```
-$ aws ec2 register-image \
+aws ec2 register-image \
     --region $REGION \
-    --block-device-mappings "DeviceName=/dev/xvda,VirtualName=talos,Ebs={DeleteOnTermination=true,SnapshotId=$SNAPSHOT,VolumeSize=4,VolumeType=gp2}" \
+    --block-device-mappings "DeviceName=/dev/xvda,VirtualName=talos,Ebs={DeleteOnTermination=true,SnapshotId=$SNAPSHOT,VolumeSize=8,VolumeType=gp2}" \
     --root-device-name /dev/xvda \
     --virtualization-type hvm \
     --architecture x86_64 \
     --ena-support \
     --name omni-aws-ami
+```
+
+Output:
+
+```
 {
     "ImageId": "ami-07961b424e87e827f"
 }
