@@ -6,6 +6,12 @@ description: A guide on how to create an Omni service account.
 
 You will need `omnictl` installed and configured to follow this guide. If you haven't done so already, follow the [`omnictl` guide](install-and-configure-omnictl.md).
 
+
+
+{% hint style="info" %}
+And Omni service account will create token based authentication for access to Omni. This is separate from access to the clusters managed by Omni. For Kubernetes access, see [Kubernetes Service Accounts](create-a-kubeconfig-for-a-service-account.md).
+{% endhint %}
+
 ### Creating the Service Account
 
 To create an Omni service account, use the following command:
