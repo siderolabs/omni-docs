@@ -30,7 +30,18 @@ The first time you use the `kubectl` command to query a cluster, a browser windo
 Authentication for `omnictl`, `talosctl`, and `kubectl`will last for 8 hours. After 8 hours you will need to re-authenticate each tool for your environment.
 {% endhint %}
 
+### Switching between users when authenticating to the same cluster
 
+If you have multiple contexts in your kubeconfig(s) authenticating to the same cluster (in the same Omni instance), switching between these contexts does not switch the authenticated user. This is a [known limitation](https://github.com/int128/kubelogin/issues/29) of the OIDC-based login we use - it uses the existing logged-in user, as their auth token is the already cached for that cluster.
+
+To work around that, when you want to switch to another user, you need to clear the authentication cache first. To do this, run one of the following:
+
+```bash
+kubectl oidc-login clean # OR
+rm -rf "${KUBECACHEDIR:-$HOME/.kube/cache}/oidc-login"
+```
+
+After doing this, the next `kubectl` command you run should trigger the OIDC login flow again, where you can authenticate as the user you need via `Switch User` option.
 
 ### OIDC authentication over SSH <a href="#oidc-authentication-over-ssh" id="oidc-authentication-over-ssh"></a>
 
