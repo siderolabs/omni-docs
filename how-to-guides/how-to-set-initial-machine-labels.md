@@ -116,6 +116,8 @@ For more options, see the [Image Factory](https://github.com/siderolabs/image-fa
 
 {% hint style="warning" %}
 Although Image Factory has a [web UI](https://factory.talos.dev), it is currently not possible to specify META values on the UI. Therefore, the initial machine labels cannot be specified on the UI at the moment.&#x20;
+
+The version of the Image Factory UI built into Omni **does** support specifying initial machine labels.
 {% endhint %}
 
 ## Verifying Labels
