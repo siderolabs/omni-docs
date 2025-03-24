@@ -1,10 +1,14 @@
 ---
-description: A guide on installing and configuring `omnictl` for Omni.
+description: A guide on installing and configuring omnictl for Omni.
 ---
 
 # Install and Configure Omnictl
 
-### Recommended installation
+## 1. Installation
+
+Pick one of the installation methods below.
+
+### a. Recommended installation
 
 To install `omnictl`and the kubectl `oidc-login`plugin automatically on macOS and Linux you can use the provided Hombrew formula.
 
@@ -14,9 +18,9 @@ brew install siderolabs/tap/sidero-tools
 
 This will install `talosctl`, `omnictl`, and `kube-oidc_login`and keep them updated.
 
-### Manual installation
+### b. Manual installation
 
-Download `omnictl` and `omniconfig` from the Omni dashboard.
+Download `omnictl` from the Omni dashboard.
 
 {% hint style="info" %}
 The downloaded binary will be named according the the selected platform and architecture (e.g. `omnictl-linux-amd64`). It is left as an exercise to the user to move the downloaded binary into your `PATH` and make it executable. This guide assumes the downloaded binary has been renamed `omnictl`.
@@ -30,10 +34,20 @@ mv omnictl /usr/local/bin
 ```
 {% endhint %}
 
-Add the downloaded `omniconfig.yaml` to the default location to use it with `omnictl`:
+## 2. Configuration File
+
+Download `omniconfig` from the Omni dashboard.
+
+Omnictl follows the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/latest/) for its configuration files location.
+
+Omni configuration is stored under `$XDG_CONFIG_HOME/omni/config`. This means, the correct configuration file locations for `omniconfig` are the following:
+
+<table><thead><tr><th width="119.21484375">OS</th><th>Omniconfig Path</th></tr></thead><tbody><tr><td>Linux</td><td><code>~/.config/omni/config</code></td></tr><tr><td>MacOS</td><td><code>~/Library/Application Support/omni/config</code></td></tr><tr><td>Windows</td><td><code>%LOCALAPPDATA%\omni\config</code>, e.g., <code>C:\Users\&#x3C;USER>\AppData\Local\omni\config</code></td></tr></tbody></table>
+
+Add the downloaded `omniconfig.yaml` to the default location for your OS to use it with `omnictl`:
 
 ```bash
-cp omniconfig.yaml ~/.config/omni/config
+cp omniconfig.yaml <LOCATION_FOR_YOUR_OS_ABOVE>
 ```
 
 If you would like to merge the `omniconfig.yaml` with an existing configuration, use the following command:
@@ -58,7 +72,7 @@ Run `omnictl` for the first time to perform initial authentication using a web b
 omnictl get clusters
 ```
 
-If the browser window does not open automatically, it can be opened manually by copying and pasting the URL into a web browser:Copy
+If the browser window does not open automatically, it can be opened manually by copying and pasting the URL into a web browser:
 
 ```bash
 BROWSER=echo omnictl get clusters
