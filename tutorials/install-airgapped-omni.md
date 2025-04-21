@@ -374,7 +374,7 @@ Once Keycloak is installed, you can reach it in your browser at \`https://${KEYC
 
 #### Configuring Keycloak
 
-For details on configuring Keycloak as a SAML Identity Provider to be used with Omni, follow this guide: [Configuring Keycloak SAML](../how-to-guides/self\_hosted/\_index.md)
+For details on configuring Keycloak as a SAML Identity Provider to be used with Omni, follow this guide: [Configuring Keycloak SAML](../how-to-guides/self_hosted/_index.md)
 
 ### Omni
 
@@ -436,9 +436,9 @@ Guides on creating a cluster on Omni can be found here:
 
 * [Creating an Omni cluster](../how-to-guides/index.md)
 
-Because we're working in an airgapped environment we will need the following values added to our cluster configs so they know where to pull images from. More information on the Talos MachineConfig.registries can be found [here](https://www.talos.dev/v1.4/talos-guides/discovery/).
+Because we're working in an airgapped environment we will need the following values added to our cluster configs so they know where to pull images from. More information on the Talos MachineConfig.registries can be found [here](https://www.talos.dev/latest/talos-guides/discovery/).
 
-> **NOTE:** In this example, cluster discovery is also disabled. You may also configure cluster discovery on your network. More information on the Discovery Service can be found [here](https://www.talos.dev/v1.4/talos-guides/discovery/)
+> **NOTE:** In this example, cluster discovery is also disabled. You may also configure cluster discovery on your network. More information on the Discovery Service can be found [here](https://www.talos.dev/latest/talos-guides/discovery/)
 
 ```yaml
 machine:
