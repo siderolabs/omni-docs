@@ -1,22 +1,28 @@
 ---
-description: A guide on how to set initial labels on the machines connecting to Omni.
+description: Setting initial labels on the machines connecting to Omni.
 ---
 
 # Set Initial Machine Labels Using Omnictl or Image Factory
 
-This guide demonstrates how to set initial machine labels when generating an boot media / URL using the `omnictl` CLI tool or using [Image Factory](https://factory.talos.dev) directly.
-
-Both methods allow you to programmatically label your machines, which can be useful for various automation scenarios, such as integrating with your CI pipeline.
-
-Machine labels can be useful for organizing and selecting machines in your Omni environment. For example, you might use them to distinguish between different environments (production, staging, development) or geographical locations (regions, zones).
+Machine labels can be useful for organizing and selecting machines in your Omni environment. For example, you might use them to distinguish between different environments (production, staging, development) or geographical locations (regions, zones). This helps various automation scenarios, such as integrating with your CI pipeline.
 
 {% hint style="info" %}
 Choose label keys and values that are meaningful for your infrastructure organization.
 {% endhint %}
 
+The simplest way to set machine labels is by using the "Download Installation Media" form from the homepage of Omni, which allows you set machine labels in the downloaded media (or the generated PXE endpoint.)
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+
+
+This guide demonstrates how to set initial machine labels when generating boot media / URL using the `omnictl` CLI tool or using [Image Factory](https://factory.talos.dev) directly.
+
+Both methods allow you to label your machines programmatically.
+
 ## Using `omnictl`
 
-When generating Talos installation media or a PXE boot URL using `omnictl`, you can set initial machine labels using the `--initial-labels` flag. This allows you to assign key-value pairs as labels to the machines that will boot from that media or the PXE boot URL.
+When generating Talos installation media or a PXE boot URL using `omnictl`, you can set initial machine labels using the `--initial-labels` flag. This allows you to assign key-value pairs as labels to the machines that boot from that media or the PXE boot URL.
 
 Here's the basic syntax for adding initial labels:
 
@@ -69,14 +75,14 @@ To do this, you need to craft an HTTP POST request with the schematic YAML in it
 
 First, you need to find the Kernel arguments for your Omni instance.
 
-You can do it:
+You can do this by either:
 
-* Either by clicking "Copy Kernel Parameters" on your Omni overview page, which will copy them to your clipboard
-* Or by running `omnictl get connectionparams -oyaml` , which will print them under `.spec.args` field.
+* clicking "Copy Kernel Parameters" on your Omni overview page, which will copy them to your clipboard
+* or by running `omnictl get connectionparams -oyaml` , which will print them under `.spec.args` field.
 
-Note that this is a one-time operation - these kernel arguments will stay the same for all the machines you would boot.
+Note that this is a one-time operation - these kernel arguments will stay the same for all the machines you boot from the generated schematic ID.
 
-After getting the Kernel arguments, split them by white spaces, and put them into your request body. Your CURL command should look like the following:
+After retreiving the Kernel arguments, split them by white spaces, and put them into your request body. Your CURL command should look like the following:
 
 ```bash
 curl -X POST https://factory.talos.dev/schematics \
