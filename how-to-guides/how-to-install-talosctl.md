@@ -24,7 +24,7 @@ curl -sL https://talos.dev/install | sh
 
 You now have `talosctl` installed.
 
-> Please note that because Omni manages the state of the Talos nodes, and protects the security of the Kubernetes and Talos credentials, some `talosctl` commands (such as `talosctl reset`) will return `PermissionDenied` on Omni managed clusters - such operations must be done through the Omni UI or API calls.
+
 
 ### Windows installation
 
@@ -34,3 +34,22 @@ Windows binaries can be downloaded from GitHub releases for Talos and Omni.
 * [Omni releases](https://github.com/siderolabs/omni/releases)
 
 There is also a community managed [winget package for talosctl](https://winget.run/pkg/Sidero/talosctl) available.
+
+
+
+### Allowed privileged commands
+
+As Omni manages the state of the Talos nodes, and protects the security of the Kubernetes and Talos credentials, some `talosctl` commands (such as `talosctl reset`) will return `PermissionDenied` on Omni managed clusters - such operations must be done through the Omni UI or API calls. There are some exceptions that are allowed by a user with a minimum role of [Operator](https://omni.siderolabs.com/reference/acls#role):
+
+| Command                                        |
+| ---------------------------------------------- |
+| `talosctl etcd alarm list`                     |
+| `talosctl etcd alarm disarm`                   |
+| `talosctl etcd defrag`                         |
+| `talosctl etcd status`                         |
+| `talosctl pcap`                                |
+| `talosctl reboot`                              |
+| `talosctl restart`                             |
+| `talosctl service <id> [stop\|start\|restart]` |
+| `talosctl shutdown`                            |
+
