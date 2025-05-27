@@ -27,7 +27,7 @@ In this tutorial, we will assume:
 
 ## 1. Creating an Omni service account
 
-We start by creating an Omni service account for the infrastructure provider to authenticate/authorize to Omni.
+We start by setting up access for the infrastructure provider to Omni.
 
 {% hint style="info" %}
 Here, we need to create the service account with the same ID as the ID of the provider service we are going to run. It defaults to bare-metal, hence we use it as the name, but if you plan to use a different ID ([passed via `--id`](https://github.com/siderolabs/omni-infra-provider-bare-metal/blob/v0.1.0-alpha.0/cmd/provider/main.go#L96)) or run multiple provider instances, set the name accordingly for the service account.
@@ -35,9 +35,9 @@ Here, we need to create the service account with the same ID as the ID of the pr
 
 {% tabs %}
 {% tab title="From Omni Web UI" %}
-Navigate to the _Settings - Service Accounts_ tab on the Omni web UI, and create a service account with ID `bare-metal`
+Navigate to the _Settings - Infra Providers_ tab on the Omni web UI, and setup a new infra provider with ID `bare-metal`&#x20;
 
-<figure><img src="../.gitbook/assets/create-sa (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2025-05-26 at 17.48.29.png" alt=""><figcaption></figcaption></figure>
 
 Store the displayed service account key securely for later use.
 {% endtab %}
@@ -46,7 +46,7 @@ Store the displayed service account key securely for later use.
 Using `omnictl`pointing to your instance `my-instance`,  run the following command:
 
 ```bash
-omnictl serviceaccount create --use-user-role=false --role=InfraProvider infra-provider:bare-metal
+omnictl infraprovider create bare-metal
 ```
 
 It will output the Omni endpoint and service account key:
