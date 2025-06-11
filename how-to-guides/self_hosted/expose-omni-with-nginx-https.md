@@ -20,7 +20,6 @@ You need to deploy an omni instance the [how to deploy omni on prem guide](index
 --k8s-proxy-bind-addr=127.0.0.1:8100
 --advertised-kubernetes-proxy-url=https://kube.$OMNI_DOMAIN/
 --account-id=$OMNI_UUID
---siderolink-use-grpc-tunnel=true
 ## Also add the authentication flags according to your setup
 ```
 
