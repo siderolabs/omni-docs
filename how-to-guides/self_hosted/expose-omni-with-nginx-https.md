@@ -8,7 +8,7 @@ description: >-
 
 ### Omni deployment configuration
 
-You need to deploy an omni instance the [how to deploy omni on prem guide](https://omni.siderolabs.com/docs/how-to-guides/how-to-deploy-omni-on-prem/), with the following flags set:
+You need to deploy an omni instance the [how to deploy omni on prem guide](index.md), with the following flags set:
 
 ```bash
 --name=$OMNI_NAME

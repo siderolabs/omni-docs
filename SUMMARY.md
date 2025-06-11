@@ -35,7 +35,7 @@
     * [Deploy Omni On-prem](how-to-guides/self_hosted/index.md)
     * [Configure Keycloak for Omni](how-to-guides/self_hosted/_index.md)
     * [Back Up On-prem Omni Database](how-to-guides/self_hosted/how-to-back-up-on-prem-omni-db.md)
-    * [How to expose Omni with Nginx (HTTPS)](how-to-guides/self_hosted/index-1.md)
+    * [How to expose Omni with Nginx (HTTPS)](how-to-guides/self_hosted/expose-omni-with-nginx-https.md)
   * [Install Talos Linux Extensions](how-to-guides/install-talos-linux-extensions.md)
   * [Scale a Cluster Up or Down](how-to-guides/scale-a-cluster-up-or-down.md)
   * [Etcd backups](how-to-guides/etcd-backups.md)
