@@ -45,7 +45,28 @@ After doing this, the next `kubectl` command you run should trigger the OIDC log
 
 ### OIDC authentication over SSH <a href="#oidc-authentication-over-ssh" id="oidc-authentication-over-ssh"></a>
 
-If you need to use `kubectl`, `talosctl`, or `omnictl` on a remote host over SSH you may need a way to forward your local client traffic to the remote host where `kubectl-oidc_login` is installed.
+If you need to use `kubectl` on a remote host over SSH you have two options.
+
+#### Download `kubeconfig` with `--grant-type=authcode-keyboard`
+
+To get started, you first need to download both **omnictl** and **omniconfig**. Once installed, you can use `omnictl` to download the configuration with the following command:
+
+```
+omnictl kubeconfig --cluster <name> --grant-type=authcode-keyboard
+```
+
+By default, the configuration will be merged with the file specified in the `KUBECONFIG` environment variable.
+
+When using this configuration, the process will not attempt to open a browser automatically. Instead, it will present you with a URL and prompt you to enter a one-time code:
+
+```
+Please visit the following URL in your browser: https://<redacted>
+Enter code:
+```
+
+Opening the link will take you to the Omni login page. After signing in, you will be provided with a code that you can copy and paste into the terminal.
+
+#### Download the regular `kubeconfig` and do port-forwarding
 
 To do that you can tunnel the ports over SSH when you connect to the host. This command will open a tunnel using the default ports `oidc-login` attempts to use.
 
