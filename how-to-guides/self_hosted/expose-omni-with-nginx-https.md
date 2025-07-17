@@ -29,7 +29,7 @@ You can use acme or certbot to generate certificates for your domain. In the fol
 
 ### Nginx configuration
 
-Use the following configuration to expose omni with nginx. Make sure to change the domain name ($OMNI\_DOMAIN) to your own domain and to update the certificate paths if applicable.
+Use the following configuration to expose omni with nginx. Make sure to change the domain name (`$OMNI_DOMAIN`) to your own domain and to update the certificate paths if applicable.
 
 ```nginx
 http {
