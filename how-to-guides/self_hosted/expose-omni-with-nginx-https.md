@@ -13,9 +13,9 @@ You need to deploy an omni instance the [how to deploy omni on prem guide](index
 ```bash
 --name=$OMNI_NAME
 --private-key-source=file:///omni.asc
---advertised-api-url=https://$OMNI_DOMAIN/
 --bind-addr=127.0.0.1:8080
---machine-api-bind-addr=127.0.0.1:8090
+--advertised-api-url=https://$OMNI_DOMAIN/
+--siderolink-api-bind-addr=127.0.0.1:8090
 --siderolink-api-advertised-url=https://api.$OMNI_DOMAIN:443
 --k8s-proxy-bind-addr=127.0.0.1:8100
 --advertised-kubernetes-proxy-url=https://kube.$OMNI_DOMAIN/
@@ -33,60 +33,97 @@ Use the following configuration to expose omni with nginx. Make sure to change t
 
 ```nginx
 http {
-	proxy_redirect          off;
-	proxy_connect_timeout   60s;
-	proxy_send_timeout      60s;
-	proxy_read_timeout      60s;
-	proxy_http_version      1.1;
+	proxy_redirect off;
+	proxy_http_version 1.1;
+
+	proxy_connect_timeout 60s;
+
+	# Omni needs long timeouts for the long-lived connections
+	proxy_send_timeout 1h;
+	proxy_read_timeout 1h;
+
 	# $connection_upgrade is used for websocket proxying
 	map $http_upgrade $connection_upgrade {
 		default upgrade;
-		''      close;
+		'' close;
 	}
-    server {
-		listen 0.0.0.0:80 ;
-		listen [::0]:80 ;
-		server_name $OMNI_DOMAIN ;
+
+	# Omni HTTPS redirection
+	server {
+		listen 0.0.0.0:80;
+		listen [::0]:80;
+		server_name $OMNI_DOMAIN;
 		location / {
 			return 301 https://$host$request_uri;
 		}
 	}
+
+	map $http_content_type $is_grpc {
+		default 0;
+		"application/grpc" 1;
+	}
+
+	# Omni main API
 	server {
-		listen 0.0.0.0:443 http2 ssl ;
-		listen [::0]:443 http2 ssl ;
-		server_name $OMNI_DOMAIN ;
+		listen 0.0.0.0:443 http2 ssl;
+		listen [::0]:443 http2 ssl;
+		server_name $OMNI_DOMAIN;
 		ssl_certificate /var/lib/acme/omni/fullchain.pem;
 		ssl_certificate_key /var/lib/acme/omni/key.pem;
 		ssl_trusted_certificate /var/lib/acme/omni/chain.pem;
 		location / {
-			proxy_pass http://127.0.0.1:8080;
-			proxy_http_version 1.1;
-			proxy_set_header Upgrade $http_upgrade;
-			proxy_set_header Connection $connection_upgrade;
+			error_page 418 = @grpc;
+			error_page 419 = @http;
+
+			if ($is_grpc) {
+				return 418;
+			}
+
+			return 419;
+		}
+
+		# Omni main GRPC API
+		location @grpc {
+			# Omni needs long timeouts for the long-lived GRPC stream connections
+			grpc_read_timeout 1h;
+			grpc_send_timeout 1h;
 			grpc_pass grpc://127.0.0.1:8080;
 		}
+
+		# Omni main HTTP API
+		location @http {
+			proxy_pass http://127.0.0.1:8080;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection $connection_upgrade;
+		}
 	}
+
+	# Omni SideroLink (a.k.a. Machine) API
 	server {
-		listen 0.0.0.0:443 http2 ssl ;
-		listen [::0]:443 http2 ssl ;
-		server_name api.$OMNI_DOMAIN ;
+		listen 0.0.0.0:443 http2 ssl;
+		listen [::0]:443 http2 ssl;
+		server_name api.$OMNI_DOMAIN;
 		ssl_certificate /var/lib/acme/omni_api/fullchain.pem;
 		ssl_certificate_key /var/lib/acme/omni_api/key.pem;
 		ssl_trusted_certificate /var/lib/acme/omni_api/chain.pem;
 		location / {
+			# Omni needs long timeouts for the long-lived GRPC stream connections
+			grpc_read_timeout 1h;
+			grpc_send_timeout 1h;
 			grpc_pass grpc://127.0.0.1:8090;
 		}
 	}
+
+	# Omni Kube API
 	server {
-		listen 0.0.0.0:443 http2 ssl ;
-		listen [::0]:443 http2 ssl ;
-		server_name kube.$OMNI_DOMAIN ;
+		listen 0.0.0.0:443 http2 ssl;
+		listen [::0]:443 http2 ssl;
+		server_name kube.$OMNI_DOMAIN;
 		ssl_certificate /var/lib/acme/omni_kube/fullchain.pem;
 		ssl_certificate_key /var/lib/acme/omni_kube/key.pem;
 		ssl_trusted_certificate /var/lib/acme/omni_kube/chain.pem;
 		location / {
 			proxy_pass http://127.0.0.1:8100;
-			proxy_http_version 1.1;
 			proxy_set_header Upgrade $http_upgrade;
 			proxy_set_header Connection $connection_upgrade;
 		}
