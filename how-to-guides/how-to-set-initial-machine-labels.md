@@ -12,7 +12,7 @@ Choose label keys and values that are meaningful for your infrastructure organiz
 
 The simplest way to set machine labels is by using the "Download Installation Media" form from the homepage of Omni, which allows you set machine labels in the downloaded media (or the generated PXE endpoint.)
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 
 

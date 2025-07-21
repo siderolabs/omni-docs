@@ -6,11 +6,11 @@ In general, the process to register a machine with Omni consists of downloading 
 
 To start the process, from the Home screen, click "Download Installation Media" on the right hand side:
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The Download Installation Media form will open:
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 This allows you to select media specific to various platforms (AWS, Azure, bare metal, etc), and also to specify options, such as:
 
