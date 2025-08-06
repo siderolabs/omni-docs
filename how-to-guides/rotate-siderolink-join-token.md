@@ -8,7 +8,7 @@ If the token is compromised it can be revoked and replaced with the new one.
 
 ### Conditions that Make Token Rotation Possible
 
-When a machine connects to Omni for the first time, it uses a join token specific to the Omni account that is shared by all new hosts that are registering with Omni. Omni then creates a unique, ephemeral token for each machine, and when Talos is installed to disk, that token is persisted to disk. If the shared token is revoked, machines that have persisted unique tokens (i.e. those with Talos installed to disk) will stay connected, but machines using the only shared tokens will be disconnected.
+When a machine connects to Omni for the first time, it uses a join token specific to the Omni account that is shared by all new hosts that are registering with Omni. Omni then creates a unique, ephemeral token for each machine, and when Talos is installed to disk, that token is persisted to disk. If the shared token is revoked, machines that have persisted unique tokens (i.e. those with Talos installed to disk) will stay connected, but machines using only shared tokens will be disconnected.
 
 {% hint style="warning" %}
 Talos < 1.6 doesn't support unique tokens.
