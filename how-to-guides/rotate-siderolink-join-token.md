@@ -2,49 +2,57 @@
 
 This guide shows you how to rotate SideroLink join tokens.
 
-Join tokens is the secret used to authenticate Talos machines gRPC requests when they establish WireGuard tunnel connection.
+Join tokens are the secret used to authenticate Talos machines' gRPC requests when they first establish a WireGuard tunnel connection to Omni.
 
 If the token is compromised it can be revoked and replaced with the new one.
 
 ### Conditions that Make Token Rotation Possible
 
-When a machine connects to Omni the first time it uses a shared join token. Omni creates a unique, ephemeral token for each machine and when Talos is installed that token is persisted to disk. If the shared token is revoked, machines that have persisted unique tokens will stay connected but machines with ephemeral or shared tokens will be disconnected.
+When a machine connects to Omni for the first time, it uses a join token specific to the Omni account that is shared by all new hosts that are registering with Omni. Omni then creates a unique, ephemeral token for each machine, and when Talos is installed to disk, that token is persisted to disk. If the shared token is revoked, machines that have persisted unique tokens (i.e. those with Talos installed to disk) will stay connected, but machines using the only shared tokens will be disconnected.
 
+{% hint style="warning" %}
 Talos < 1.6 doesn't support unique tokens.
+{% endhint %}
 
-If Omni is started with `--join-tokens-mode=legacy`  unique node tokens are not generated for any machines. So rotating the join tokens is not possible.
+If Omni is started with `--join-tokens-mode=legacy`  unique node tokens are not generated for any machines. This makes rotating join tokens not possible.
+
+### To Rotate Join Tokens
 
 {% tabs %}
 {% tab title="UI" %}
-First, click the "Join Tokens" section button in the sidebar. Next, click the "Create Join Token" button on the right.
+#### Create New Join Token
+
+Click the "Join Tokens" section button under "Machine Management" in the sidebar. Next, click the "Create Join Token" button on the right.
 
 <figure><img src="../.gitbook/assets/Screenshot 2025-07-31 at 15.01.27 (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/Screenshot 2025-07-31 at 15.02.33 (1).png" alt=""><figcaption></figcaption></figure>
 
-Give the token a name and click "Create Join Token" button.
+Give the new token a name and click the "Create Join Token" button.
 
 <figure><img src="../.gitbook/assets/Screenshot 2025-07-31 at 15.03.19.png" alt=""><figcaption></figcaption></figure>
 
-If the token that you are going to revoke is the default one, mark the new token as default.
+#### Replace the default token
+
+If the token that you are going to revoke is the default, mark the new token as the default.
 
 <figure><img src="../.gitbook/assets/Screenshot 2025-07-31 at 15.07.24 (1).png" alt=""><figcaption></figcaption></figure>
 
-Revoke the old token. Paying attention to the warnings.
+Revoke the old token. Note the warnings regarding machines that will be affected by the revocation of the old token.
 
 {% hint style="danger" %}
-If the token is rotated ignoring the warnings, the machines in the list might get disconnected after the first restart of Omni or the machine
+If there are warnings and the token is rotated anyway, the machines in the list will get disconnected after the next restart of Omni or the machine.
 {% endhint %}
 
 <figure><img src="../.gitbook/assets/Screenshot 2025-07-31 at 15.05.57.png" alt=""><figcaption></figcaption></figure>
 
-If it is safe to rotate the token, Omni will show green check mark and the message.
+If it is safe to rotate the token, Omni will show a green check mark.
 
 Click Revoke.
 
 <figure><img src="../.gitbook/assets/Screenshot 2025-07-31 at 15.06.40.png" alt=""><figcaption></figcaption></figure>
 
-You can copy the new token and start using it.
+
 {% endtab %}
 
 {% tab title="CLI" %}
@@ -61,10 +69,10 @@ If the token that you are going to revoke is the default one, mark the new token
 omnictl jointoken make-default Cw4yXr6dki4ZXLaJL22xxkOkagExzTOiTSMsfaMu1UD
 ```
 
-Revoke the old token. Paying attention to the warnings.
+Revoke the old token. Note the warnings regarding machines that will be affected by the revocation of the old token.
 
 {% hint style="danger" %}
-If the token is rotated ignoring the warnings, the machines in the list might get disconnected after the first restart of Omni or the machine
+If there are warnings and the token is rotated anyway, the machines in the list will get disconnected after the next restart of Omni or the machine.
 {% endhint %}
 
 ```
@@ -89,3 +97,4 @@ If the token can be safely revoked, the operation will continue without asking.
 {% endtab %}
 {% endtabs %}
 
+You can copy now the new token and start using it.
