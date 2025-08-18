@@ -1,7 +1,348 @@
-[build]
-command = "hugo --gc --minify"
-publish = "public"
+# ---- Redirects ----
+[[redirects]]
+from = "/"
+to = "https://docs.siderolabs.com/omni/overview/what-is-omni"
+status = 301
+force = true
 
-[build.environment]
-HUGO_VERSION = "0.93.2"
-NODE_VERSION = "12.21.0"
+[[redirects]]
+from = "/index.html"
+to = "https://docs.siderolabs.com/omni/overview/what-is-omni"
+status = 301
+force = true
+
+# ---- Getting Started ----
+[[redirects]]
+from = "/how-to-guides/how-to-install-talosctl"
+to = "https://docs.siderolabs.com/omni/getting-started/how-to-install-talosctl"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/install-and-configure-omnictl"
+to = "https://docs.siderolabs.com/omni/getting-started/install-and-configure-omnictl"
+status = 301
+force = true
+
+[[redirects]]
+from = "/tutorials/getting_started"
+to = "https://docs.siderolabs.com/omni/getting-started/getting-started"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/use-kubectl-with-omni"
+to = "https://docs.siderolabs.com/omni/getting-started/use-kubectl-with-omni"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/index"
+to = "https://docs.siderolabs.com/omni/getting-started/create-a-cluster"
+status = 301
+force = true
+
+# ---- Infrastructure & Extensions ----
+[[redirects]]
+from = "/tutorials/install-airgapped-omni"
+to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/install-airgapped-omni"
+status = 301
+force = true
+
+[[redirects]]
+from = "/explanation/infrastructure-providers"
+to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/infrastructure-providers"
+status = 301
+force = true
+
+[[redirects]]
+from = "/explanation/machine-registration"
+to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/machine-registration"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/install-talos-linux-extensions"
+to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/install-talos-linux-extensions"
+status = 301
+force = true
+
+# Self-Hosted (submenu)
+[[redirects]]
+from = "/how-to-guides/self_hosted"
+to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/self-hosted/overview"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/self_hosted/index"
+to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/self-hosted/deploy-omni-on-prem"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/self_hosted/_index"
+to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/self-hosted/configure-keycloak-for-omni/configure-keycloak-for-omni"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/self_hosted/how-to-back-up-on-prem-omni-db"
+to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/self-hosted/how-to-back-up-on-prem-omni-db"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/self_hosted/expose-omni-with-nginx-https"
+to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/self-hosted/expose-omni-with-nginx-https"
+status = 301
+force = true
+
+# ---- Omni Cluster Setup ----
+[[redirects]]
+from = "/how-to-guides/create-a-kubeconfig-for-a-service-account"
+to = "https://docs.siderolabs.com/omni/omni-cluster-setup/create-a-kubeconfig-for-a-service-account"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/create-a-machine-class"
+to = "https://docs.siderolabs.com/omni/omni-cluster-setup/create-a-machine-class"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/create-a-patch-for-cluster-machines"
+to = "https://docs.siderolabs.com/omni/omni-cluster-setup/create-a-patch-for-cluster-machines"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/create-an-omni-service-account"
+to = "https://docs.siderolabs.com/omni/omni-cluster-setup/create-an-omni-service-account"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/how-to-set-initial-machine-labels"
+to = "https://docs.siderolabs.com/omni/omni-cluster-setup/how-to-set-initial-machine-labels"
+status = 301
+force = true
+
+[[redirects]]
+from = "/tutorials/setting-up-the-bare-metal-infrastructure-provider"
+to = "https://docs.siderolabs.com/omni/omni-cluster-setup/setting-up-the-bare-metal-infrastructure-provider"
+status = 301
+force = true
+
+# Register machines with Omni (folder)
+[[redirects]]
+from = "/how-to-guides/registering-machines/how-to-register-an-aws-ec2-instance"
+to = "https://docs.siderolabs.com/omni/omni-cluster-setup/registering-machines/how-to-register-an-aws-ec2-instance"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/registering-machines/index"
+to = "https://docs.siderolabs.com/omni/omni-cluster-setup/registering-machines/register-a-bare-metal-machine-iso"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/registering-machines/register-a-bare-metal-machine-pxe-ipxe"
+to = "https://docs.siderolabs.com/omni/omni-cluster-setup/registering-machines/register-a-bare-metal-machine-pxe-ipxe"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/registering-machines/register-a-gcp-instance"
+to = "https://docs.siderolabs.com/omni/omni-cluster-setup/registering-machines/register-a-gcp-instance"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/registering-machines/register-a-hetzner-server"
+to = "https://docs.siderolabs.com/omni/omni-cluster-setup/registering-machines/register-a-hetzner-server"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/registering-machines/register-an-azure-instance"
+to = "https://docs.siderolabs.com/omni/omni-cluster-setup/registering-machines/register-an-azure-instance"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/registering-machines"
+to = "https://docs.siderolabs.com/omni/omni-cluster-setup/registering-machines/register-machines-with-omni"
+status = 301
+force = true
+
+# ---- Cluster Management ----
+[[redirects]]
+from = "/how-to-guides/scale-a-cluster-up-or-down"
+to = "https://docs.siderolabs.com/omni/cluster-management/scale-a-cluster-up-or-down"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/create-a-hybrid-cluster"
+to = "https://docs.siderolabs.com/omni/cluster-management/create-a-hybrid-cluster"
+status = 301
+force = true
+
+[[redirects]]
+from = "/tutorials/upgrading-clusters"
+to = "https://docs.siderolabs.com/omni/cluster-management/upgrading-clusters"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/expose-an-http-service-from-a-cluster"
+to = "https://docs.siderolabs.com/omni/cluster-management/expose-an-http-service-from-a-cluster"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/export-a-cluster-template-from-a-cluster-created-in-the-ui"
+to = "https://docs.siderolabs.com/omni/cluster-management/export-a-cluster-template-from-a-cluster-created-in-the-ui"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/etcd-backups"
+to = "https://docs.siderolabs.com/omni/cluster-management/etcd-backups"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/restore-etcd-of-a-cluster-managed-by-cluster-templates"
+to = "https://docs.siderolabs.com/omni/cluster-management/restore-etcd-of-a-cluster-managed-by-cluster-templates"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/using-audit-log"
+to = "https://docs.siderolabs.com/omni/cluster-management/using-audit-log"
+status = 301
+force = true
+
+# ---- Security & Authentication ----
+[[redirects]]
+from = "/explanation/authentication-and-authorization"
+to = "https://docs.siderolabs.com/omni/security-and-authentication/authentication-and-authorization"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/how-to-manage-acls"
+to = "https://docs.siderolabs.com/omni/security-and-authentication/how-to-manage-acls"
+status = 301
+force = true
+
+[[redirects]]
+from = "/explanation/omni-kms-disk-encryption"
+to = "https://docs.siderolabs.com/omni/security-and-authentication/omni-kms-disk-encryption"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/rotate-siderolink-join-token"
+to = "https://docs.siderolabs.com/omni/security-and-authentication/rotate-siderolink-join-token/rotate-siderolink-join-token"
+status = 301
+force = true
+
+# Using SAML With Omni
+[[redirects]]
+from = "/how-to-guides/using-saml-with-omni"
+to = "https://docs.siderolabs.com/omni/security-and-authentication/using-saml-with-omni/overview"
+status = 301
+force = true
+
+[[redirects]]
+from = "/tutorials/configure-saml-and-acls"
+to = "https://docs.siderolabs.com/omni/security-and-authentication/using-saml-with-omni/configure-saml-and-acls"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/using-saml-with-omni/add-a-user-to-omni-with-saml-enabled"
+to = "https://docs.siderolabs.com/omni/security-and-authentication/using-saml-with-omni/add-a-user-to-omni-with-saml-enabled"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/using-saml-with-omni/auto-assign-roles-to-saml-users"
+to = "https://docs.siderolabs.com/omni/security-and-authentication/using-saml-with-omni/auto-assign-roles-to-saml-users"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/using-saml-with-omni/configure-workspace-one-access-for-omni"
+to = "https://docs.siderolabs.com/omni/security-and-authentication/using-saml-with-omni/configure-workspace-one-access-for-omni/configure-workspace-one-access-for-omni"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/using-saml-with-omni/configure-unifi-identity-enterprise-for-omni"
+to = "https://docs.siderolabs.com/omni/security-and-authentication/using-saml-with-omni/configure-unifi-identity-enterprise-for-omni/configure-unifi-identity-enterprise-for-omni"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/using-saml-with-omni/how-to-configure-entraid-for-omni"
+to = "https://docs.siderolabs.com/omni/security-and-authentication/using-saml-with-omni/how-to-configure-entraid-for-omni"
+status = 301
+force = true
+
+[[redirects]]
+from = "/how-to-guides/using-saml-with-omni/configure-okta-for-omni"
+to = "https://docs.siderolabs.com/omni/security-and-authentication/using-saml-with-omni/configure-okta-for-omni/configure-okta-for-omni"
+status = 301
+force = true
+
+# ---- Reference ----
+[[redirects]]
+from = "/reference/acls"
+to = "https://docs.siderolabs.com/omni/reference/acls"
+status = 301
+force = true
+
+[[redirects]]
+from = "/reference/cli"
+to = "https://docs.siderolabs.com/omni/reference/cli"
+status = 301
+force = true
+
+[[redirects]]
+from = "/reference/cluster-templates"
+to = "https://docs.siderolabs.com/omni/reference/cluster-templates"
+status = 301
+force = true
+
+[[redirects]]
+from = "/reference/generating-omnictl-cli-reference"
+to = "https://docs.siderolabs.com/omni/reference/generating-omnictl-cli-reference"
+status = 301
+force = true
+
+# ---- Misc legacy stubs ----
+[[redirects]]
+from = "/support"
+to = "https://docs.siderolabs.com/omni/overview/what-is-omni"
+status = 301
+force = true
+
+# ---- Catch legacy /docs/ prefix if any old links used it ----
+[[redirects]]
+from = "/docs/*"
+to = "https://docs.siderolabs.com/omni/:splat"
+status = 301
+force = true
+
+# ---- FINAL CATCH-ALL: mirror remaining paths under /omni/ ----
+[[redirects]]
+from = "/*"
+to = "https://docs.siderolabs.com/omni/:splat"
+status = 301
+force = true
