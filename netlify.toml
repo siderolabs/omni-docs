@@ -82,7 +82,7 @@ force = true
 
 [[redirects]]
 from = "/how-to-guides/self_hosted/_index"
-to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/self-hosted/configure-keycloak-for-omni/configure-keycloak-for-omni"
+to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/self-hosted/configure-keycloak-for-omni"
 status = 301
 force = true
 
@@ -248,7 +248,7 @@ force = true
 
 [[redirects]]
 from = "/how-to-guides/rotate-siderolink-join-token"
-to = "https://docs.siderolabs.com/omni/security-and-authentication/rotate-siderolink-join-token/rotate-siderolink-join-token"
+to = "https://docs.siderolabs.com/omni/security-and-authentication/rotate-siderolink-join-token"
 status = 301
 force = true
 
@@ -279,13 +279,13 @@ force = true
 
 [[redirects]]
 from = "/how-to-guides/using-saml-with-omni/configure-workspace-one-access-for-omni"
-to = "https://docs.siderolabs.com/omni/security-and-authentication/using-saml-with-omni/configure-workspace-one-access-for-omni/configure-workspace-one-access-for-omni"
+to = "https://docs.siderolabs.com/omni/security-and-authentication/using-saml-with-omni/configure-workspace-one-access-for-omni"
 status = 301
 force = true
 
 [[redirects]]
 from = "/how-to-guides/using-saml-with-omni/configure-unifi-identity-enterprise-for-omni"
-to = "https://docs.siderolabs.com/omni/security-and-authentication/using-saml-with-omni/configure-unifi-identity-enterprise-for-omni/configure-unifi-identity-enterprise-for-omni"
+to = "https://docs.siderolabs.com/omni/security-and-authentication/using-saml-with-omni/configure-unifi-identity-enterprise-for-omni"
 status = 301
 force = true
 
@@ -297,7 +297,7 @@ force = true
 
 [[redirects]]
 from = "/how-to-guides/using-saml-with-omni/configure-okta-for-omni"
-to = "https://docs.siderolabs.com/omni/security-and-authentication/using-saml-with-omni/configure-okta-for-omni/configure-okta-for-omni"
+to = "https://docs.siderolabs.com/omni/security-and-authentication/using-saml-with-omni/configure-okta-for-omni"
 status = 301
 force = true
 
