@@ -43,11 +43,6 @@ status = 301
 force = true
 
 # ---- Infrastructure & Extensions ----
-[[redirects]]
-from = "/tutorials/install-airgapped-omni"
-to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/install-airgapped-omni"
-status = 301
-force = true
 
 [[redirects]]
 from = "/explanation/infrastructure-providers"
@@ -67,36 +62,43 @@ to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/install-tal
 status = 301
 force = true
 
-# Self-Hosted (submenu)
+# ---- Self-Hosted ----
 [[redirects]]
 from = "/how-to-guides/self_hosted"
-to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/self-hosted/overview"
+to = "https://docs.siderolabs.com/omni/self-hosted/omni-deployment-options"
 status = 301
 force = true
 
 [[redirects]]
 from = "/how-to-guides/self_hosted/index"
-to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/self-hosted/deploy-omni-on-prem"
+to = "https://docs.siderolabs.com/omni/self-hosted/run-omni-on-prem"
+status = 301
+force = true
+
+[[redirects]]
+from = "/tutorials/install-airgapped-omni"
+to = "https://docs.siderolabs.com/omni/self-hosted/run-omni-airgapped"
 status = 301
 force = true
 
 [[redirects]]
 from = "/how-to-guides/self_hosted/_index"
-to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/self-hosted/configure-keycloak-for-omni/configure-keycloak-for-omni"
-status = 301
-force = true
-
-[[redirects]]
-from = "/how-to-guides/self_hosted/how-to-back-up-on-prem-omni-db"
-to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/self-hosted/how-to-back-up-on-prem-omni-db"
+to = "https://docs.siderolabs.com/omni/self-hosted/configure-keycloak-for-omni"
 status = 301
 force = true
 
 [[redirects]]
 from = "/how-to-guides/self_hosted/expose-omni-with-nginx-https"
-to = "https://docs.siderolabs.com/omni/infrastructure-and-extensions/self-hosted/expose-omni-with-nginx-https"
+to = "https://docs.siderolabs.com/omni/self-hosted/expose-omni-with-nginx-https"
 status = 301
 force = true
+
+[[redirects]]
+from = "/how-to-guides/self_hosted/how-to-back-up-on-prem-omni-db"
+to = "https://docs.siderolabs.com/omni/self-hosted/back-up-omni-db"
+status = 301
+force = true
+
 
 # ---- Omni Cluster Setup ----
 [[redirects]]
